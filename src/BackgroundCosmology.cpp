@@ -26,6 +26,7 @@ BackgroundCosmology::BackgroundCosmology(
   OmegaR = 2.*M_PI*M_PI/30.*pow(Constants.k_b*TCMB,4)/(pow(Constants.hbar,3)*pow(Constants.c,5))*8*M_PI*Constants.G/(3*H0*H0);                  // Photon density today (follows from TCMB)
   OmegaNu = Neff*7./8.*pow(4./11.,4./3.)*OmegaR;
   OmegaLambda = 1-(OmegaK + OmegaB + OmegaCDM + OmegaR + OmegaNu);
+  
   //std::cout << OmegaLambda << std::endl;
   
                    // Neutrino density today (follows from TCMB and Neff)
@@ -112,8 +113,8 @@ double BackgroundCosmology::dHpdx_of_x(double x) const{
   //=============================================================================
   //...
   //...
-  double inside_the_root = (OmegaB+OmegaCDM)*pow(exp(x),-3.)+ (OmegaR+OmegaNu)*pow(exp(x),-4.)+OmegaK*pow(exp(x),-2.)+OmegaLambda;
-  double derivative_of_inside_the_root = -3.*(OmegaB+OmegaCDM)*pow(exp(x),-3.) -4.* (OmegaR+OmegaNu)*pow(exp(x),-4.)-2.*OmegaK*pow(exp(x),-2.);
+  double inside_the_root = (OmegaB+OmegaCDM)*pow(exp(x),-1.)+ (OmegaR+OmegaNu)*pow(exp(x),-2.)+OmegaK+OmegaLambda*pow(exp(x),2);
+  double derivative_of_inside_the_root = -(OmegaB+OmegaCDM)*pow(exp(x),-1.) -2.* (OmegaR+OmegaNu)*pow(exp(x),-2.)+2.*OmegaLambda*pow(exp(x),2);
   return H0*1./2.*inside_the_root*derivative_of_inside_the_root;
 }
 
@@ -124,9 +125,9 @@ double BackgroundCosmology::ddHpddx_of_x(double x) const{
   //=============================================================================
   //...
   //...
-  double inside_the_root = (OmegaB+OmegaCDM)*pow(exp(x),-3.)+ (OmegaR+OmegaNu)*pow(exp(x),-4.)+OmegaK*pow(exp(x),-2.)+OmegaLambda;
-  double derivative_of_inside_the_root = -3.*(OmegaB+OmegaCDM)*pow(exp(x),-3.) -4.* (OmegaR+OmegaNu)*pow(exp(x),-4.)-2.*OmegaK*pow(exp(x),-2.);
-  double double_derivative_of_inside_the_root = 9.*(OmegaB+OmegaCDM)*pow(exp(x),-3.) +16.* (OmegaR+OmegaNu)*pow(exp(x),-4.)+4.*OmegaK*pow(exp(x),-2.);
+  double inside_the_root = (OmegaB+OmegaCDM)*pow(exp(x),-1.)+ (OmegaR+OmegaNu)*pow(exp(x),-2.)+OmegaK+OmegaLambda*pow(exp(x),2);
+  double derivative_of_inside_the_root = -(OmegaB+OmegaCDM)*pow(exp(x),-1.) -2.* (OmegaR+OmegaNu)*pow(exp(x),-2.)+2.*OmegaLambda*pow(exp(x),2);
+  double double_derivative_of_inside_the_root = (OmegaB+OmegaCDM)*pow(exp(x),-1.) +4.* (OmegaR+OmegaNu)*pow(exp(x),-2.)+4.*OmegaLambda*pow(exp(x),2.);
 
   return H0*1./2.*(derivative_of_inside_the_root*derivative_of_inside_the_root+inside_the_root*double_derivative_of_inside_the_root);
 }
@@ -135,91 +136,105 @@ double BackgroundCosmology::get_OmegaB(double x) const{
   if(x == 0.0) return OmegaB;
 
   //=============================================================================
-  // TODO: Implement...
+  // DONE: Implement...
   //=============================================================================
   //...
   //...
 
-  return 0.0;
+  return OmegaB*H0*H0/(pow(exp(x),3.)*H_of_x(x)*H_of_x(x));
 }
 
 double BackgroundCosmology::get_OmegaR(double x) const{ 
   if(x == 0.0) return OmegaR;
 
   //=============================================================================
-  // TODO: Implement...
+  // DONE: Implement...
   //=============================================================================
   //...
   //...
 
-  return 0.0;
+  return OmegaR*H0*H0/(pow(exp(x),4.)*H_of_x(x)*H_of_x(x));
 }
 
 double BackgroundCosmology::get_OmegaNu(double x) const{ 
   if(x == 0.0) return OmegaNu;
 
   //=============================================================================
-  // TODO: Implement...
+  // DONE: Implement...
   //=============================================================================
   //...
   //...
 
-  return 0.0;
+  return OmegaNu*H0*H0/(pow(exp(x),4.)*H_of_x(x)*H_of_x(x));
 }
 
 double BackgroundCosmology::get_OmegaCDM(double x) const{ 
   if(x == 0.0) return OmegaCDM;
 
   //=============================================================================
-  // TODO: Implement...
+  // DONE: Implement...
   //=============================================================================
   //...
   //...
 
-  return 0.0;
+  return OmegaCDM*H0*H0/(pow(exp(x),3.)*H_of_x(x)*H_of_x(x));
 }
 
 double BackgroundCosmology::get_OmegaLambda(double x) const{ 
   if(x == 0.0) return OmegaLambda;
 
   //=============================================================================
-  // TODO: Implement...
+  // DONE: Implement...
   //=============================================================================
   //...
   //...
 
-  return 0.0;
+  return OmegaLambda*H0*H0/(H_of_x(x)*H_of_x(x));
 }
 
 double BackgroundCosmology::get_OmegaK(double x) const{ 
   if(x == 0.0) return OmegaK;
 
   //=============================================================================
-  // TODO: Implement...
+  // DONE: Implement...
   //=============================================================================
   //...
   //...
 
-  return 0.0;
+  return OmegaK*H0*H0/(pow(exp(x),2.)*H_of_x(x)*H_of_x(x));
 }
     
 double BackgroundCosmology::get_luminosity_distance_of_x(double x) const{
   //=============================================================================
-  // TODO: Implement...
+  // DONE: Implement...
   //=============================================================================
   //...
-  //...
+  if (OmegaK < 0.){
+    double r = get_comoving_distance_of_x(x)*sin(sqrt(-OmegaK)*H0*get_comoving_distance_of_x(x)/Constants.c)/
+      (sqrt(-OmegaK)*H0*get_comoving_distance_of_x(x)/Constants.c);
+    return exp(-x)*r;
+  }
 
-  return 0.0;
+  else if (OmegaK == 0.){
+
+    return exp(-x)*get_comoving_distance_of_x(x);
+  }
+
+  else{
+    double r = get_comoving_distance_of_x(x)*sinh(sqrt(OmegaK)*H0*get_comoving_distance_of_x(x)/Constants.c)/
+      (sqrt(OmegaK)*H0*get_comoving_distance_of_x(x)/Constants.c);
+    return exp(-x)*r;
+  }
+
 }
 double BackgroundCosmology::get_comoving_distance_of_x(double x) const{
   //=============================================================================
-  // TODO: Implement...
+  // DONE: Implement...
   //=============================================================================
   //...
   //...
 
-  return 0.0;
+  return eta_of_x(0)-eta_of_x(x);
 }
 
 double BackgroundCosmology::eta_of_x(double x) const{
@@ -265,7 +280,7 @@ void BackgroundCosmology::info() const{
 // Output some data to file
 //====================================================
 void BackgroundCosmology::output(const std::string filename) const{
-  const double x_min = -10.0;
+  const double x_min = -15.0;
   const double x_max =  0.0;
   const int    n_pts =  100;
   
