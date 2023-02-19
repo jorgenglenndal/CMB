@@ -20,9 +20,16 @@ BackgroundCosmology::BackgroundCosmology(
 {
 
   //=============================================================================
-  // TODO: Compute OmegaR, OmegaNu, OmegaLambda, H0, ...
+  // DONE: Compute OmegaR, OmegaNu, OmegaLambda, H0, ...   
   //=============================================================================
-  //...
+  H0 = Constants.H0_over_h*h;
+  OmegaR = 2.*M_PI*M_PI/30.*pow(Constants.k_b*TCMB,4)/(pow(Constants.hbar,3)*pow(Constants.c,5))*8*M_PI*Constants.G/(3*H0*H0);                  // Photon density today (follows from TCMB)
+  OmegaNu = Neff*7./8.*pow(4./11.,4./3.)*OmegaR;
+  OmegaLambda = 1-(OmegaK + OmegaB + OmegaCDM + OmegaR + OmegaNu);
+  //std::cout << OmegaLambda << std::endl;
+  
+                   // Neutrino density today (follows from TCMB and Neff)
+
   //...
   //...
   //...
@@ -37,33 +44,38 @@ void BackgroundCosmology::solve(){
   Utils::StartTiming("Eta");
     
   //=============================================================================
-  // TODO: Set the range of x and the number of points for the splines
+  // DONE: Set the range of x and the number of points for the splines
   // For this Utils::linspace(x_start, x_end, npts) is useful
   //=============================================================================
-  Vector x_array;
+  int npts = 1e+3;
+  Vector x_array = Utils::linspace(x_start, x_end, npts);
 
   // The ODE for deta/dx
   ODEFunction detadx = [&](double x, const double *eta, double *detadx){
 
     //=============================================================================
-    // TODO: Set the rhs of the detadx ODE
+    // DONE: Set the rhs of the detadx ODE
     //=============================================================================
-    //...
-    //...
-
-    detadx[0] = 0.0;
-
+    detadx[0] = Constants.c/Hp_of_x(x); 
+  
     return GSL_SUCCESS;
   };
 
   //=============================================================================
-  // TODO: Set the initial condition, set up the ODE system, solve and make
+  // DONE: Set the initial condition, set up the ODE system, solve and make
   // the spline eta_of_x_spline 
   //=============================================================================
   // ...
-  // ...
-  // ...
-  // ...
+  
+  Vector eta_init{0.};
+  ODESolver ode;
+  ode.solve(detadx, x_array, eta_init);
+
+  // Get the solution (we only have one component so index 0 holds the solution)
+  auto eta_array = ode.get_data_by_component(0);
+  eta_of_x_spline.create(x_array,eta_array,"eta_of_x");
+
+  
 
   Utils::EndTiming("Eta");
 }
@@ -75,45 +87,48 @@ void BackgroundCosmology::solve(){
 double BackgroundCosmology::H_of_x(double x) const{
 
   //=============================================================================
-  // TODO: Implement...
+  // DONE: Implement...
   //=============================================================================
   //...
-  //...
-
-  return 0.0;
+  double inside_the_root = (OmegaB+OmegaCDM)*pow(exp(x),-3.)+ (OmegaR+OmegaNu)*pow(exp(x),-4.)+OmegaK*pow(exp(x),-2.)+OmegaLambda;
+  double H = H0*pow(inside_the_root,1./2.);
+  return H;
 }
 
 double BackgroundCosmology::Hp_of_x(double x) const{
 
   //=============================================================================
-  // TODO: Implement...
+  // DONE: Implement...
   //=============================================================================
   //...
-  //...
-
-  return 0.0;
+  double Hp = exp(x)*H_of_x(x);
+  return Hp;
 }
 
 double BackgroundCosmology::dHpdx_of_x(double x) const{
 
   //=============================================================================
-  // TODO: Implement...
+  // DONE: Implement...
   //=============================================================================
   //...
   //...
-
-  return 0.0;
+  double inside_the_root = (OmegaB+OmegaCDM)*pow(exp(x),-3.)+ (OmegaR+OmegaNu)*pow(exp(x),-4.)+OmegaK*pow(exp(x),-2.)+OmegaLambda;
+  double derivative_of_inside_the_root = -3.*(OmegaB+OmegaCDM)*pow(exp(x),-3.) -4.* (OmegaR+OmegaNu)*pow(exp(x),-4.)-2.*OmegaK*pow(exp(x),-2.);
+  return H0*1./2.*inside_the_root*derivative_of_inside_the_root;
 }
 
 double BackgroundCosmology::ddHpddx_of_x(double x) const{
 
   //=============================================================================
-  // TODO: Implement...
+  // DONE: Implement...
   //=============================================================================
   //...
   //...
+  double inside_the_root = (OmegaB+OmegaCDM)*pow(exp(x),-3.)+ (OmegaR+OmegaNu)*pow(exp(x),-4.)+OmegaK*pow(exp(x),-2.)+OmegaLambda;
+  double derivative_of_inside_the_root = -3.*(OmegaB+OmegaCDM)*pow(exp(x),-3.) -4.* (OmegaR+OmegaNu)*pow(exp(x),-4.)-2.*OmegaK*pow(exp(x),-2.);
+  double double_derivative_of_inside_the_root = 9.*(OmegaB+OmegaCDM)*pow(exp(x),-3.) +16.* (OmegaR+OmegaNu)*pow(exp(x),-4.)+4.*OmegaK*pow(exp(x),-2.);
 
-  return 0.0;
+  return H0*1./2.*(derivative_of_inside_the_root*derivative_of_inside_the_root+inside_the_root*double_derivative_of_inside_the_root);
 }
 
 double BackgroundCosmology::get_OmegaB(double x) const{ 
