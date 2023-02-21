@@ -23,9 +23,9 @@ BackgroundCosmology::BackgroundCosmology(
   // DONE: Compute OmegaR, OmegaNu, OmegaLambda, H0, ...   
   //=============================================================================
   H0 = Constants.H0_over_h*h;
-  OmegaR = 2.*M_PI*M_PI/30.*pow(Constants.k_b*TCMB,4)/(pow(Constants.hbar,3)*pow(Constants.c,5))*8*M_PI*Constants.G/(3*H0*H0);                  // Photon density today (follows from TCMB)
+  OmegaR = 2.*M_PI*M_PI/30.*pow(Constants.k_b*TCMB,4.)/(pow(Constants.hbar,3.)*pow(Constants.c,5.))*8.*M_PI*Constants.G/(3.*H0*H0);                  // Photon density today (follows from TCMB)
   OmegaNu = Neff*7./8.*pow(4./11.,4./3.)*OmegaR;
-  OmegaLambda = 1-(OmegaK + OmegaB + OmegaCDM + OmegaR + OmegaNu);
+  OmegaLambda = 1.-(OmegaK + OmegaB + OmegaCDM + OmegaR + OmegaNu);
   
   //std::cout << OmegaLambda << std::endl;
   
@@ -236,6 +236,22 @@ double BackgroundCosmology::get_comoving_distance_of_x(double x) const{
 
   return eta_of_x(0)-eta_of_x(x);
 }
+double BackgroundCosmology::get_angular_distance_of_x(double x) const{
+  if (OmegaK < 0.){
+    double r = get_comoving_distance_of_x(x)*sin(sqrt(-OmegaK)*H0*get_comoving_distance_of_x(x)/Constants.c)/
+      (sqrt(-OmegaK)*H0*get_comoving_distance_of_x(x)/Constants.c);
+    return exp(x)*r;
+  } 
+  else if (OmegaK == 0.){ 
+    return exp(x)*get_comoving_distance_of_x(x);
+  } 
+  else{
+    double r = get_comoving_distance_of_x(x)*sinh(sqrt(OmegaK)*H0*get_comoving_distance_of_x(x)/Constants.c)/
+      (sqrt(OmegaK)*H0*get_comoving_distance_of_x(x)/Constants.c);
+    return exp(x)*r;
+  } 
+}
+
 
 double BackgroundCosmology::eta_of_x(double x) const{
   return eta_of_x_spline(x);

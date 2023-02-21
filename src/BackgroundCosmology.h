@@ -75,6 +75,7 @@ class BackgroundCosmology{
     // Distance measures
     double get_luminosity_distance_of_x(double x) const;
     double get_comoving_distance_of_x(double x) const;
+    double get_angular_distance_of_x(double x) const;
 
 };
 
