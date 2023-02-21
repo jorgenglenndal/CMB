@@ -4,21 +4,24 @@ loaded_file = np.loadtxt('../cosmology.txt')
 #print(loaded_file[:,0])
 
 
-#plt.plot(loaded_file[:,0],loaded_file[:,7]+loaded_file[:,8])
-#plt.plot(loaded_file[:,0],loaded_file[:,4]+loaded_file[:,5])
-#plt.plot(loaded_file[:,0],loaded_file[:,6])
-#plt.show()
+plt.plot(loaded_file[:,0],loaded_file[:,7]+loaded_file[:,8])
+plt.plot(loaded_file[:,0],loaded_file[:,4]+loaded_file[:,5])
+plt.plot(loaded_file[:,0],loaded_file[:,6])
+plt.show()
 
-#plt.semilogy(loaded_file[:,0],loaded_file[:,1]/3.08567758e22)
-#plt.show()
+plt.semilogy(loaded_file[:,0],loaded_file[:,1]/3.08567758e22)
+plt.ylim(1e0,5*1e4)
+plt.xlim(-12,0)
+plt.show()
 
-#plt.semilogy(loaded_file[:,0],loaded_file[:,2]/(100*1000)*3.08567758e22)
-#plt.ylim(1e-1,1e+3)
-#plt.xlim(-12,0)
-#plt.show()
+plt.semilogy(loaded_file[:,0],loaded_file[:,2]/(100*1000)*3.08567758e22)
+plt.ylim(1e-1,1e+3)
+plt.xlim(-12,0)
+plt.show()
 
 plt.plot(loaded_file[:,0],loaded_file[:,1]*loaded_file[:,2]/2.99792458e8)
 plt.xlim(-14.5,0)
+plt.ylim(0.8,3.2)
 plt.show()
 
 
