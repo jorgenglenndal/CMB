@@ -42,7 +42,7 @@ BackgroundCosmology::BackgroundCosmology(
 
 // Solve the background
 void BackgroundCosmology::solve(){
-  Utils::StartTiming("Eta");
+  Utils::StartTiming("Eta and t");
     
   //=============================================================================
   // DONE: Set the range of x and the number of points for the splines
@@ -62,23 +62,41 @@ void BackgroundCosmology::solve(){
     return GSL_SUCCESS;
   };
 
+
+  ODEFunction dtdx = [&](double x, const double *t, double *dtdx){
+
+    //=============================================================================
+    // DONE: Set the rhs of the detadx ODE
+    //=============================================================================
+    dtdx[0] = 1./H_of_x(x); 
+  
+    return GSL_SUCCESS;
+  };
+
+
+
   //=============================================================================
   // DONE: Set the initial condition, set up the ODE system, solve and make
   // the spline eta_of_x_spline 
   //=============================================================================
   // ...
   
-  Vector eta_init{0.};
-  ODESolver ode;
-  ode.solve(detadx, x_array, eta_init);
+  Vector eta_init{Constants.c/Hp_of_x(x_start)};
+  Vector t_init{1/(2*H_of_x(x_start))};
+  ODESolver ode_for_eta_of_x;
+  ODESolver ode_for_t_of_x;
+  ode_for_eta_of_x.solve(detadx, x_array, eta_init);
+  ode_for_t_of_x.solve(dtdx, x_array, t_init);
 
   // Get the solution (we only have one component so index 0 holds the solution)
-  auto eta_array = ode.get_data_by_component(0);
+  auto eta_array = ode_for_eta_of_x.get_data_by_component(0);
+  auto t_array = ode_for_t_of_x.get_data_by_component(0);
   eta_of_x_spline.create(x_array,eta_array,"eta_of_x");
+  t_of_x_spline.create(x_array,t_array,"t_of_x");
 
   
 
-  Utils::EndTiming("Eta");
+  Utils::EndTiming("Eta and t");
 }
 
 //====================================================
@@ -234,7 +252,7 @@ double BackgroundCosmology::get_comoving_distance_of_x(double x) const{
   //...
   //...
 
-  return eta_of_x(0)-eta_of_x(x);
+  return eta_of_x(0.)-eta_of_x(x);
 }
 double BackgroundCosmology::get_angular_distance_of_x(double x) const{
   if (OmegaK < 0.){
@@ -255,6 +273,10 @@ double BackgroundCosmology::get_angular_distance_of_x(double x) const{
 
 double BackgroundCosmology::eta_of_x(double x) const{
   return eta_of_x_spline(x);
+}
+
+double BackgroundCosmology::t_of_x(double x) const{
+  return t_of_x_spline(x);
 }
 
 double BackgroundCosmology::get_H0() const{ 
@@ -280,15 +302,16 @@ double BackgroundCosmology::get_TCMB(double x) const{
 void BackgroundCosmology::info() const{ 
   std::cout << "\n";
   std::cout << "Info about cosmology class:\n";
-  std::cout << "OmegaB:      " << OmegaB      << "\n";
-  std::cout << "OmegaCDM:    " << OmegaCDM    << "\n";
-  std::cout << "OmegaLambda: " << OmegaLambda << "\n";
-  std::cout << "OmegaK:      " << OmegaK      << "\n";
-  std::cout << "OmegaNu:     " << OmegaNu     << "\n";
-  std::cout << "OmegaR:      " << OmegaR      << "\n";
-  std::cout << "Neff:        " << Neff        << "\n";
-  std::cout << "h:           " << h           << "\n";
-  std::cout << "TCMB:        " << TCMB        << "\n";
+  std::cout << "OmegaB:          "<< OmegaB                             << "\n";
+  std::cout << "OmegaCDM:        "<< OmegaCDM                           << "\n";
+  std::cout << "OmegaLambda:     "<< OmegaLambda                        << "\n";
+  std::cout << "OmegaK:          "<< OmegaK                             << "\n";
+  std::cout << "OmegaNu:         "<< OmegaNu                            << "\n";
+  std::cout << "OmegaR:          "<< OmegaR                             << "\n";
+  std::cout << "Neff:            "<< Neff                               << "\n";
+  std::cout << "h:               "<< h                                  << "\n";
+  std::cout << "TCMB:            "<< TCMB                               << "\n";
+  std::cout << "t(x=0) [Gyr]:    "<< t_of_x(0.)/(60.*60.*24.*365.*1e9)  << "\n";
   std::cout << std::endl;
 } 
 
@@ -298,22 +321,23 @@ void BackgroundCosmology::info() const{
 void BackgroundCosmology::output(const std::string filename) const{
   const double x_min = -20.0;
   const double x_max =  5.0;
-  const int    n_pts =  100;
+  const int    n_pts =  10000;
   
   Vector x_array = Utils::linspace(x_min, x_max, n_pts);
-
   std::ofstream fp(filename.c_str());
   auto print_data = [&] (const double x) {
-    fp << x                  << " ";
-    fp << eta_of_x(x)        << " ";
-    fp << Hp_of_x(x)         << " ";
-    fp << dHpdx_of_x(x)      << " ";
-    fp << get_OmegaB(x)      << " ";
-    fp << get_OmegaCDM(x)    << " ";
-    fp << get_OmegaLambda(x) << " ";
-    fp << get_OmegaR(x)      << " ";
-    fp << get_OmegaNu(x)     << " ";
-    fp << get_OmegaK(x)      << " ";
+    fp << x                                        << " ";
+    fp << eta_of_x(x)                              << " ";
+    fp << Hp_of_x(x)                               << " ";
+    fp << dHpdx_of_x(x)                            << " ";
+    fp << get_OmegaB(x)                            << " ";
+    fp << get_OmegaCDM(x)                          << " ";
+    fp << get_OmegaLambda(x)                       << " ";
+    fp << get_OmegaR(x)                            << " ";
+    fp << get_OmegaNu(x)                           << " ";
+    fp << get_OmegaK(x)                            << " ";
+    fp << t_of_x(x)                                << " ";
+    fp << get_luminosity_distance_of_x(x)          << " ";
     fp <<"\n";
   };
   std::for_each(x_array.begin(), x_array.end(), print_data);

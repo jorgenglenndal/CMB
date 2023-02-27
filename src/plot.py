@@ -4,24 +4,43 @@ loaded_file = np.loadtxt('../cosmology.txt')
 #print(loaded_file[:,0])
 
 
-plt.plot(loaded_file[:,0],loaded_file[:,7]+loaded_file[:,8])
-plt.plot(loaded_file[:,0],loaded_file[:,4]+loaded_file[:,5])
-plt.plot(loaded_file[:,0],loaded_file[:,6])
-plt.show()
+#plt.plot(loaded_file[:,0],loaded_file[:,7]+loaded_file[:,8])
+#plt.plot(loaded_file[:,0],loaded_file[:,4]+loaded_file[:,5])
+#plt.plot(loaded_file[:,0],loaded_file[:,6])
+#plt.show()
 
-plt.semilogy(loaded_file[:,0],loaded_file[:,1]/3.08567758e22)
-plt.ylim(1e0,5*1e4)
-plt.xlim(-12,0)
-plt.show()
+#plt.semilogy(loaded_file[:,0],loaded_file[:,1]/3.08567758e22)
+#plt.ylim(1e0,5*1e4)
+#plt.xlim(-12,0)
+#plt.show()
 
-plt.semilogy(loaded_file[:,0],loaded_file[:,2]/(100*1000)*3.08567758e22)
-plt.ylim(1e-1,1e+3)
-plt.xlim(-12,0)
-plt.show()
+#plt.semilogy(loaded_file[:,0],loaded_file[:,2]/(100*1000)*3.08567758e22)
+#plt.ylim(1e-1,1e+3)
+#plt.xlim(-12,0)
+#plt.show()
 
-plt.plot(loaded_file[:,0],loaded_file[:,1]*loaded_file[:,2]/2.99792458e8)
-plt.xlim(-14.5,0)
-plt.ylim(0.8,3.2)
+#plt.plot(loaded_file[:,0],loaded_file[:,1]*loaded_file[:,2]/2.99792458e8)
+#plt.xlim(-14.5,0)
+#plt.ylim(0.8,3.2)
+#plt.show()
+
+
+loaded_file2 = np.loadtxt('../data/supernovadata.txt')
+#print(loaded_file2)
+z_data = loaded_file2[:,0]
+d_L_data = loaded_file2[:,1] # [Gpc]
+error_data = loaded_file2[:,2] # [Gpc]
+
+plt.errorbar(z_data,d_L_data,error_data)
+#plt.show()
+
+def convert_x_to_z(x):
+    return np.exp(-x)-1
+
+#print(convert_x_to_z(loaded_file[:,0]))
+plt.plot(convert_x_to_z(loaded_file[:,0]),loaded_file[:,11]/(3.08567758e22*1e3))
+plt.xlim(0,1.4)
+plt.ylim(-1,10)
 plt.show()
 
 
@@ -35,3 +54,4 @@ plt.show()
 #  7  fp << get_OmegaR(x)      << " ";
 #  8  fp << get_OmegaNu(x)     << " ";
 #  9  fp << get_OmegaK(x)      << " ";
+
