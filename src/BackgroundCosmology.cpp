@@ -133,7 +133,7 @@ double BackgroundCosmology::dHpdx_of_x(double x) const{
   //...
   double inside_the_root = (OmegaB+OmegaCDM)*pow(exp(x),-1.)+ (OmegaR+OmegaNu)*pow(exp(x),-2.)+OmegaK+OmegaLambda*pow(exp(x),2);
   double derivative_of_inside_the_root = -(OmegaB+OmegaCDM)*pow(exp(x),-1.) -2.* (OmegaR+OmegaNu)*pow(exp(x),-2.)+2.*OmegaLambda*pow(exp(x),2);
-  return H0*1./2.*inside_the_root*derivative_of_inside_the_root;
+  return H0*1./2.*pow(inside_the_root,-1./2.)*derivative_of_inside_the_root;
 }
 
 double BackgroundCosmology::ddHpddx_of_x(double x) const{
@@ -147,7 +147,7 @@ double BackgroundCosmology::ddHpddx_of_x(double x) const{
   double derivative_of_inside_the_root = -(OmegaB+OmegaCDM)*pow(exp(x),-1.) -2.* (OmegaR+OmegaNu)*pow(exp(x),-2.)+2.*OmegaLambda*pow(exp(x),2);
   double double_derivative_of_inside_the_root = (OmegaB+OmegaCDM)*pow(exp(x),-1.) +4.* (OmegaR+OmegaNu)*pow(exp(x),-2.)+4.*OmegaLambda*pow(exp(x),2.);
 
-  return H0*1./2.*(derivative_of_inside_the_root*derivative_of_inside_the_root+inside_the_root*double_derivative_of_inside_the_root);
+  return H0*1./2.*(derivative_of_inside_the_root*(-1./2.)*pow(inside_the_root,-3./2.)*derivative_of_inside_the_root+pow(inside_the_root,-1./2.)*double_derivative_of_inside_the_root);
 }
 
 double BackgroundCosmology::get_OmegaB(double x) const{ 
@@ -302,16 +302,18 @@ double BackgroundCosmology::get_TCMB(double x) const{
 void BackgroundCosmology::info() const{ 
   std::cout << "\n";
   std::cout << "Info about cosmology class:\n";
-  std::cout << "OmegaB:          "<< OmegaB                             << "\n";
-  std::cout << "OmegaCDM:        "<< OmegaCDM                           << "\n";
-  std::cout << "OmegaLambda:     "<< OmegaLambda                        << "\n";
-  std::cout << "OmegaK:          "<< OmegaK                             << "\n";
-  std::cout << "OmegaNu:         "<< OmegaNu                            << "\n";
-  std::cout << "OmegaR:          "<< OmegaR                             << "\n";
-  std::cout << "Neff:            "<< Neff                               << "\n";
-  std::cout << "h:               "<< h                                  << "\n";
-  std::cout << "TCMB:            "<< TCMB                               << "\n";
-  std::cout << "t(x=0) [Gyr]:    "<< t_of_x(0.)/(60.*60.*24.*365.*1e9)  << "\n";
+  std::cout << "OmegaB:             "<< OmegaB                                           << "\n";
+  std::cout << "OmegaCDM:           "<< OmegaCDM                                         << "\n";
+  std::cout << "OmegaLambda:        "<< OmegaLambda                                      << "\n";
+  std::cout << "OmegaK:             "<< OmegaK                                           << "\n";
+  std::cout << "OmegaNu:            "<< OmegaNu                                          << "\n";
+  std::cout << "OmegaR:             "<< OmegaR                                           << "\n";
+  std::cout << "Neff:               "<< Neff                                             << "\n";
+  std::cout << "h:                  "<< h                                                << "\n";
+  std::cout << "TCMB:               "<< TCMB                                             << "\n";
+  std::cout << "t(x=0) [Gyr]:       "<< t_of_x(0.)/(60.*60.*24.*365.*1e9)                << "\n";
+  std::cout << "eta(x=0)/c [Gyr]:   "<< eta_of_x(0.)/(Constants.c*60.*60.*24.*365.*1e9)  << "\n";
+
   std::cout << std::endl;
 } 
 
@@ -338,6 +340,8 @@ void BackgroundCosmology::output(const std::string filename) const{
     fp << get_OmegaK(x)                            << " ";
     fp << t_of_x(x)                                << " ";
     fp << get_luminosity_distance_of_x(x)          << " ";
+    fp << ddHpddx_of_x(x)                          << " ";
+
     fp <<"\n";
   };
   std::for_each(x_array.begin(), x_array.end(), print_data);
