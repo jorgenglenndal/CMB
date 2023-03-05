@@ -1,0 +1,162 @@
+\documentclass{aa}  
+
+\usepackage{graphicx}
+\usepackage{txfonts}
+\usepackage{hyperref}
+\usepackage{xcolor}           % set colors
+
+\hypersetup{ % this is just my personal choice, feel free to change things
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}}
+
+
+
+\begin{document} 
+
+   \title{Temporary title: CMB power spectrum}
+
+   \author{J. A. Glenndal}
+
+   \institute{Institute of Theoretical Astrophysics,  
+                University of Oslo,  0315 Oslo,  Norway\\
+              \email{j.a.glenndal@astro.uio.no}
+             }
+
+   \date{}
+
+  \abstract{An abstract for the paper. Describe the paper. What is the paper about, what are the main results, etc.}
+
+   \keywords{   cosmic microwave background  --
+                large-scale structure of Universe
+               }
+
+   \maketitle
+
+\section{Introduction}
+Write an introduction here. Give context to the paper. Citations to relevant papers. You only need to do this in the end for the last milestone.
+
+\section{Milestone I}
+%Some introduction about what it is all about.
+In this milestone we will look at the expansion history of a homogeneous and isotropic universe governed by the well known Friedmann equation \ref{Friedmann}.
+The universe we consider consists of baryonic matter ($\Omega_b$), dark matter ($\Omega_\mathrm{CDM}$), radiation ($\Omega_\gamma$), neutrinos ($\Omega_\nu$)
+and dark energy ($\Omega_\Lambda$), where $\Omega$ is the mass/energy density divided by the critical density ($\rho_c$). Since our goal in the end is to study the
+cosmic microwave background (CMB), the homogeneous solution of the universe is of great interest. This is because the CMB is close to
+being homogeneous with perturbations of order $10^{-5}$.
+     
+
+
+\subsection{Theory}
+%The theory behind this milestone.
+The parameters we use for our universe are given below.
+%\vspace*{-1.5cm}
+
+\begin{equation}
+      \boxed{
+   \begin{aligned}
+      h &= 0.67, \\
+      T_{\rm CMB 0} &= 2.7255\,K, \\
+      N_{\rm eff} &= 3.046, \\
+      \Omega_{\rm b 0} &= 0.05, \\
+      \Omega_{\rm CDM 0} &= 0.267,\\
+      \Omega_{k 0} &= 0, \\
+      \Omega_{\nu 0} &= N_{\rm eff}\cdot \frac{7}{8}\left(\frac{4}{11}\right)^{4/3}\Omega_{\gamma 0}, \\
+      \Omega_{\gamma 0} &= 2\cdot \frac{\pi^2}{30} \frac{(k_bT_{\rm CMB 0})^4}{\hbar^3 c^5} \cdot \frac{8\pi G}{3H_0^2},\\
+      \Omega_{\Lambda 0} &= 1 - (\Omega_{k 0}+\Omega_{b 0}+\Omega_{\rm CDM 0}+\Omega_{\gamma 0}+\Omega_{\nu 0}),
+   \end{aligned}}
+\end{equation}
+
+%\vspace*{0.5cm}
+where the subscript 0 denotes today's value. $h$ is the small Hubble constant. More details can be found at.% \cite{ThomasYoung}.
+
+The Friedmann equation is given by
+\begin{equation}\label{Friedmann}
+      H = H_0 \sqrt{(\Omega_{b0}+\Omega_{\rm CDM 0})a^{-3} + (\Omega_{\gamma 0} + \Omega_{\nu 0}) a^{-4} + \Omega_{k 0} a^{-2} + \Omega_{\Lambda 0}},
+\end{equation}
+where $a$ is the scale factor, $H = \frac{\dot{a}}{a}$ and $H_0$ is today's value of $H$. We will not use cosmic time ($t$) as our time variable.
+Instead, we use $x=\ln a$ as our dimensionless time variable. This implies that $a = e^x$ for conversion. Since $a(t=0) =0$ and $a(t=t_0) = 1$, where $t_0$ is time today
+we get $t=0 \iff x = -\infty$ and $t=t_0 \iff x = 0$. The cosmic time can be found from the differential equation 
+\begin{equation}\label{cosmic_time_differential_equation}
+      \frac{dt}{dx} = \frac{1}{H}.
+\end{equation}
+
+
+The $\Omega$s can be expressed as
+\begin{equation}
+      \hspace*{2cm}
+   \begin{aligned}
+      \Omega_{k}(a) &= \frac{\Omega_{k0}}{a^2H(a)^2/H_0^2}\\
+      \Omega_{\rm CDM}(a) &= \frac{\Omega_{\rm CDM 0}}{a^3H(a)^2/H_0^2} \\
+      \Omega_b(a) &= \frac{\Omega_{b 0}}{a^3H(a)^2/H_0^2} \\
+      \Omega_\gamma(a) &= \frac{\Omega_{\gamma 0}}{a^4H(a)^2/H_0^2} \\
+      \Omega_{\nu}(a) &= \frac{\Omega_{\nu 0}}{a^4H(a)^2/H_0^2} \\
+      \Omega_{\Lambda}(a) &= \frac{\Omega_{\Lambda 0}}{H(a)^2/H_0^2}.
+   \end{aligned}
+\end{equation}
+
+
+\subsection{Implementation details}
+Something about the numerical work.
+
+\subsection{Results}
+Show and discuss the results.
+
+\section{Milestone II}
+Some introduction about what it is all about.
+
+\subsection{Theory}
+The theory behind this milestone.
+
+\subsection{Implementation details}
+Something about the numerical work.
+
+\subsection{Results}
+Show and discuss the results.
+
+\section{Milestone III}
+Some introduction about what it is all about.
+
+\subsection{Theory}
+The theory behind this milestone.
+
+\subsection{Implementation details}
+Something about the numerical work.
+
+\subsection{Results}
+Show and discuss the results.
+
+\section{Milestone IV}
+Some introduction about what it is all about.
+
+\subsection{Theory}
+The theory behind this milestone.
+
+\subsection{Implementation details}
+Something about the numerical work.
+
+\subsection{Results}
+Show and discuss the results.
+
+\section{Conclusions}
+
+Write a short summary and conclusion in the end. 
+
+\begin{acknowledgements}
+      I thank my mom for financial support!
+\end{acknowledgements}
+
+%\bibliographystyle{plain} % We choose the "plain" reference style
+%\bibliography{refs} % Entries are in the refs.bib file
+
+%\begin{thebibliography}{}
+%      \bibitem[1966]{baker} Baker, N. 1966,
+%      in Stellar Evolution,
+%      ed.\ R. F. Stein,\& A. G. W. Cameron
+%      (Plenum, New York) 333
+%
+%      \bibitem[2023]{winther} Winther, H.A. 2023,
+%      %\href{https://cmb.wintherscoming.no/milestone1.php}
+%\end{thebibliography}
+
+\end{document}

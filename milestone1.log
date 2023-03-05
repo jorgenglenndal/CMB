@@ -1,0 +1,34 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.8.18)  5 MAR 2023 14:29
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**/home/jorgen/src/master/ast5220/Milestone1/milestone1.tex
+(/home/jorgen/src/master/ast5220/Milestone1/milestone1.tex
+LaTeX2e <2020-02-02> patch level 2
+L3 programming layer <2020-02-14>
+\@input{aa_package/.aux}
+/home/jorgen/src/master/ast5220/Milestone1/milestone1.tex:15: I can't write on file `aa_package/.aux'.
+\@include ...\immediate \openout \@partaux #1.aux 
+                                                  \immediate \write \@partau...
+l.15 \include{aa_package/}
+                          
+(Press Enter to retry, or Control-D to exit; default file extension is `.tex')
+Please type another output file name
+/home/jorgen/src/master/ast5220/Milestone1/milestone1.tex:15: Emergency stop.
+\@include ...\immediate \openout \@partaux #1.aux 
+                                                  \immediate \write \@partau...
+l.15 \include{aa_package/}
+                          
+*** (job aborted, file error in nonstop mode)
+
+ 
+Here is how much of TeX's memory you used:
+ 19 strings out of 481239
+ 594 string characters out of 5920377
+ 236560 words of memory out of 5000000
+ 15385 multiletter control sequences out of 15000+600000
+ 532338 words of font info for 24 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 12i,0n,15p,161b,14s stack positions out of 5000i,500n,10000p,200000b,80000s
+/home/jorgen/src/master/ast5220/Milestone1/milestone1.tex:15:  ==> Fatal error occurred, no output PDF file produced!
