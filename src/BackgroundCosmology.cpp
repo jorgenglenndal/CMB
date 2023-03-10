@@ -221,6 +221,7 @@ double BackgroundCosmology::get_OmegaK(double x) const{
 
   return OmegaK*H0*H0/(pow(exp(x),2.)*H_of_x(x)*H_of_x(x));
 }
+
     
 double BackgroundCosmology::get_luminosity_distance_of_x(double x) const{
   //=============================================================================

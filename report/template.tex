@@ -1,6 +1,7 @@
 \documentclass{aa}
 
 \usepackage{graphicx}
+%\usepackage[options]{natbib}
 \usepackage{txfonts}
 \usepackage{hyperref}
 \usepackage{xcolor}           % set colors
@@ -15,7 +16,7 @@
 
 \begin{document} 
 
-   \title{Temporary title: CMB power spectrum}
+   \title{Temporary title: CMB power spectrum...}
 
    \author{J. A. Glenndal}
 
@@ -67,22 +68,25 @@ The parameters we use for our universe are given below.
    \end{aligned}}
 \end{equation}
 
-%\vspace*{0.5cm}
-where the subscript 0 denotes today's value. $h$ is the small Hubble constant. More details can be found at. \cite{ThomasYoung}.
+\vspace*{0.3cm}
+\noindent
+where the subscript 0 denotes today's value. $h$ is the dimensionless Hubble constant. More details can be found at \cite{winther:2023}. \\ \\
 
+\noindent
 The Friedmann equation is given by
 \begin{equation}\label{Friedmann}
       H = H_0 \sqrt{(\Omega_{b0}+\Omega_{\rm CDM 0})a^{-3} + (\Omega_{\gamma 0} + \Omega_{\nu 0}) a^{-4} + \Omega_{k 0} a^{-2} + \Omega_{\Lambda 0}},
 \end{equation}
-where $a$ is the scale factor, $H = \frac{\dot{a}}{a}$ and $H_0$ is today's value of $H$. We will not use cosmic time ($t$) as our time variable.
-Instead, we use $x=\ln a$ as our dimensionless time variable. This implies that $a = e^x$ for conversion. Since $a(t=0) =0$ and $a(t=t_0) = 1$, where $t_0$ is time today
-we get $t=0 \iff x = -\infty$ and $t=t_0 \iff x = 0$. The cosmic time can be found from the differential equation 
+where $a$ is the scale factor and  $H = \frac{\dot{a}}{a}$. We will not use cosmic time ($t$) as our time variable.
+Instead, we use $x=\ln a$ as our dimensionless time variable. This implies that $a = e^x$ for conversion. Since $a(t=0)=0$ and $a(t=t_0)=1$
+we get $t=0 \iff x = -\infty$ and $t=t_0 \iff x = 0$. The cosmic time as a function of $x$ be found from the differential equation 
 \begin{equation}\label{cosmic_time_differential_equation}
-      \frac{dt}{dx} = \frac{1}{H}.
+      \frac{dt}{dx} = \frac{1}{H},
 \end{equation}
-
-
-The $\Omega$s can be expressed as
+which can be solved numerically. \\ \\
+\noindent
+We also use a scaled Hubble parameter defined by $\mathcal{H}\equiv aH$
+The evolution of the $\Omega$s can be expressed as a function of $a$ as showed below. 
 \begin{equation}
       \hspace*{2cm}
    \begin{aligned}
@@ -143,12 +147,16 @@ Show and discuss the results.
 Write a short summary and conclusion in the end. 
 
 \begin{acknowledgements}
-      I thank my mom for financial support!
+      I thank my mom for financial support!!!
 \end{acknowledgements}
 
+\bibliographystyle{aa} % style aa.bst
+\bibliography{refs} % your references Yourfile.bib
+%
+
 %\bibliographystyle{plain} % We choose the "plain" reference style
-\section*{References}
-\bibliography{refs} % Entries are in the refs.bib file
+%\section*{References}
+%\bibliography{refs} % Entries are in the refs.bib file
 
 %\begin{thebibliography}{}
 %      \bibitem[1966]{baker} Baker, N. 1966,

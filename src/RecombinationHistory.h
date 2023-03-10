@@ -16,10 +16,14 @@ class RecombinationHistory{
     BackgroundCosmology *cosmo = nullptr;
     
     // Helium fraction
-    double Yp;
+    double Yp = 0;
+
+    // cosmological parameters
+    //double rho_c0;
+    //double OmegaB0;
  
-    // The start and end points for recombination arrays (can be modified)
-    const double x_start  = Constants.x_start;
+    // The start and end points for recombination arrays (can be modified) 
+    const double x_start  = Constants.x_start;  //remember this
     const double x_end    = Constants.x_end;
     
     // Numbers of points of Xe,ne array (modify as you see fit)
@@ -49,7 +53,8 @@ class RecombinationHistory{
     void solve_for_optical_depth_tau();
 
     // Splines contained in this class
-    Spline log_Xe_of_x_spline{"Xe"};
+    Spline Xe_of_x_spline{"Xe"};
+    Spline log_ne_of_x_spline{"ne"};
     Spline tau_of_x_spline{"tau"}; 
     Spline g_tilde_of_x_spline{"g"};  
 
@@ -59,7 +64,7 @@ class RecombinationHistory{
     RecombinationHistory() = delete;
     RecombinationHistory(
         BackgroundCosmology *cosmo, 
-        double Yp);
+        double Yp);//,double rho_c0,double OmegaB0);
 
     // Do all the solving
     void solve();
