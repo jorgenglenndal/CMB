@@ -212,29 +212,26 @@ rec_loaded = np.loadtxt('recombination.txt')
 
 x_rec = rec_loaded[:,0]
 Xe_x = rec_loaded[:,1]
-tau_x = rec_loaded[:,2]
+ne_x = rec_loaded[:,2]
+tau_x = rec_loaded[:,3]
+dtaudx = rec_loaded[:,4]
+ddtau_ddx = rec_loaded[:,5]
 
 #plt.semilogy(x_rec,Xe_x)
 #plt.xlim(-12,0)
 #plt.show()
 
+
 plt.semilogy(x_rec,tau_x)
+plt.semilogy(x_rec,-dtaudx)
+plt.semilogy(x_rec,ddtau_ddx)
 plt.xlim(-12,0)
+plt.ylim(10**-8,10**8)
 plt.show()
 
-#   0  fp << x                                        << " ";
-#   1  fp << eta_of_x(x)                              << " ";
-#   2  fp << Hp_of_x(x)                               << " ";
-#   3  fp << dHpdx_of_x(x)                            << " ";
-#   4  fp << get_OmegaB(x)                            << " ";
-#   5  fp << get_OmegaCDM(x)                          << " ";
-#   6  fp << get_OmegaLambda(x)                       << " ";
-#   7  fp << get_OmegaR(x)                            << " ";
-#   8  fp << get_OmegaNu(x)                           << " ";
-#   9  fp << get_OmegaK(x)                            << " ";
-#  10  fp << t_of_x(x)                                << " ";
-#  11  fp << get_luminosity_distance_of_x(x)          << " ";
-#  12  fp << dHpdx_of_x(x)                            << " ";
-#  13  fp << ddHpddx_of_x(x)                          << " ";
-#  14  fp << t_of_x(x)                                << " ";
 
+
+#fp << x                    << " ";
+#fp <<std::setprecision(15) <<Xe_of_x(x)           << " ";
+#fp << ne_of_x(x)           << " ";
+#fp << tau_of_x(x)          << " ";

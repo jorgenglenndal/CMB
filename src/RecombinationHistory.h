@@ -53,11 +53,11 @@ class RecombinationHistory{
     // The two things we need to solve: Xe/ne and tau
     void solve_for_optical_depth_tau();
 
+
+
     // Splines contained in this class
     Spline Xe_of_x_spline{"Xe"};
     Spline log_ne_of_x_spline{"ne"};
-    Spline tau_of_z_spline{"tau_z"}; 
-
     Spline tau_of_x_spline{"tau"}; 
     Spline g_tilde_of_x_spline{"g"};  
 
@@ -71,6 +71,7 @@ class RecombinationHistory{
 
     // Do all the solving
     void solve();
+
     
     // Print some useful info about the class
     void info() const;
@@ -79,6 +80,8 @@ class RecombinationHistory{
     void output(const std::string filename) const;
 
     // Get functions that we must implement
+    double g_tilde(double x) const;
+
     double tau_of_x(double x) const;
     double dtaudx_of_x(double x) const;
     double ddtauddx_of_x(double x) const;
