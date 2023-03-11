@@ -302,7 +302,7 @@ void RecombinationHistory::solve_for_optical_depth_tau(){
   tau_of_x_spline.create(x_array,tau_of_x_solution_increasing,"tau");
 
   //=============================================================================
-  // TODO: Compute visibility functions and spline everything
+  // DONE: Compute visibility functions and spline everything
   //=============================================================================
   //...
   //...
@@ -318,15 +318,16 @@ void RecombinationHistory::solve_for_optical_depth_tau(){
   Utils::EndTiming("opticaldepth");
 }
 
+double RecombinationHistory::g_tilde(double x) const{
+
+    return -dtaudx_of_x(x)*exp(-tau_of_x(x));
+  }
+
 
 //====================================================
 // Get methods
 //====================================================
 
-double RecombinationHistory::g_tilde(double x) const{
-
-    return -dtaudx_of_x(x)*exp(-tau_of_x(x));
-  }
 
 double RecombinationHistory::tau_of_x(double x) const{
   return tau_of_x_spline(x);
@@ -363,23 +364,23 @@ double RecombinationHistory::g_tilde_of_x(double x) const{
 double RecombinationHistory::dgdx_tilde_of_x(double x) const{
 
   //=============================================================================
-  // TODO: Implement
+  // DONE: Implement
   //=============================================================================
   //...
   //...
 
-  return 0.0;
+  return g_tilde_of_x_spline.deriv_x(x);
 }
 
 double RecombinationHistory::ddgddx_tilde_of_x(double x) const{
 
   //=============================================================================
-  // TODO: Implement
+  // DONE: Implement
   //=============================================================================
   //...
   //...
 
-  return 0.0;
+  return g_tilde_of_x_spline.deriv_xx(x);
 }
 
 double RecombinationHistory::Xe_of_x(double x) const{
@@ -435,9 +436,9 @@ void RecombinationHistory::output(const std::string filename) const{
     fp << tau_of_x(x)          << " ";
     fp << dtaudx_of_x(x)       << " ";
     fp << ddtauddx_of_x(x)     << " ";
-    //fp << g_tilde_of_x(x)      << " ";
-    //fp << dgdx_tilde_of_x(x)   << " ";
-    //fp << ddgddx_tilde_of_x(x) << " ";
+    fp << g_tilde_of_x(x)      << " ";
+    fp << dgdx_tilde_of_x(x)   << " ";
+    fp << ddgddx_tilde_of_x(x) << " ";
     fp << "\n";
   };
   std::for_each(x_array.begin(), x_array.end(), print_data);

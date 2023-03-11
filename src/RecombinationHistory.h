@@ -52,6 +52,7 @@ class RecombinationHistory{
 
     // The two things we need to solve: Xe/ne and tau
     void solve_for_optical_depth_tau();
+    double g_tilde(double x) const;
 
 
 
@@ -80,7 +81,6 @@ class RecombinationHistory{
     void output(const std::string filename) const;
 
     // Get functions that we must implement
-    double g_tilde(double x) const;
 
     double tau_of_x(double x) const;
     double dtaudx_of_x(double x) const;

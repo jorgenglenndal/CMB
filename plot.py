@@ -214,24 +214,45 @@ x_rec = rec_loaded[:,0]
 Xe_x = rec_loaded[:,1]
 ne_x = rec_loaded[:,2]
 tau_x = rec_loaded[:,3]
-dtaudx = rec_loaded[:,4]
-ddtau_ddx = rec_loaded[:,5]
+dtaudx_x = rec_loaded[:,4]
+ddtau_ddx_x = rec_loaded[:,5]
+g_tilde_x = rec_loaded[:,6]
+dg_tildedx_x = rec_loaded[:,7]
+ddg_tildeddx_x = rec_loaded[:,8]
 
-#plt.semilogy(x_rec,Xe_x)
-#plt.xlim(-12,0)
-#plt.show()
+plt.semilogy(x_rec,Xe_x)
+plt.xlim(-12,0)
+plt.show()
 
 
 plt.semilogy(x_rec,tau_x)
-plt.semilogy(x_rec,-dtaudx)
-plt.semilogy(x_rec,ddtau_ddx)
+plt.semilogy(x_rec,-dtaudx_x)
+plt.semilogy(x_rec,ddtau_ddx_x)
 plt.xlim(-12,0)
 plt.ylim(10**-8,10**8)
 plt.show()
 
+plt.plot(x_rec,g_tilde_x)
+plt.xlim(-12,0)
+plt.show()
 
+plt.plot(x_rec,dg_tildedx_x)
+plt.xlim(-12,0)
+plt.show()
 
+plt.plot(x_rec,ddg_tildeddx_x)
+plt.xlim(-12,0)
+plt.show()
+
+g_tilde_test = np.trapz(g_tilde_x,x_rec,dx=(x_rec[1]-x_rec[0]))
+print(g_tilde_test)
 #fp << x                    << " ";
 #fp <<std::setprecision(15) <<Xe_of_x(x)           << " ";
 #fp << ne_of_x(x)           << " ";
 #fp << tau_of_x(x)          << " ";
+#fp << dtaudx_of_x(x)       << " ";
+#fp << ddtauddx_of_x(x)     << " ";
+#fp << g_tilde_of_x(x)      << " ";
+#fp << dgdx_tilde_of_x(x)   << " ";
+#fp << ddgddx_tilde_of_x(x) << " ";
+#fp << "\n";
