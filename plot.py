@@ -212,12 +212,15 @@ rec_loaded = np.loadtxt('recombination.txt')
 
 x_rec = rec_loaded[:,0]
 Xe_x = rec_loaded[:,1]
+tau_x = rec_loaded[:,2]
 
-plt.semilogy(x_rec,Xe_x)
+#plt.semilogy(x_rec,Xe_x)
+#plt.xlim(-12,0)
+#plt.show()
+
+plt.semilogy(x_rec,tau_x)
 plt.xlim(-12,0)
 plt.show()
-
-
 
 #   0  fp << x                                        << " ";
 #   1  fp << eta_of_x(x)                              << " ";

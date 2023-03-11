@@ -25,6 +25,7 @@ class RecombinationHistory{
     // The start and end points for recombination arrays (can be modified) 
     const double x_start  = Constants.x_start;  //remember this
     const double x_end    = Constants.x_end;
+    const double x_today  = Constants.x_today;
     
     // Numbers of points of Xe,ne array (modify as you see fit)
     const int npts_rec_arrays = 4000;
@@ -55,6 +56,8 @@ class RecombinationHistory{
     // Splines contained in this class
     Spline Xe_of_x_spline{"Xe"};
     Spline log_ne_of_x_spline{"ne"};
+    Spline tau_of_z_spline{"tau_z"}; 
+
     Spline tau_of_x_spline{"tau"}; 
     Spline g_tilde_of_x_spline{"g"};  
 

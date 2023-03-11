@@ -35,9 +35,11 @@ void RecombinationHistory::solve_number_density_electrons(){
   Utils::StartTiming("Xe");
   
   //=============================================================================
-  // TODO: Set up x-array and make arrays to store X_e(x) and n_e(x) on
+  // DONE: Set up x-array and make arrays to store X_e(x) and n_e(x) on
   //=============================================================================
-  Vector x_array = Utils::linspace(x_start,x_end,npts_rec_arrays); //careful with start_x and end_x
+  Vector x_array = Utils::linspace(x_start,x_end,npts_rec_arrays); 
+  
+  //linspaces from 0 to 1 because I just want a vector with npts_rec_arrays elements
   Vector Xe_arr  = Utils::linspace(0.,1.,npts_rec_arrays);
   Vector ne_arr  = Utils::linspace(0.,1.,npts_rec_arrays);
 
@@ -46,7 +48,7 @@ void RecombinationHistory::solve_number_density_electrons(){
   for(int i = 0; i < npts_rec_arrays; i++){
 
     //==============================================================
-    // TODO: Get X_e from solving the Saha equation so
+    // DONE: Get X_e from solving the Saha equation so
     // implement the function electron_fraction_from_saha_equation
     //==============================================================
     auto Xe_ne_data = electron_fraction_from_saha_equation(x_array[i]);
@@ -74,7 +76,7 @@ void RecombinationHistory::solve_number_density_electrons(){
     } else {
 
       //==============================================================
-      // TODO: Compute X_e from current time til today by solving 
+      // DONE: Compute X_e from current time til today by solving 
       // the Peebles equation (NB: if you solve all in one go remember to
       // exit the for-loop!)
       // Implement rhs_peebles_ode
@@ -89,7 +91,7 @@ void RecombinationHistory::solve_number_density_electrons(){
       };
       
       //=============================================================================
-      // TODO: Set up IC, solve the ODE and fetch the result 
+      // DONE: Set up IC, solve the ODE and fetch the result 
       //=============================================================================
       //...
       //...
@@ -136,7 +138,7 @@ void RecombinationHistory::solve_number_density_electrons(){
 
 
   //=============================================================================
-  // TODO: Spline the result. Implement and make sure the Xe_of_x, ne_of_x 
+  // DONE: Spline the result. Implement and make sure the Xe_of_x, ne_of_x 
   // functions are working
   //=============================================================================
   //...
@@ -256,29 +258,59 @@ void RecombinationHistory::solve_for_optical_depth_tau(){
   Utils::StartTiming("opticaldepth");
 
   // Set up x-arrays to integrate over. We split into three regions as we need extra points in reionisation
-  const int npts = 1000;
-  Vector x_array = Utils::linspace(x_start, x_end, npts);
+  const int npts = 4000;
+  Vector x_array = Utils::linspace(x_start, x_today, npts);
+  Vector x_array_reverse = Utils::linspace(x_today, x_start, npts);
+  Vector z_array = Utils::linspace(0.,1.,npts);
+ 
+  for (int i =0;i<npts;i++){
+  //std::cout << x_array_reverse[i] << std::endl;
+  z_array[i] = exp(-x_array_reverse[i])-1.;
+  std::cout << z_array[i] << std::endl;
+  }
 
   // The ODE system dtau/dx, dtau_noreion/dx and dtau_baryon/dx
-  ODEFunction dtaudx = [&](double x, const double *tau, double *dtaudx){
-
+  ODEFunction dtaudz = [&](double z, const double *tau, double *dtaudz){
+    const double c = Constants.c;
+    const double sigma_T = Constants.sigma_T;
+    const double x = -log(1+z);
+    const double H = cosmo->H_of_x(x);
+    const double ne = ne_of_x(x);
+    //const double z = exp(-x)-1.; 
     //=============================================================================
-    // TODO: Write the expression for dtaudx
+    // DONE: Write the expression for dtaudx
     //=============================================================================
     //...
     //...
 
     // Set the derivative for photon optical depth
-    dtaudx[0] = 0.0;
+
+    dtaudz[0] = c*ne*sigma_T/(H*(1.+z));
 
     return GSL_SUCCESS;
   };
 
   //=============================================================================
-  // TODO: Set up and solve the ODE and make tau splines
+  // DONE: Set up and solve the ODE and make tau splines
   //=============================================================================
   //...
   //...
+  ODESolver tau_of_z_ode;
+  Vector tau_init = {0.0};
+  tau_of_z_ode.solve(dtaudz,z_array,tau_init);
+  auto tau_of_z_solution = tau_of_z_ode.get_data_by_component(0);
+  tau_of_z_spline.create(z_array,tau_of_z_solution,"tau_z");
+  Vector tau_of_x_solution = Utils::linspace(0.,1.,npts);
+  
+  for (int i =0;i<npts;i++){
+    tau_of_x_solution[i] = tau_of_z_spline(-log(1.+z_array[i]));
+  }
+  //tau_of_x_spline.create(x_array_reverse,tau_of_x_solution,"tau");
+
+
+   
+
+
 
   //=============================================================================
   // TODO: Compute visibility functions and spline everything
@@ -396,7 +428,7 @@ void RecombinationHistory::output(const std::string filename) const{
     fp << x                    << " ";
     fp <<std::setprecision(15) <<Xe_of_x(x)           << " ";
     fp << ne_of_x(x)           << " ";
-    //fp << tau_of_x(x)          << " ";
+    fp << tau_of_x(x)          << " ";
     //fp << dtaudx_of_x(x)       << " ";
     //fp << ddtauddx_of_x(x)     << " ";
     //fp << g_tilde_of_x(x)      << " ";
