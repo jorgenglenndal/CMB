@@ -245,7 +245,13 @@ plt.xlim(-12,0)
 plt.show()
 
 g_tilde_test = np.trapz(g_tilde_x,x_rec,dx=(x_rec[1]-x_rec[0]))
-print(g_tilde_test)
+#print(g_tilde_test)
+
+g_tilde_max = np.amax(g_tilde_x)
+#print(g_tilde_max)
+x_decoupling = x_rec[np.argmax(g_tilde_x)]
+#print(x_decoupling)
+
 #fp << x                    << " ";
 #fp <<std::setprecision(15) <<Xe_of_x(x)           << " ";
 #fp << ne_of_x(x)           << " ";

@@ -25,6 +25,9 @@ void RecombinationHistory::solve(){
    
   // Compute and spline tau, dtaudx, ddtauddx, g, dgdx, ddgddx, ...
   solve_for_optical_depth_tau();
+
+  //sound horizon
+  sound_horizon();
 }
 
 //====================================================
@@ -324,6 +327,39 @@ double RecombinationHistory::g_tilde(double x) const{
   }
 
 
+//sound_horizon
+void RecombinationHistory::sound_horizon(){
+    Vector x_array = Utils::linspace(x_very_very_early,x_today,4*npts_rec_arrays); //may be overkill
+    const double c = Constants.c;
+    const double sigma_T = Constants.sigma_T;
+    const double OmegaR0 = cosmo->get_OmegaR(0.0);
+    const double OmegaB0 = cosmo->get_OmegaB(0.0);
+    ODEFunction dsdx = [&](double x, const double *s, double *dsdx){  
+
+      const double a = exp(x);
+      const double Hp = cosmo->Hp_of_x(x);
+      double R = 4.*OmegaR0/(3.*OmegaB0*a);
+      double cs = c*sqrt(R/(3.*(1.+R)));
+
+    // Set the derivative for photon optical depth
+      dsdx[0] = cs/Hp;///-c*ne*sigma_T/H;
+
+      //dtaudz[0] = c*ne*sigma_T/(H*(1.+z));
+
+      return GSL_SUCCESS;
+    };
+  double R_init = 4.*OmegaR0/(3.*OmegaB0*exp(x_start));
+  double cs_init = c*sqrt(R_init/(3.*(1.+R_init)));
+  double Hp_init = cosmo->Hp_of_x(x_start);
+
+  ODESolver sound_horizon_ode;
+  Vector sound_horizon_init = {cs_init/Hp_init};
+  sound_horizon_ode.solve(dsdx,x_array,sound_horizon_init);
+  auto sound_horizon_solution = sound_horizon_ode.get_data_by_component(0);
+  sound_horizon_spline.create(x_array,sound_horizon_solution,"SH");
+
+}
+
 //====================================================
 // Get methods
 //====================================================
@@ -332,7 +368,9 @@ double RecombinationHistory::g_tilde(double x) const{
 double RecombinationHistory::tau_of_x(double x) const{
   return tau_of_x_spline(x);
 }
-
+double RecombinationHistory::get_sound_horizon() const{
+  return sound_horizon_spline(x_decoupling);
+}
 
 double RecombinationHistory::dtaudx_of_x(double x) const{
 
@@ -412,10 +450,12 @@ double RecombinationHistory::get_Yp() const{
 //====================================================
 // Print some useful info about the class
 //====================================================
-void RecombinationHistory::info() const{
+void RecombinationHistory::info(){
   std::cout << "\n";
   std::cout << "Info about recombination/reionization history class:\n";
-  std::cout << "Yp:          " << Yp          << "\n";
+  std::cout << "Yp:                                            " << Yp          << "\n";
+  std::cout << "Sound Horizon [Gpc]:                           " << get_sound_horizon()/(Constants.Mpc*1e3)          << "\n";
+  std::cout << "Sound Horizon --- conformal time ratio:        " << get_sound_horizon()/cosmo->eta_of_x(x_decoupling)         << "\n";
   std::cout << std::endl;
 } 
 
