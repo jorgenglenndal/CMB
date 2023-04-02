@@ -221,27 +221,32 @@ dg_tildedx_x = rec_loaded[:,7]
 ddg_tildeddx_x = rec_loaded[:,8]
 
 plt.semilogy(x_rec,Xe_x)
+plt.title('Xe')
 plt.xlim(-12,0)
 plt.show()
 
 
-plt.semilogy(x_rec,tau_x)
-plt.semilogy(x_rec,-dtaudx_x)
-plt.semilogy(x_rec,ddtau_ddx_x)
+plt.semilogy(x_rec,tau_x,label='tau')
+plt.semilogy(x_rec,-dtaudx_x,label='-dtaudx')
+plt.semilogy(x_rec,ddtau_ddx_x,label='ddtauddx')
 plt.xlim(-12,0)
 plt.ylim(10**-8,10**8)
+plt.legend()
 plt.show()
 
 plt.plot(x_rec,g_tilde_x)
+plt.title('g_tilde')
 plt.xlim(-12,0)
 plt.show()
 
 plt.plot(x_rec,dg_tildedx_x)
 plt.xlim(-12,0)
+plt.title('dg_tildedx')
 plt.show()
 
 plt.plot(x_rec,ddg_tildeddx_x)
 plt.xlim(-12,0)
+plt.title('ddg_tildeddx')
 plt.show()
 
 g_tilde_test = np.trapz(g_tilde_x,x_rec,dx=(x_rec[1]-x_rec[0]))

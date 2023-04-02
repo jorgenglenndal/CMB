@@ -7,11 +7,10 @@
    
 RecombinationHistory::RecombinationHistory(
     BackgroundCosmology *cosmo, 
-    double Yp) : //, double rho_c0, double OmegaB0) :
+    double Yp) :
   cosmo(cosmo),
-  Yp(Yp)//,
-  //rho_c0(rho_c0),
-  //OmegaB0(OmegaB0)
+  Yp(Yp)
+ 
 {}
 
 //====================================================
@@ -102,42 +101,32 @@ void RecombinationHistory::solve_number_density_electrons(){
       const double OmegaB0      = cosmo->get_OmegaB(0.0);
       const double G           = Constants.G;
 
-      const double rho_c0 = 3.*pow(cosmo->get_H0(),2.)/(8*M_PI*G);
+      const double rho_c0 = 3.*pow(cosmo->get_H0(),2.)/(8.*M_PI*G);
       const double m_H         = Constants.m_H;
 
-
-      //peebles_Xe_ode.solve(dXedx, x_array, Xe_init);
+      //solving the ODE on the remaining x_array called sub_x
       Vector sub_x = {x_array.begin() + i,x_array.end()};   
       peebles_Xe_ode.solve(dXedx, sub_x, Xe_init);
       auto Xe_peebles = peebles_Xe_ode.get_data_by_component(0);
+      // the for loop is used to put the ODE solution into the correct place in the pre existing solution array
       for (int j=i; j < npts_rec_arrays;j++){
-        Xe_arr[j] = Xe_peebles[j-i];
-        
+        Xe_arr[j] = Xe_peebles[j-i];        
         double nb = OmegaB0*rho_c0/(m_H*exp(3.*x_array[j]));
-
         ne_arr[j] = Xe_peebles[j-i]*nb;
 
       }
-
-
-       
       break;
-    
     }
   }
-  //auto t_array = ode_for_t_of_x.get_data_by_component(0);
-  //Vector log_Xe = Utils::linspace(0.,1,npts_rec_arrays); 
+  //taking the logarithm of ne since it varies a lot (for the spline). Xe does not vary to the same extent...
   Vector log_ne = Utils::linspace(0.,1,npts_rec_arrays); 
 
-  for (int i=0;i<npts_rec_arrays;i++){
-  log_ne[i] = log(ne_arr[i]);
-  //log_Xe[i] =log(Xe_arr[i]);
-  //std::cout << std::setprecision(15) << ne_arr[i] << std::endl;
+  for (int i=0;i < npts_rec_arrays;i++){
+     log_ne[i] = log(ne_arr[i]);
   }
   
   Xe_of_x_spline.create(x_array,Xe_arr,"Xe");
   log_ne_of_x_spline.create(x_array,log_ne,"ne");
-  //Xe_of_x_spline.create(log_Xe_of_x_spline))  
 
 
   //=============================================================================
@@ -185,7 +174,7 @@ std::pair<double,double> RecombinationHistory::electron_fraction_from_saha_equat
   double nb = OmegaB0*rho_c0/(m_H*a*a*a);
   double b = 1./nb*pow(m_e*TCMB*k_b/(2.*M_PI*hbar*hbar),3./2.)*exp(-epsilon_0/(TCMB*k_b));
   
-  //Xe = (-b+pow(b*b+4*b,1./2.))/2.;
+  // rewriting the square root to avoid Huge - Huge.
   Xe = 2./(sqrt(1.+4./b)+1.);
   ne = Xe*nb; //nH = nb
 
@@ -280,7 +269,6 @@ void RecombinationHistory::solve_for_optical_depth_tau(){
     // Set the derivative for photon optical depth
     dtaudx[0] = -c*ne*sigma_T/H;
 
-    //dtaudz[0] = c*ne*sigma_T/(H*(1.+z));
 
     return GSL_SUCCESS;
   };
@@ -294,7 +282,6 @@ void RecombinationHistory::solve_for_optical_depth_tau(){
   Vector tau_init = {0.0};
   tau_of_x_ode.solve(dtaudx,x_array_reverse,tau_init);
   auto tau_of_x_solution = tau_of_x_ode.get_data_by_component(0);
-  //std::cout << 303 << std::endl;
   
   Vector tau_of_x_solution_increasing = Utils::linspace(0.,1.,npts);
 
@@ -329,7 +316,8 @@ double RecombinationHistory::g_tilde(double x) const{
 
 //sound_horizon
 void RecombinationHistory::sound_horizon(){
-    Vector x_array = Utils::linspace(x_very_very_early,x_today,4*npts_rec_arrays); //may be overkill
+   //may be overkill with x_very_very_early = -100
+    Vector x_array = Utils::linspace(x_very_very_early,x_today,4*npts_rec_arrays);
     const double c = Constants.c;
     const double sigma_T = Constants.sigma_T;
     const double OmegaR0 = cosmo->get_OmegaR(0.0);
@@ -342,15 +330,12 @@ void RecombinationHistory::sound_horizon(){
       double cs = c*sqrt(R/(3.*(1.+R)));
 
     // Set the derivative for photon optical depth
-      dsdx[0] = cs/Hp;///-c*ne*sigma_T/H;
-
-      //dtaudz[0] = c*ne*sigma_T/(H*(1.+z));
-
+      dsdx[0] = cs/Hp;
       return GSL_SUCCESS;
     };
-  double R_init = 4.*OmegaR0/(3.*OmegaB0*exp(x_start));
+  double R_init = 4.*OmegaR0/(3.*OmegaB0*exp(x_very_very_early));
   double cs_init = c*sqrt(R_init/(3.*(1.+R_init)));
-  double Hp_init = cosmo->Hp_of_x(x_start);
+  double Hp_init = cosmo->Hp_of_x(x_very_very_early);
 
   ODESolver sound_horizon_ode;
   Vector sound_horizon_init = {cs_init/Hp_init};
@@ -368,8 +353,8 @@ void RecombinationHistory::sound_horizon(){
 double RecombinationHistory::tau_of_x(double x) const{
   return tau_of_x_spline(x);
 }
-double RecombinationHistory::get_sound_horizon() const{
-  return sound_horizon_spline(x_decoupling);
+double RecombinationHistory::get_sound_horizon(double x) const{
+  return sound_horizon_spline(x);
 }
 
 double RecombinationHistory::dtaudx_of_x(double x) const{
@@ -453,9 +438,9 @@ double RecombinationHistory::get_Yp() const{
 void RecombinationHistory::info(){
   std::cout << "\n";
   std::cout << "Info about recombination/reionization history class:\n";
-  std::cout << "Yp:                                            " << Yp          << "\n";
-  std::cout << "Sound Horizon [Gpc]:                           " << get_sound_horizon()/(Constants.Mpc*1e3)          << "\n";
-  std::cout << "Sound Horizon --- conformal time ratio:        " << get_sound_horizon()/cosmo->eta_of_x(x_decoupling)         << "\n";
+  std::cout << "Yp:                                            " << Yp                                                    << "\n";
+  std::cout << "Sound Horizon [Gpc]:                           " << get_sound_horizon(x_decoupling)/(Constants.Mpc*1e3)               << "\n";
+  std::cout << "Sound Horizon over conformal time:             " << get_sound_horizon(x_decoupling)/cosmo->eta_of_x(x_decoupling)     << "\n";
   std::cout << std::endl;
 } 
 

@@ -95,7 +95,7 @@ class RecombinationHistory{
     double Xe_of_x(double x) const;
     double ne_of_x(double x) const;
     double get_Yp() const;
-    double get_sound_horizon() const;
+    double get_sound_horizon(double x) const;
 };
 
 #endif
