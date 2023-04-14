@@ -52,13 +52,13 @@ int main(int argc, char **argv){
   RecombinationHistory rec(&cosmo, Yp);
   //std::cout << "before rec" << std::endl;
   rec.solve();
-  rec.info();
+  //rec.info();
 
   // Output recombination quantities
-  rec.output("recombination.txt");
+  //rec.output("recombination.txt");
   
   // Remove when module is completed
-  return 0;
+  //return 0;
 
   //=========================================================================
   // Module III
@@ -66,12 +66,18 @@ int main(int argc, char **argv){
  
   // Solve the perturbations
   Perturbations pert(&cosmo, &rec);
+
+  //tc and after tc overlaps at x_end_tc. This could be a problem for the spline...
+  //theta order >=2 is set to zero execpt for where it is needed to calculate lower order multipoles
+  //think more about strukture of the quantities to be splined. Should one x array and one k array be sent as arguments every time?
+
+
   pert.solve();
-  pert.info();
+  //pert.info();
   
   // Output perturbation quantities
-  double kvalue = 0.01 / Constants.Mpc;
-  pert.output(kvalue, "perturbations_k0.01.txt");
+  //double kvalue = 0.01 / Constants.Mpc;
+  //pert.output(kvalue, "perturbations_k0.01.txt");
   
   // Remove when module is completed
   return 0;

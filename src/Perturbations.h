@@ -9,6 +9,7 @@
 #include "Utils.h"
 #include "BackgroundCosmology.h"
 #include "RecombinationHistory.h"
+#include "armadillo"
 
 using Vector   = std::vector<double>;
 using Vector2D = std::vector<Vector>;
@@ -27,7 +28,34 @@ class Perturbations{
     // Start and end of the time-integration
     const int n_x        = 1000;
     const double x_start = Constants.x_start;
-    const double x_end   = Constants.x_end;
+    const double x_end   = Constants.x_today;
+    //const double x_today = Constants.x_today;
+    Vector x_array = Utils::linspace(x_start,x_end,n_x);
+    
+    
+    //hopefully this will work
+    //std::vector<Vector> higher_order_multipoles;
+    //std::vector<Vector> stored_data;
+    Vector delta_cdm_vector;
+    Vector v_cdm_vector;
+    Vector delta_b_vector;
+    Vector v_b_vector;
+    Vector Psi_vector;
+    Vector Phi_vector;
+    Vector theta0_vector;
+    Vector theta1_vector;
+    Vector theta2_vector;
+    Vector theta3_vector;
+    Vector theta4_vector;
+    Vector theta5_vector;
+    Vector theta6_vector;
+    Vector theta7_vector;
+    
+
+
+    //std::vector<Vector> Psi_vector_complete;
+    
+
 
     // Below is a full list of splines you probably need, 
     // but you only need to make the splines you will need
@@ -65,7 +93,7 @@ class Perturbations{
     int rhs_tight_coupling_ode(double x, double k, const double *y, double *dydx);
     
     // Compute the time when tight coupling ends
-    double get_tight_coupling_time(const double k) const;
+    double get_tight_coupling_time(const double k);
     
     //==========================================================
     // [2] The full ODE system 

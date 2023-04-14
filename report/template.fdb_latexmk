@@ -1,15 +1,15 @@
 # Fdb version 3
-["bibtex template"] 1678273486 "template.aux" "template.bbl" "template" 1678273651
+["bibtex template"] 1681240070 "template.aux" "template.bbl" "template" 1681240072
   "./aa.bst" 1585643598 32103 296074362bd3e822c5209e1570c1d28f ""
   "refs.bib" 1678204488 2353 1af402cfa030c2c77f934a6931db17cd ""
-  "template.aux" 1678273540 3054 6cbba26202e1d4bfda22e20a2b086688 "pdflatex"
+  "template.aux" 1681240072 3054 4660da4f165aea356c8689135811d64a "pdflatex"
   (generated)
   "template.blg"
   "template.bbl"
-["pdflatex"] 1678273539 "/home/jorgen/src/master/ast5220/Milestone1/report/template.tex" "/home/jorgen/src/master/ast5220/Milestone1/report/template.pdf" "template" 1678273651
+["pdflatex"] 1681240070 "/home/jorgen/src/master/ast5220/CMB/report/template.tex" "/home/jorgen/src/master/ast5220/CMB/report/template.pdf" "template" 1681240072
   "/etc/texmf/web2c/texmf.cnf" 1660813866 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/jorgen/src/master/ast5220/Milestone1/report/template.aux" 1678273540 3054 6cbba26202e1d4bfda22e20a2b086688 ""
-  "/home/jorgen/src/master/ast5220/Milestone1/report/template.tex" 1678273650 5764 23d0750bd4c5b8ec4a917c626db266f9 ""
+  "/home/jorgen/src/master/ast5220/CMB/report/template.aux" 1681240072 3054 4660da4f165aea356c8689135811d64a ""
+  "/home/jorgen/src/master/ast5220/CMB/report/template.tex" 1681240069 5906 b7e2ade7a8a0dee5c7f11f6d6c9b7962 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm" 1136768653 3584 adb004a0c8e7c46ee66cad73671f37b4 ""
@@ -149,14 +149,14 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1660813983 4770781 1ed1abab22da9c3e2cc82e4db562318b ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1660814020 8261191 34fb72e2c98bf55f98b504db79b18241 ""
   "aa.cls" 1633449284 63925 9ce735764be70454f59c9ada3bfbf8f6 ""
-  "template.aux" 1678273540 3054 6cbba26202e1d4bfda22e20a2b086688 "pdflatex"
-  "template.bbl" 1678273486 213 247685cc9ab2c5d80a7bee5cd262eb09 "bibtex template"
-  "template.out" 1678273540 1018 6b4f894f70fc9bb1c137a74507c6fc63 "pdflatex"
-  "template.tex" 1678273650 5764 23d0750bd4c5b8ec4a917c626db266f9 ""
+  "template.aux" 1681240072 3054 4660da4f165aea356c8689135811d64a "pdflatex"
+  "template.bbl" 1681240070 213 247685cc9ab2c5d80a7bee5cd262eb09 "bibtex template"
+  "template.out" 1681240072 1018 6b4f894f70fc9bb1c137a74507c6fc63 "pdflatex"
+  "template.tex" 1681240069 5906 b7e2ade7a8a0dee5c7f11f6d6c9b7962 ""
   (generated)
-  "template.out"
-  "template.pdf"
   "template.log"
-  "/home/jorgen/src/master/ast5220/Milestone1/report/template.log"
+  "/home/jorgen/src/master/ast5220/CMB/report/template.pdf"
+  "template.pdf"
   "template.aux"
-  "/home/jorgen/src/master/ast5220/Milestone1/report/template.pdf"
+  "template.out"
+  "/home/jorgen/src/master/ast5220/CMB/report/template.log"

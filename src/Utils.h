@@ -54,8 +54,8 @@ extern struct ConstantsAndUnits {
   const double x_very_very_early = -100.0;
   const double x_decoupling = -6.98539707941588;
   // Include polarization and/or neutrinos?
-  const bool polarization  = true;
-  const bool neutrinos     = true;
+  const bool polarization  = false;
+  const bool neutrinos     = false;  
 
   // For integration of perturbations (number of equations and positions in arrays)
   const int n_scalars           = 5;
