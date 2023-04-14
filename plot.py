@@ -220,34 +220,34 @@ g_tilde_x = rec_loaded[:,6]
 dg_tildedx_x = rec_loaded[:,7]
 ddg_tildeddx_x = rec_loaded[:,8]
 
-plt.semilogy(x_rec,Xe_x)
-plt.title('Xe')
-plt.xlim(-12,0)
-plt.show()
-
-
-plt.semilogy(x_rec,tau_x,label='tau')
-plt.semilogy(x_rec,-dtaudx_x,label='-dtaudx')
-plt.semilogy(x_rec,ddtau_ddx_x,label='ddtauddx')
-plt.xlim(-12,0)
-plt.ylim(10**-8,10**8)
-plt.legend()
-plt.show()
-
-plt.plot(x_rec,g_tilde_x)
-plt.title('g_tilde')
-plt.xlim(-12,0)
-plt.show()
-
-plt.plot(x_rec,dg_tildedx_x)
-plt.xlim(-12,0)
-plt.title('dg_tildedx')
-plt.show()
-
-plt.plot(x_rec,ddg_tildeddx_x)
-plt.xlim(-12,0)
-plt.title('ddg_tildeddx')
-plt.show()
+#plt.semilogy(x_rec,Xe_x)
+#plt.title('Xe')
+#plt.xlim(-12,0)
+#plt.show()
+#
+#
+#plt.semilogy(x_rec,tau_x,label='tau')
+#plt.semilogy(x_rec,-dtaudx_x,label='-dtaudx')
+#plt.semilogy(x_rec,ddtau_ddx_x,label='ddtauddx')
+#plt.xlim(-12,0)
+#plt.ylim(10**-8,10**8)
+#plt.legend()
+#plt.show()
+#
+#plt.plot(x_rec,g_tilde_x)
+#plt.title('g_tilde')
+#plt.xlim(-12,0)
+#plt.show()
+#
+#plt.plot(x_rec,dg_tildedx_x)
+#plt.xlim(-12,0)
+#plt.title('dg_tildedx')
+#plt.show()
+#
+#plt.plot(x_rec,ddg_tildeddx_x)
+#plt.xlim(-12,0)
+#plt.title('ddg_tildeddx')
+#plt.show()
 
 g_tilde_test = np.trapz(g_tilde_x,x_rec,dx=(x_rec[1]-x_rec[0]))
 #print(g_tilde_test)
@@ -267,3 +267,144 @@ x_decoupling = x_rec[np.argmax(g_tilde_x)]
 #fp << dgdx_tilde_of_x(x)   << " ";
 #fp << ddgddx_tilde_of_x(x) << " ";
 #fp << "\n";
+
+
+#    fp << x                  << " ";
+#    fp << get_Theta(x,k,0)   << " ";
+#    fp << get_Theta(x,k,1)   << " ";
+#    fp << get_Theta(x,k,2)   << " ";
+#    fp << get_Phi(x,k)       << " ";
+#    fp << get_Psi(x,k)       << " ";
+#    fp << get_delta_cdm(x,k) << " ";
+#    fp << get_delta_b(x,k)   << " ";
+#    fp << get_v_cdm(x,k)     << " ";
+#    fp << get_v_b(x,k)       << " ";
+
+
+
+def milestone3():
+    loaded_file_k0 = np.loadtxt('perturbations_k_0_001.txt')
+    k0 = 0.001
+    x_k0            = loaded_file_k0[:,0]
+    theta0_k0       = loaded_file_k0[:,1]
+    theta1_k0       = loaded_file_k0[:,2]
+    theta2_k0       = loaded_file_k0[:,3]
+    Phi_k0          = loaded_file_k0[:,4]
+    Psi_k0          = loaded_file_k0[:,5]
+    delta_cdm_k0    = loaded_file_k0[:,6]
+    delta_b_k0      = loaded_file_k0[:,7]
+    v_cdm_k0        = loaded_file_k0[:,8]
+    v_b_k0          = loaded_file_k0[:,9]
+    eta_x_k0        = loaded_file_k0[:,10]
+
+    loaded_file_k1 = np.loadtxt('perturbations_k_0_01.txt')
+    k1=0.01
+    x_k1            = loaded_file_k1[:,0]
+    theta0_k1       = loaded_file_k1[:,1]
+    theta1_k1       = loaded_file_k1[:,2]
+    theta2_k1       = loaded_file_k1[:,3]
+    Phi_k1          = loaded_file_k1[:,4]
+    Psi_k1          = loaded_file_k1[:,5]
+    delta_cdm_k1    = loaded_file_k1[:,6]
+    delta_b_k1      = loaded_file_k1[:,7]
+    v_cdm_k1        = loaded_file_k1[:,8]
+    v_b_k1          = loaded_file_k1[:,9]
+    eta_x_k1        = loaded_file_k1[:,10]
+
+    loaded_file_k2 = np.loadtxt('perturbations_k_0_1.txt')
+    k2=0.1
+    x_k2            = loaded_file_k2[:,0]
+    theta0_k2       = loaded_file_k2[:,1]
+    theta1_k2       = loaded_file_k2[:,2]
+    theta2_k2       = loaded_file_k2[:,3]
+    Phi_k2          = loaded_file_k2[:,4]
+    Psi_k2          = loaded_file_k2[:,5]
+    delta_cdm_k2    = loaded_file_k2[:,6]
+    delta_b_k2      = loaded_file_k2[:,7]
+    v_cdm_k2        = loaded_file_k2[:,8]
+    v_b_k2          = loaded_file_k2[:,9]
+    eta_x_k2        = loaded_file_k2[:,10]
+
+    plt.semilogy(x_k0,delta_cdm_k0,'b') 
+    plt.semilogy(x_k0,abs(delta_b_k0),'--',color='b')
+    
+    plt.semilogy(x_k1,delta_cdm_k1,color= 'y')
+    plt.semilogy(x_k1,abs(delta_b_k1),'--',color ='y')
+    
+    plt.semilogy(x_k2,delta_cdm_k2,'g')
+    plt.semilogy(x_k2,abs(delta_b_k2),'--',color='g')
+
+    plt.xlim(-18,0)
+    plt.ylim(1e-1,1e5)
+    plt.show()
+
+    ###
+    plt.semilogy(x_k0,v_cdm_k0,'b') 
+    plt.semilogy(x_k0,abs(v_b_k0),'--',color='b')
+    
+    plt.semilogy(x_k1,v_cdm_k1,color= 'y')
+    plt.semilogy(x_k1,abs(v_b_k1),'--',color ='y')
+    
+    plt.semilogy(x_k2,v_cdm_k2,'g')
+    plt.semilogy(x_k2,abs(v_b_k2),'--',color='g')
+
+    plt.xlim(-18,0)
+    plt.ylim(1e-6,1e2)
+    plt.show()
+    
+    ###
+
+    plt.plot(x_k0,theta0_k0)     
+    plt.plot(x_k1,theta0_k1)
+    plt.plot(x_k2,theta0_k2)
+
+    plt.xlim(-18,0)
+    plt.ylim(-0.7,1)
+    plt.show()
+
+    ###
+
+    plt.plot(x_k0,theta1_k0)     
+    plt.plot(x_k1,theta1_k1)
+    plt.plot(x_k2,theta1_k2)
+
+    plt.xlim(-18,0)
+    plt.ylim(-0.5,0.5)
+    plt.show()
+
+    ###
+
+    plt.plot(x_k0,Phi_k0)     
+    plt.plot(x_k1,Phi_k1)
+    plt.plot(x_k2,Phi_k2)
+
+    plt.xlim(-18,0)
+    plt.ylim(0,0.8)
+    plt.show()
+
+
+    ###plt.plot(x_k0,theta0_k0+Psi_k0,'b')
+    ##plt.plot(x_k0,np.cos(k0*eta_x_k0/np.sqrt(3)),'--','b')
+##
+    ###plt.plot(x_k1,theta0_k1+Psi_k1,'y')
+    ##plt.plot(x_k1,np.cos(k1*eta_x_k1/np.sqrt(3)),'--','y')
+##
+    ###plt.plot(x_k2,theta0_k2+Psi_k2,'g')
+    ##plt.plot(x_k2,np.cos(k2*eta_x_k2/np.sqrt(3)),'--','g')
+    ##plt.xlim(-20,-8)
+    ##plt.show()
+
+
+    #plt.plot(x_k0,Phi_k0+Psi_k0)
+    #plt.plot(x_k1,Phi_k1+Psi_k1)
+    #plt.plot(x_k2,Phi_k2+Psi_k2)
+    #plt.show()
+
+
+
+
+
+
+
+    
+milestone3()

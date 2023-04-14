@@ -41,8 +41,12 @@ void Perturbations::integrate_perturbations(){
   // Start at k_min end at k_max with n_k points with either a
   // quadratic or a logarithmic spacing
   //===================================================================
-  arma::vec k_array = arma::logspace(log10(k_min),log10(k_max),n_k);
-
+  arma::vec k_array_arma = arma::logspace(log10(k_min),log10(k_max),n_k);
+  
+  Vector k_array;
+  for (int i=0;i<k_array_arma.size();i++){
+      k_array.push_back(k_array_arma[i]);
+  }
 
   
   //Vector k_array = {0.001/Constants.Mpc,0.01/Constants.Mpc,0.1/Constants.Mpc};
@@ -55,10 +59,9 @@ void Perturbations::integrate_perturbations(){
       std::cout << (100*ik+100)/n_k << "% " << std::flush;
       if(ik == n_k-1) std::cout << std::endl;
     }
-
+    
     // Current value of k
     double k = k_array[ik];
-
     // Find value to integrate to
     double x_end_tight = get_tight_coupling_time(k);
     
@@ -71,19 +74,16 @@ void Perturbations::integrate_perturbations(){
       }
       else{}
     }
-
     Vector tight_coupling_x_array;
     tight_coupling_x_array.clear();
     for (int i=0;i<tight_index;i++){
         tight_coupling_x_array.push_back(x_array[i]);
     }
-
     Vector from_and_after_tc_x_array;
     from_and_after_tc_x_array.clear();
     for (int i=0;i < n_x-tight_index+1;i++){
       from_and_after_tc_x_array.push_back(x_array[tight_index-1+i]);
     }
-
     //there is overlap at x_end_tight. The last value in tc is therefore removed later... 
 
     //===================================================================
@@ -98,24 +98,28 @@ void Perturbations::integrate_perturbations(){
 
     // Set up initial conditions in the tight coupling regime
     auto y_tight_coupling_ini = set_ic(x_start, k);
-
     // The tight coupling ODE system
     ODEFunction dydx_tight_coupling = [&](double x, const double *y, double *dydx_tight_coupling){
       return rhs_tight_coupling_ode(x, k, y, dydx_tight_coupling);
     };
-
     // Integrate from x_start -> x_end_tight
     ODESolver tight_coupling_ODE;
-    tight_coupling_ODE.solve(dydx_tight_coupling,tight_coupling_x_array,y_tight_coupling_ini);
-    auto tight_coupling_data = tight_coupling_ODE.get_data();
+    std::vector<Vector> tight_coupling_data;
+    //Vector tight_coupling_data;
+    if (tight_coupling_x_array.size() >= 2){
+        tight_coupling_ODE.solve(dydx_tight_coupling,tight_coupling_x_array,y_tight_coupling_ini);
+        tight_coupling_data = tight_coupling_ODE.get_data();
+    }
+    else{
+      tight_coupling_data.push_back(y_tight_coupling_ini);
+    }
+    
     
     //we only have 7 parameters in tight coupling
     Vector y_tight_coupling_end(7);
     for (int i=0;i < 7;i++){
-      y_tight_coupling_end[i] = tight_coupling_data[tight_coupling_data[i].size()-1][i];
+      y_tight_coupling_end[i] = tight_coupling_data.back()[i];
     }
-
-
 
 
     
@@ -134,158 +138,35 @@ void Perturbations::integrate_perturbations(){
     ODEFunction dydx_full = [&](double x, const double *y, double *dydx_full){
       return rhs_full_ode(x, k, y, dydx_full);
     };
-
     ODESolver full_ODE;
-    full_ODE.solve(dydx_full,from_and_after_tc_x_array,y_full_ini);
-    auto after_tc_data = full_ODE.get_data();
-
-    //removing the overlap at x_end_tight
-    for (int i=0;i < tight_coupling_data.size();i++){
-     tight_coupling_data[i].pop_back();
+    std::vector<Vector> after_tc_data;
+    if (from_and_after_tc_x_array.size() >= 2){
+      full_ODE.solve(dydx_full,from_and_after_tc_x_array,y_full_ini);
+      after_tc_data = full_ODE.get_data();
     }
+    else{
+      if (from_and_after_tc_x_array.size() == 1){
+        after_tc_data[0] = tight_coupling_data.back();
+      }
+      else{
+        //nothing
+      }
+    }
+    //removing the overlap at x_end_tight
+    tight_coupling_data.pop_back();
 
-
-    //storing the data
-    //tight_coupling_data[0].size()+after_tc_data[0].size() = x_array.size() = const.
-    //x_end_tight only changes with k
-
-    //delta_cdm
-    //for (int i=0;i<tight_coupling_data[0].size()+after_tc_data[0].size();i++){
-    //    if (i<tight_coupling_data[0].size()){
-    //    delta_cdm_vector.push_back(tight_coupling_data[i][0]);
-    //    }
-    //    else{
-    //      delta_cdm_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][0]);
-    //    }
+    //for (int i=0;i<<x_array.size();i++){
+    //  std::cout << x_array[i] << std::endl;
     //}
     
-    //v_cdm
-    //for (int i=0;i<tight_coupling_data[0].size()+after_tc_data[0].size();i++){
-    //    if (i<tight_coupling_data[0].size()){
-    //      v_cdm_vector.push_back(tight_coupling_data[i][1]);
-    //    }
-    //    else{
-    //      v_cdm_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][1]);
-    //    }
-    //}
-
-    //delta_b
-    //for (int i=0;i<tight_coupling_data[0].size()+after_tc_data[0].size();i++){
-    //    if (i<tight_coupling_data[0].size()){
-    //      delta_b_vector.push_back(tight_coupling_data[i][2]);
-    //    }
-    //    else{
-    //      delta_b_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][2]);
-    //    }
-    //}
-
-    //v_b
-    //for (int i=0;i<tight_coupling_data[0].size()+after_tc_data[0].size();i++){
-    //    if (i<tight_coupling_data[0].size()){
-    //      v_b_vector.push_back(tight_coupling_data[i][3]);
-    //    }
-    //    else{
-    //      v_b_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][3]);
-    //    }
-    //}
-
-    //Phi
-    //for (int i=0;i<tight_coupling_data[0].size()+after_tc_data[0].size();i++){
-    //    if (i<tight_coupling_data[0].size()){
-    //      Phi_vector.push_back(tight_coupling_data[i][4]);
-    //    }
-    //    else{
-    //      Phi_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][4]);
-    //    }
-    //}
-
-    //theta0
-    //for (int i=0;i<tight_coupling_data[0].size()+after_tc_data[0].size();i++){
-    //    if (i<tight_coupling_data[0].size()){
-    //      theta0_vector.push_back(tight_coupling_data[i][5]);
-    //    }
-    //    else{
-    //      theta0_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][5]);
-    //    }
-    //}
-
-     //theta1
-    //for (int i=0;i<tight_coupling_data[0].size()+after_tc_data[0].size();i++){
-    //    if (i<tight_coupling_data[0].size()){
-    //      theta1_vector.push_back(tight_coupling_data[i][6]);
-    //    }
-    //    else{
-    //      theta1_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][6]);
-    //    }
-    //}
-
-    //all other thetas are zero during tight coupling
     
-    //theta2
-    //for (int i=0;i<tight_coupling_data[0].size()+after_tc_data[0].size();i++){
-    //    if (i<tight_coupling_data[0].size()){
-    //      theta2_vector.push_back(0.);
-    //    }
-    //    else{
-    //      theta2_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][7]);
-    //    }
-    //}
-
-
-    //theta3
-    //for (int i=0;i<tight_coupling_data[0].size()+after_tc_data[0].size();i++){
-    //    if (i<tight_coupling_data[0].size()){
-    //      theta3_vector.push_back(0.);
-    //    }
-    //    else{
-    //      theta3_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][8]);
-    //    }
-    //}
-//
-    ////theta4
-    //for (int i=0;i<tight_coupling_data[0].size()+after_tc_data[0].size();i++){
-    //    if (i<tight_coupling_data[0].size()){
-    //      theta4_vector.push_back(0.);
-    //    }
-    //    else{
-    //      theta4_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][9]);
-    //    }
-    //}
-//
-    ////theta5
-    //for (int i=0;i<tight_coupling_data[0].size()+after_tc_data[0].size();i++){
-    //    if (i<tight_coupling_data[0].size()){
-    //      theta5_vector.push_back(0.);
-    //    }
-    //    else{
-    //      theta5_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][10]);
-    //    }
-    //}
-    //      
-//
-    ////theta6
-    //for (int i=0;i<tight_coupling_data[0].size()+after_tc_data[0].size();i++){
-    //    if (i<tight_coupling_data[0].size()){
-    //      theta6_vector.push_back(0.);
-    //    }
-    //    else{
-    //      theta6_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][11]);
-    //    }
-    //}
-//
-    ////theta7
-    //for (int i=0;i<tight_coupling_data[0].size()+after_tc_data[0].size();i++){
-    //    if (i<tight_coupling_data[0].size()){
-    //      theta7_vector.push_back(0.);
-    //    }
-    //    else{
-    //      theta7_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][12]);
-    //    }
-    //}
-
-    //all quantities
-    for (int i=0;i<tight_coupling_data[0].size()+after_tc_data[0].size();i++){
-        if (i<tight_coupling_data[0].size()){
+    
+    //storing the data in correct format for spline
+    //tight_coupling_data[0].size() + after_tc_data[0].size() = x_array.size() = const. 
+    //all solved quantities
+    //std::cout<< tight_coupling_data.size() << std::endl;
+    for (int i = 0; i < tight_coupling_data.size() + after_tc_data.size(); i++){
+        if (i<tight_coupling_data.size()){
           delta_cdm_vector.push_back(tight_coupling_data[i][0]);
           v_cdm_vector.push_back(tight_coupling_data[i][1]);
           delta_b_vector.push_back(tight_coupling_data[i][2]);
@@ -294,6 +175,7 @@ void Perturbations::integrate_perturbations(){
           
           theta0_vector.push_back(tight_coupling_data[i][5]);
           theta1_vector.push_back(tight_coupling_data[i][6]);
+          //std::cout<< i << std::endl;
           
           //higher order thetas are zero during tight coupling
           theta2_vector.push_back(0.);
@@ -304,98 +186,41 @@ void Perturbations::integrate_perturbations(){
           theta7_vector.push_back(0.);
         }
         else{
-          delta_cdm_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][0]);
-          v_cdm_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][1]);
-          delta_b_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][2]);
-          v_b_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][3]);
-          Phi_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][4]);
+          delta_cdm_vector.push_back(after_tc_data[i-tight_coupling_data.size()][0]);
+          v_cdm_vector.push_back(after_tc_data[i-tight_coupling_data.size()][1]);
+          delta_b_vector.push_back(after_tc_data[i-tight_coupling_data.size()][2]);
+          v_b_vector.push_back(after_tc_data[i-tight_coupling_data.size()][3]);
+          Phi_vector.push_back(after_tc_data[i-tight_coupling_data.size()][4]);
 
-          theta0_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][5]);
-          theta1_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][6]);
+          theta0_vector.push_back(after_tc_data[i-tight_coupling_data.size()][5]);
+          theta1_vector.push_back(after_tc_data[i-tight_coupling_data.size()][6]);
 
-          theta2_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][7]);
-          theta3_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][8]);
-          theta4_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][9]);
-          theta5_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][10]);
-          theta6_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][11]);
-          theta7_vector.push_back(after_tc_data[i-tight_coupling_data[0].size()][12]);
-          
+          theta2_vector.push_back(after_tc_data[i-tight_coupling_data.size()][7]);
+          theta3_vector.push_back(after_tc_data[i-tight_coupling_data.size()][8]);
+          theta4_vector.push_back(after_tc_data[i-tight_coupling_data.size()][9]);
+          theta5_vector.push_back(after_tc_data[i-tight_coupling_data.size()][10]);
+          theta6_vector.push_back(after_tc_data[i-tight_coupling_data.size()][11]);
+          theta7_vector.push_back(after_tc_data[i-tight_coupling_data.size()][12]);
         }
     }
 
-
-
+    //storing Psi
     
-    
-    
-    
-    //ready to be splined:
-    
-    
-    //Phi_vector is
-    //for(int ix = 0; ix < nx; ix++)
-    //for(int iy = 0; iy < ny; iy++)
-    //  z_array[ix + nx * iy] = function(x_array[ix], y_array[iy]);
+    //using the initial condition
+    Psi_vector.push_back(-2./3.);
+    const double OmegaR0 = cosmo->get_OmegaR(0.);
+    const double Omegab0 = cosmo->get_OmegaB(0.);
+    const double OmegaCDM0 = cosmo->get_OmegaCDM(0.);
+    const double H0 = cosmo->get_H0();
 
-    //Vector delta_cdm;
-    //for 
+    for (int i = 1; i < x_array.size(); i++){
+      double a = exp(x_array[i]);
+      Psi_vector.push_back(-Phi_vector[i+n_x * ik]-12.*H0*H0/(Constants.c*Constants.c*k*k*a*a)*OmegaR0*theta2_vector[i + n_x*ik]);
+    }
 
-
-    //Vector v_cdm;
-    //Vector delta_b;
-    //Vector v_b;
-    //Vector Phi;
-    //Vector 
-
-  
-
-
-
-   //    tight_coupling_data[0].push_back(after_tc_data[0][0]);
-
-    //combining the results into one solution array
-    //  for(int i = 0; i < all_data.size(); i++){
-    //  auto y_exact = analytical_solution(y_ic, x_array[i]);
-    //  std::cout << " xi     = " << std::setw(10) << x_array[i];
-    //  std::cout << " y0(xi) = " << std::setw(10) << all_data[i][0]  << " y0_exact(xi) = " << std::setw(10) << y_exact[0];
-    //  std::cout << " y1(xi) = " << std::setw(10) << all_data[i][1]  << " y1_exact(xi) = " << std::setw(10) << y_exact[1] << "\n";
-    //}
-
-
-    //double &delta_cdm    =  y_tc[Constants.ind_deltacdm_tc];
-    // double &delta_b      =  y_tc[Constants.ind_deltab_tc];
-    // double &v_cdm        =  y_tc[Constants.ind_vcdm_tc];
-    // double &v_b          =  y_tc[Constants.ind_vb_tc];
-    // double &Phi          =  y_tc[Constants.ind_Phi_tc];
-    
-
-
-
-    //removing the solution at x_end_tight_coupling since there is overlap with the full solution at this point
-    //theta_l with l >= 2 is zero
-  
-
-       //for (int j=0; j < after_tc_data[j].size();j++){
-       //   tight_coupling_data[i].push_back(after_tc_data[i][j])
-       //   }
-    
-
-    //for (int j=0; j < after_tc_data[j].size();j++){
-    //    after_tc_data[j].push_back()
-    //
-    //
-    //
-
-
-
-
-    //Vector combined_delta_b;
-    //Vector combined_v_cdm;
-    //Vector combined_v_b;
-    //Vector combined_Phi;
 
     //===================================================================
-    // TODO: remember to store the data found from integrating so we can
+    // DONE: remember to store the data found from integrating so we can
     // spline it below
     //
     // To compute a 2D spline of a function f(x,k) the data must be given 
@@ -421,11 +246,26 @@ void Perturbations::integrate_perturbations(){
   Utils::EndTiming("integrateperturbation");
 
   //=============================================================================
-  // TODO: Make all splines needed: Theta0,Theta1,Theta2,Phi,Psi,...
+  // DONE: Make all splines needed: Theta0,Theta1,Theta2,Phi,Psi,...
   //=============================================================================
-  // ...
-  // ...
-  // ...
+
+  delta_cdm_spline.create(x_array,k_array,delta_cdm_vector,"delta_cdm_spline");
+  delta_b_spline.create(x_array,k_array,delta_b_vector,"delta_b_spline");
+  v_cdm_spline.create(x_array,k_array,v_cdm_vector,"v_cdm_spline");
+  v_b_spline.create(x_array,k_array,v_b_vector,"v_b_spline");
+  Phi_spline.create(x_array,k_array,Phi_vector,"Phi_spline");
+  Psi_spline.create(x_array,k_array,Psi_vector,"Psi_spline");
+
+  Theta_spline = std::vector<Spline2D>(Constants.n_ell_theta);
+  Theta_spline[0].create(x_array,k_array,theta0_vector,"theta0_spline");
+  Theta_spline[1].create(x_array,k_array,theta1_vector,"theta1_spline");
+  Theta_spline[2].create(x_array,k_array,theta2_vector,"theta2_spline");
+  Theta_spline[3].create(x_array,k_array,theta3_vector,"theta3_spline");
+  Theta_spline[4].create(x_array,k_array,theta4_vector,"theta4_spline");
+  Theta_spline[5].create(x_array,k_array,theta5_vector,"theta5_spline");
+  Theta_spline[6].create(x_array,k_array,theta6_vector,"theta6_spline");
+  Theta_spline[7].create(x_array,k_array,theta7_vector,"theta7_spline");
+
 }
 
 //====================================================
@@ -597,9 +437,8 @@ Vector Perturbations::set_ic_after_tight_coupling(
 //====================================================
 
 double Perturbations::get_tight_coupling_time(const double k){
-  if (k > 0.15/Constants.Mpc){
     for (double time_index = 0; time_index < x_array.size(); time_index++){
-        if (rec->dtaudx_of_x(x_array[time_index]) > 10. && rec->dtaudx_of_x(x_array[time_index]) > 10.*Constants.c*k/cosmo->Hp_of_x(x_array[time_index])){}
+        if (abs(rec->dtaudx_of_x(x_array[time_index])) > 10. && abs(rec->dtaudx_of_x(x_array[time_index])) > 10.*Constants.c*k/cosmo->Hp_of_x(x_array[time_index])){}
         
         else{
           if (x_array[time_index] <= -8.3){
@@ -610,12 +449,6 @@ double Perturbations::get_tight_coupling_time(const double k){
           }
         }
     } 
-  }
-  
-  else{
-    return -8.3;
-  }  
-  
     //=============================================================================
   // DONE: compute and return x for when tight coupling ends
   // Remember all the three conditions in Callin
@@ -736,15 +569,19 @@ int Perturbations::rhs_tight_coupling_ode(double x, double k, const double *y, d
   double R = 4.*OmegaR0/(3.*Omegab0*a);
   double theta2 = -20./45.*ck_Hp/dtau_dx*theta1;
   double Psi = -Phi-12.*H0*H0/(Constants.c*Constants.c*k*k*a*a)*OmegaR0*theta2;
+  
+
+  dPhidx = Psi-ck_Hp*ck_Hp*Phi/3.+ H0*H0/(2.*Hp*Hp)*(OmegaCDM0/a*delta_cdm+Omegab0/a*delta_b+4.*OmegaR0/(a*a)*theta0);
+  dtheta0dx = -ck_Hp*theta1-dPhidx;
   double q = (-((1.-R)*dtau_dx+(1.+ R)*ddtau_ddx)*(3.*theta1+v_b)-ck_Hp*Psi+(1.-dHp_dx/Hp)*ck_Hp*(-theta0+2.*theta2)-ck_Hp*dtheta0dx)
              /((1. + R)*dtau_dx+dHp_dx/Hp-1.);
   
     
   // SET: Scalar quantities (Phi, delta, v, ...)
-  dv_bdx = 1./(1. + R)*(-v_b-ck_Hp*Psi+R*(q+ck_Hp*(-theta0+2.*theta2)-ck_Hp*Psi));
+  //dv_bdx = 1./(1. + R)*(-v_b-ck_Hp*Psi+R*(q+ck_Hp*(-theta0+2.*theta2)-ck_Hp*Psi));
+  dv_bdx = -v_b-ck_Hp*Psi+R*(1./(1.+R))*(q + v_b + ck_Hp*(-theta0+2.*theta2));
   
   
-  dPhidx = Psi-ck_Hp*ck_Hp*Phi/3.+ H0*H0/(2.*Hp*Hp)*(OmegaCDM0/a*delta_cdm+Omegab0/a*delta_b+4.*OmegaR0/(a*a)*theta0);
   ddelta_cdmdx = ck_Hp*v_cdm-3.*dPhidx;
   dv_cdmdx = -v_cdm-ck_Hp*Psi;
   ddelta_bdx = ck_Hp*v_b-3.*dPhidx;
@@ -752,7 +589,7 @@ int Perturbations::rhs_tight_coupling_ode(double x, double k, const double *y, d
   
   // SET: Photon multipoles (Theta_ell)
   dtheta1dx = 1./3.*(q-dv_bdx);
-  dtheta0dx = -ck_Hp*theta1-dPhidx;
+  
   // ...
   // ...
 
@@ -874,6 +711,8 @@ int Perturbations::rhs_full_ode(double x, double k, const double *y, double *dyd
 // Get methods
 //====================================================
 
+
+
 double Perturbations::get_delta_cdm(const double x, const double k) const{
   return delta_cdm_spline(x,k);
 }
@@ -904,12 +743,13 @@ double Perturbations::get_Source_E(const double x, const double k) const{
 double Perturbations::get_Theta(const double x, const double k, const int ell) const{
   return Theta_spline[ell](x,k);
 }
-double Perturbations::get_Theta_p(const double x, const double k, const int ell) const{
-  return Theta_p_spline[ell](x,k);
-}
-double Perturbations::get_Nu(const double x, const double k, const int ell) const{
-  return Nu_spline[ell](x,k);
-}
+
+//double Perturbations::get_Theta_p(const double x, const double k, const int ell) const{
+//  return Theta_p_spline[ell](x,k);
+//}
+//double Perturbations::get_Nu(const double x, const double k, const int ell) const{
+//  return Nu_spline[ell](x,k);
+//}
 
 //====================================================
 // Print some useful info about the class
@@ -984,11 +824,17 @@ void Perturbations::output(const double k, const std::string filename) const{
     fp << get_Theta(x,k,2)   << " ";
     fp << get_Phi(x,k)       << " ";
     fp << get_Psi(x,k)       << " ";
-    fp << get_Pi(x,k)        << " ";
-    fp << get_Source_T(x,k)  << " ";
-    fp << get_Source_T(x,k) * Utils::j_ell(5,   arg)           << " ";
-    fp << get_Source_T(x,k) * Utils::j_ell(50,  arg)           << " ";
-    fp << get_Source_T(x,k) * Utils::j_ell(500, arg)           << " ";
+    fp << get_delta_cdm(x,k) << " ";
+    fp << get_delta_b(x,k)   << " ";
+    fp << get_v_cdm(x,k)     << " ";
+    fp << get_v_b(x,k)       << " ";
+    fp << cosmo->eta_of_x(x) << " ";
+
+    //fp << get_Pi(x,k)        << " ";
+    //fp << get_Source_T(x,k)  << " ";
+    //fp << get_Source_T(x,k) * Utils::j_ell(5,   arg)           << " ";
+    //fp << get_Source_T(x,k) * Utils::j_ell(50,  arg)           << " ";
+    //fp << get_Source_T(x,k) * Utils::j_ell(500, arg)           << " ";
     fp << "\n";
   };
   std::for_each(x_array.begin(), x_array.end(), print_data);

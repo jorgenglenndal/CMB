@@ -46,6 +46,11 @@ extern struct ConstantsAndUnits {
   // Min and max k-value
   const double k_min = 0.00005 / Mpc;
   const double k_max = 0.3     / Mpc;
+
+  //const double k_min = 1e-4 / Mpc;
+  //const double k_max = 3e-1 / Mpc;
+
+
   
   // Min and max x-value
   const double x_start = -20.0;
@@ -64,8 +69,8 @@ extern struct ConstantsAndUnits {
   const int n_ell_neutrinos     = 8 * neutrinos;
   const int n_ell_tot_full      = n_scalars + n_ell_theta + n_ell_thetap + n_ell_neutrinos;
   const int ind_deltacdm        = 0; 
-  const int ind_deltab          = 1;
-  const int ind_vcdm            = 2;
+  const int ind_deltab          = 2;
+  const int ind_vcdm            = 1;
   const int ind_vb              = 3;
   const int ind_Phi             = 4;
   const int ind_start_theta     = n_scalars;
@@ -79,8 +84,8 @@ extern struct ConstantsAndUnits {
   const int n_ell_neutrinos_tc  = n_ell_neutrinos;
   const int n_ell_tot_tc        = n_scalars_tc + n_ell_theta_tc + n_ell_thetap_tc + n_ell_neutrinos;
   const int ind_deltacdm_tc     = 0; 
-  const int ind_deltab_tc       = 1;
-  const int ind_vcdm_tc         = 2;
+  const int ind_deltab_tc       = 2;
+  const int ind_vcdm_tc         = 1;
   const int ind_vb_tc           = 3;
   const int ind_Phi_tc          = 4;
   const int ind_start_theta_tc  = n_scalars_tc;

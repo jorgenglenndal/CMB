@@ -33,9 +33,6 @@ class Perturbations{
     Vector x_array = Utils::linspace(x_start,x_end,n_x);
     
     
-    //hopefully this will work
-    //std::vector<Vector> higher_order_multipoles;
-    //std::vector<Vector> stored_data;
     Vector delta_cdm_vector;
     Vector v_cdm_vector;
     Vector delta_b_vector;
@@ -77,8 +74,8 @@ class Perturbations{
     // NB: If you use there you have to allocate the container first
     // e.g. Theta_spline = std::vector<Spline2D>(n_ell_theta); before using it
     std::vector<Spline2D> Theta_spline;
-    std::vector<Spline2D> Theta_p_spline;
-    std::vector<Spline2D> Nu_spline;
+    //std::vector<Spline2D> Theta_p_spline;
+    //std::vector<Spline2D> Nu_spline;
     
     //==========================================================
     // [1] Tight coupling ODE system
@@ -148,8 +145,6 @@ class Perturbations{
     double get_Psi(const double x, const double k) const;
     double get_Pi(const double x, const double k) const;
     double get_Theta(const double x, const double k, const int ell) const;
-    double get_Theta_p(const double x, const double k, const int ell) const;
-    double get_Nu(const double x, const double k, const int ell) const;
     double get_Source_T(const double x, const double k) const;
     double get_Source_E(const double x, const double k) const;
 };
