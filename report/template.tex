@@ -4,7 +4,8 @@
 %\usepackage[options]{natbib}
 \usepackage{txfonts}
 \usepackage{hyperref}
-\usepackage{xcolor}           % set colors
+\usepackage{xcolor}
+\usepackage{float}           % set colors
 
 \hypersetup{ % this is just my personal choice, feel free to change things
     colorlinks,
@@ -124,17 +125,162 @@ Something about the numerical work.
 \subsection{Results}
 Show and discuss the results.
 
+
+%3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+%3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+%3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
 \section{Milestone III}
 Some introduction about what it is all about.
+%In this milestone we look at 
+In this milestone we calculate the evolution of the structures in the universe. In practice, this is done by 
+solving the perturbed Einstein-Boltzmann equations numerically.
+\\
+\\
+We have used linear perturbation theory to perturb the Einstein-Boltzmann equations. Easier to solve in Fourier space. Energy perturbations influence the
+metric perturbations through the Einstein equations. We use the Newtonian gauge for the perturbed metric
+
+In order to determine how structures form in the universe, we can perturb
+
+
+
+
+We have evolved perturbations in time and studyed their time evolution at different scales. When instead
+looking at one time and all scales we get a power spectrum, I think... or maybe not...
+
 
 \subsection{Theory}
-The theory behind this milestone.
+%The theory behind this milestone.
+\\
+\\
+%Boltzmann equations, spherical harmonics, perturbation theory...
+Linearized Einstein and Boltzmann equations for perturbed distribution functions.
+
+
+
+
 
 \subsection{Implementation details}
 Something about the numerical work.
 
 \subsection{Results}
-Show and discuss the results.
+\subsubsection{Test results}
+The code produces the following results with the cosmological test parameters given in table \ref{tab:test_parameters}. All the figures show plots at three different scales.
+In figures \ref{fig:test1} and \ref{fig:test2} we see the overdensity and the velocity, respectively, for both CDM and baryons. In figures \ref{fig:test3}
+and \ref{fig:test4} we see the photon temperature monopole, $\Theta_0$, and the photon temperature dipole, $\Theta_1$, respectively. The gravitational potential, $\Phi$, is plotted
+in figure \ref{fig:test5}. All plots seem to agree with the plots produced by \cite{winther:2023}.   
+
+
+\begin{table}[h!] %%h! er for å tvinge tabellen til å være nærmest mulig her i dokumentet
+   %\begin{center}
+     \caption{Cosmological test parameters.} %Tabelltekst
+     \label{tab:test_parameters}
+     \begin{tabular}{l|l}%|r} % for hver kolonne har du {a|b|c} der a er for 1.kolonne, b for 2. kolonne etc, l=venstrestil, r=høyrestilt, c = senterstilt. Se posisjonen til tallene i de forskjellige kolonnene. Har du 4 kolonner der alle er senterstilt blir det f.eks. {c|c|c|c}
+       \textbf{Parameter} & \textbf{Value}\\% & \textbf{Unit}\\ %innhold i hver kolonne, legg til flere her hvis du har flere kolonner
+       %(i) & (m) & (m/s)\\ %enheter for hver kolonne
+       \hline %en horisontall linje for å skille overskriften fra tallene under. Vil du ha en slik linje mellom hver rad i tabellen så legg til en \hline mellom hver rad nedover her. Merk \\ er som vanlig linjeskift mens & skiller kolonner
+       $h$ & 0.7\\
+       $\Omega_\mathrm{b}$ & 0.05\\
+       $\Omega_\mathrm{CDM}$& 0.45\\
+       $\Omega_\mathrm{\Lambda}$ & 0.5\\
+       $\Omega_\mathrm{k}  $     & 0\\
+       $\Omega_\mathrm{\nu}$ & 0\\
+       $T_\mathrm{CMB}$ & 2.7255 $[K]$\\
+       %$Y_\mathrm{p}$ & 0\\
+       \hline
+     \end{tabular}
+   %\end{center}
+ \end{table}
+
+\begin{figure}[h!]
+   %\hspace{-0.48cm}   
+   \includegraphics[scale=0.6]{../figures/milestone3/test_delta_cdm_delta_b.pdf}
+   \caption{The CDM overdensities, in solid lines, and the absolute value of the baryon overdensities,
+    in dotted lines, are plotted at different scales, $k$.}\label{fig:test1}
+\end{figure}
+
+\begin{figure}[h!]
+   %\hspace{-0.48cm}   
+   \includegraphics[scale=0.6]{../figures/milestone3/test_v_cdm_v_b.pdf}
+   \caption{The CDM velocities, in solid lines, and the absolute value of the baryon velocities,
+    in dotted lines, are plotted at different scales, $k$.}\label{fig:test2}
+\end{figure}
+
+
+\begin{figure}[h!]
+   %\hspace{-0.48cm}   
+   \includegraphics[scale=0.6]{../figures/milestone3/test_theta_0.pdf}
+   \caption{The photon temperature monopole at different scales, $k$.}\label{fig:test3}
+\end{figure}
+
+\begin{figure}[h!]
+   %\hspace{-0.48cm}   
+   \includegraphics[scale=0.6]{../figures/milestone3/test_theta_1.pdf}
+   \caption{The photon temperature dipole at different scales, $k$.}\label{fig:test4}
+\end{figure}
+
+\begin{figure}[h!]
+   %\hspace{-0.48cm}   
+   \includegraphics[scale=0.6]{../figures/milestone3/test_phi.pdf}
+   \caption{The gravitational potential at different scales, $k$.}\label{fig:test5}
+\end{figure}
+
+\subsubsection{Results}
+%theory section maybe???
+% write about the slope of delta_cdm and compare to analytical result...all plots in general
+Gravity travels with the same velocity as light. Therefore, the conformal time, $\eta$, gives us the maximum reach of gravity, e.g. if $\eta= 1$ Mpc we know that 
+scales up to 1 Mpc will cluster due to gravity. This is also reflected in our results, hopefully...  
+%Show and discuss the results.
+
+\begin{figure}[h!]
+   %\hspace{-0.48cm}   
+   \includegraphics[scale=0.6]{../figures/milestone3/delta_gamma.pdf}
+   \caption{The photon density perturbation, $\delta_\gamma = 4\Theta_0$, at four different scales, $k$. }\label{fig:delta_gamma}
+\end{figure}
+
+\begin{figure}[h!]
+   %\hspace{-0.48cm}   
+   \includegraphics[scale=0.6]{../figures/milestone3/delta_cdm_delta_b.pdf}
+   \caption{The CDM overdensity and the absolute value of the baryon overdensity plotted at four different scales, $k$. The solid lines are for CDM and the dotted lines are for baryons.}\label{fig:delta_cdm_delta_b}
+\end{figure}
+
+\begin{figure}[h!]
+   %\hspace{-0.48cm}   
+   \includegraphics[scale=0.65]{../figures/milestone3/delta_cdm_delta_b_zoom.pdf}
+   \caption{A closer look at figure \ref{fig:delta_cdm_delta_b} with linear y-scale and with the correct sign for the baryon overdensity.}\label{fig:delta_cdm_delta_b_zoom}
+\end{figure}
+
+\begin{figure}[h!]
+   %\hspace{-0.48cm}   
+   \includegraphics[scale=0.6]{../figures/milestone3/v_gamma.pdf}
+   \caption{The photon velocity perturbation, $v_\gamma=-3\Theta_1$, at four different scales, $k$.}\label{fig:v_gamma}
+\end{figure}
+
+\begin{figure}[h!]
+   %\hspace{-0.48cm}   
+   \includegraphics[scale=0.6]{../figures/milestone3/v_cdm_v_b.pdf}
+   \caption{The CDM velocities, in solid lines, and the absolute value of the baryon velocities,
+   in dotted lines, are plotted at four different scales, $k$.}\label{fig:v_cdm_v_b}
+\end{figure}
+
+\begin{figure}[h!]
+   %\hspace{-0.48cm}   
+   \includegraphics[scale=0.65]{../figures/milestone3/theta_2.pdf}
+   \caption{The photon temperature quadrupole, $\Theta_2$, at four different scales, $k$.}\label{fig:theta2}
+\end{figure}
+
+\begin{figure}[h!]
+   %\hspace{-0.48cm}   
+   \includegraphics[scale=0.6]{../figures/milestone3/phi.pdf}
+   \caption{The gravitational potential at four different scales, $k$.}\label{fig:phi}
+\end{figure}
+
+\begin{figure}[h!]
+   %\hspace{-0.48cm}   
+   \includegraphics[scale=0.6]{../figures/milestone3/phi_psi.pdf}
+   \caption{The sum of the two gravitational potentials, $\Phi$ and $\Psi$, at four different scales, $k$.}\label{fig:phi_psi}
+\end{figure}
+
+
 
 \section{Milestone IV}
 Some introduction about what it is all about.
@@ -152,9 +298,9 @@ Show and discuss the results.
 
 Write a short summary and conclusion in the end. 
 
-\begin{acknowledgements}
-      I thank my mom for financial support!!!
-\end{acknowledgements}
+%\begin{acknowledgements}
+%      I thank my mom for financial support!!!
+%\end{acknowledgements}
 
 \bibliographystyle{aa} % style aa.bst
 \bibliography{refs} % your references Yourfile.bib

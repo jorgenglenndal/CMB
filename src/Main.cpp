@@ -13,11 +13,11 @@ int main(int argc, char **argv){
   //=========================================================================
 
   // Background parameters
-  double h           = 0.7;//0.67;
+  double h           = 0.67;
   double OmegaB      = 0.05;
-  double OmegaCDM    = 0.45;//0.267;
+  double OmegaCDM    = 0.267;
   double OmegaK      = 0.0;
-  double Neff        = 0.;//3.046;
+  double Neff        = 3.046;
   double TCMB        = 2.7255;
 
   // Recombination parameters

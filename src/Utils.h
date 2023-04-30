@@ -3,6 +3,8 @@
 #include <vector>
 #include <cmath>
 #include <iostream>
+#include <iomanip>
+#include <string>
 #include <algorithm>
 #include <chrono>
 #include <map>
@@ -45,7 +47,7 @@ extern struct ConstantsAndUnits {
   
   // Min and max k-value
   const double k_min = 0.00005 / Mpc;
-  const double k_max = 0.3     / Mpc;
+  const double k_max = 0.1     / Mpc;
 
   //const double k_min = 1e-4 / Mpc;
   //const double k_max = 3e-1 / Mpc;

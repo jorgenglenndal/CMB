@@ -42,15 +42,18 @@ void Perturbations::integrate_perturbations(){
   // quadratic or a logarithmic spacing
   //===================================================================
   arma::vec k_array_arma = arma::logspace(log10(k_min),log10(k_max),n_k);
+  //std::cout<< "her" <<std::endl;
+  //std::cout<<x_array.size()<<std::endl;
   
   Vector k_array;
   for (int i=0;i<k_array_arma.size();i++){
       k_array.push_back(k_array_arma[i]);
+      //std::cout<<k_array[i]*Constants.Mpc<< std::endl;
   }
+  
 
   
-  //Vector k_array = {0.001/Constants.Mpc,0.01/Constants.Mpc,0.1/Constants.Mpc};
-  //double n_k = 3;
+ 
   // Loop over all wavenumbers
   for(int ik = 0; ik < n_k; ik++){
 
@@ -62,6 +65,7 @@ void Perturbations::integrate_perturbations(){
     
     // Current value of k
     double k = k_array[ik];
+    ////double k = 10./Constants.Mpc;
     // Find value to integrate to
     double x_end_tight = get_tight_coupling_time(k);
     
@@ -216,34 +220,38 @@ void Perturbations::integrate_perturbations(){
     for (int i = 1; i < x_array.size(); i++){
       double a = exp(x_array[i]);
       Psi_vector.push_back(-Phi_vector[i+n_x * ik]-12.*H0*H0/(Constants.c*Constants.c*k*k*a*a)*OmegaR0*theta2_vector[i + n_x*ik]);
+      ////Psi_vector.push_back(-Phi_vector[i+n_x * 0]-12.*H0*H0/(Constants.c*Constants.c*k*k*a*a)*OmegaR0*theta2_vector[i + n_x*0]);
     }
 
 
-    //===================================================================
-    // DONE: remember to store the data found from integrating so we can
-    // spline it below
-    //
-    // To compute a 2D spline of a function f(x,k) the data must be given 
-    // to the spline routine as a 1D array f_array with the points f(ix, ik) 
-    // stored as f_array[ix + n_x * ik]
-    // Example:
-    // Vector x_array(n_x);
-    // Vector k_array(n_k);
-    // Vector f(n_x * n_k);
-    // Spline2D y_spline;
-    // f_spline.create(x_array, k_array, f_array);
-    // We can now use the spline as f_spline(x, k)
-    //
-    // NB: If you use Theta_spline then you have to allocate it first,
-    // before using it e.g.
-    // Theta_spline = std::vector<Spline2D>(n_ell_theta);
-    //
-    //===================================================================
-    //...
-    //...
-
   }
   Utils::EndTiming("integrateperturbation");
+
+
+  //only relevant when calculatong for single k value
+  ////std::string filename; 
+  ////std::ofstream ofile;
+  ////filename = "safeguard___perturbations_k10.txt";        
+  ////int width = 40;
+  ////int prec = 12; 
+  ////ofile.open(filename);
+  ////for (int i = 0; i < x_array.size(); i++){
+  ////    ofile << std::setw(width)<<std::setprecision(prec) << x_array[i] <<
+  ////    std::setw(width) << std::setprecision(prec) << theta0_vector[i]  <<
+  ////    std::setw(width)<<std::setprecision(prec) <<   theta1_vector[i] <<
+  ////    std::setw(width)<<std::setprecision(prec)  << theta2_vector[i] <<
+  ////    std::setw(width)<<std::setprecision(prec) << Phi_vector[i] <<
+  ////    std::setw(width)<<std::setprecision(prec) << Psi_vector[i] <<
+  ////    std::setw(width)<<std::setprecision(prec) << delta_cdm_vector[i] <<
+  ////    std::setw(width)<<std::setprecision(prec) << delta_b_vector[i] <<
+  ////    std::setw(width)<<std::setprecision(prec) << v_cdm_vector[i] <<
+  ////    std::setw(width)<<std::setprecision(prec) << v_b_vector[i] <<
+  ////    std::setw(width)<<std::setprecision(prec) << cosmo->eta_of_x(x_array[i]) <<
+  ////    std::endl;      
+  ////}
+  ////ofile.close();
+
+
 
   //=============================================================================
   // DONE: Make all splines needed: Theta0,Theta1,Theta2,Phi,Psi,...
@@ -611,6 +619,7 @@ int Perturbations::rhs_full_ode(double x, double k, const double *y, double *dyd
   //=============================================================================
 
   // Index and number of the different quantities
+  //std::cout<<x << std::endl;
   const int n_ell_theta         = Constants.n_ell_theta;
   const int n_ell_thetap        = Constants.n_ell_thetap;
   const int n_ell_neutrinos     = Constants.n_ell_neutrinos;
@@ -744,12 +753,6 @@ double Perturbations::get_Theta(const double x, const double k, const int ell) c
   return Theta_spline[ell](x,k);
 }
 
-//double Perturbations::get_Theta_p(const double x, const double k, const int ell) const{
-//  return Theta_p_spline[ell](x,k);
-//}
-//double Perturbations::get_Nu(const double x, const double k, const int ell) const{
-//  return Nu_spline[ell](x,k);
-//}
 
 //====================================================
 // Print some useful info about the class
