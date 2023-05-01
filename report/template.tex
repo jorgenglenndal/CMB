@@ -130,31 +130,26 @@ Show and discuss the results.
 %3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
 %3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
 \section{Milestone III}
-Some introduction about what it is all about.
+%Some introduction about what it is all about.
 %In this milestone we look at 
 In this milestone we calculate the evolution of the structures in the universe. In practice, this is done by 
-solving the perturbed Einstein-Boltzmann equations numerically.
+solving the perturbed Einstein-Boltzmann equations numerically, which will give us the time evolution of different physical quantities of interest
+at different Fourier scales, $k$. We will go into more detail in the theory section. A detailed derivation of the relevant equations is given in \cite{winther:2023}. \\
 \\
-\\
-We have used linear perturbation theory to perturb the Einstein-Boltzmann equations. Easier to solve in Fourier space. Energy perturbations influence the
-metric perturbations through the Einstein equations. We use the Newtonian gauge for the perturbed metric
-
-In order to determine how structures form in the universe, we can perturb
-
-
-
-
-We have evolved perturbations in time and studyed their time evolution at different scales. When instead
-looking at one time and all scales we get a power spectrum, I think... or maybe not...
-
+Since the observed CMB is a measurement of the photon temperature field today, it is of great interest for us to calculate the photon temperature fluctuations 
+in the universe at all times and Fourier scales. These fluctuations can be evaluated today to reconstruct the CMB power spectrum we observe. 
 
 \subsection{Theory}
 %The theory behind this milestone.
-\\
-\\
 %Boltzmann equations, spherical harmonics, perturbation theory...
-Linearized Einstein and Boltzmann equations for perturbed distribution functions.
-
+Since the universe is not homogeneous, we will introduce perturbations to the distribution functions, $f_i$, for baryons, photons and CDM, i.e. \[f_i(t,\vec{x},\vec{p})
+ = \overline{f_i}(t,\vec{p}) + \delta f_i(t,\vec{x},\vec{p}),\] where $\bar{f_i}$ is the background distribution function and $\delta f_i$ is the perturbation. These perturbations will perturb the 
+energy momentum tensor, which in turn will perturb the metric. This will then change how particles move through space and time. We will therefore have a system of coupled differential equations.
+We can apply linear perturbation theory to the Einstein-Boltzmann equations in Fourier space with $x = \ln a$ as the time variable. We rewrite the equations
+in Fourier space because the differential equations become simpler. The photon temperature perturbations, $\Theta = \delta T/\bar{T}$ are expanded in Legendre multipoles,
+such that we are left with multipoles, $\Theta_\ell$ of the photon distribution.\\
+\\
+The photon 
 
 
 
