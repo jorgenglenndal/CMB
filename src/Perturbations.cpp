@@ -42,13 +42,10 @@ void Perturbations::integrate_perturbations(){
   // quadratic or a logarithmic spacing
   //===================================================================
   arma::vec k_array_arma = arma::logspace(log10(k_min),log10(k_max),n_k);
-  //std::cout<< "her" <<std::endl;
-  //std::cout<<x_array.size()<<std::endl;
   
   Vector k_array;
   for (int i=0;i<k_array_arma.size();i++){
       k_array.push_back(k_array_arma[i]);
-      //std::cout<<k_array[i]*Constants.Mpc<< std::endl;
   }
   
 
@@ -69,7 +66,7 @@ void Perturbations::integrate_perturbations(){
     // Find value to integrate to
     double x_end_tight = get_tight_coupling_time(k);
     
-    //checking index to see how large the sub vector of x_array should be
+    //checking index to see how large the sub vector of x_array should be, i.e. in tight coupling
     int tight_index;
     for (int i =0;i < x_array.size();i++){
       if (x_array[i] > x_end_tight){
@@ -157,18 +154,11 @@ void Perturbations::integrate_perturbations(){
       }
     }
     //removing the overlap at x_end_tight
-    tight_coupling_data.pop_back();
-
-    //for (int i=0;i<<x_array.size();i++){
-    //  std::cout << x_array[i] << std::endl;
-    //}
-    
-    
+    tight_coupling_data.pop_back();  
     
     //storing the data in correct format for spline
     //tight_coupling_data[0].size() + after_tc_data[0].size() = x_array.size() = const. 
     //all solved quantities
-    //std::cout<< tight_coupling_data.size() << std::endl;
     for (int i = 0; i < tight_coupling_data.size() + after_tc_data.size(); i++){
         if (i<tight_coupling_data.size()){
           delta_cdm_vector.push_back(tight_coupling_data[i][0]);
@@ -179,7 +169,6 @@ void Perturbations::integrate_perturbations(){
           
           theta0_vector.push_back(tight_coupling_data[i][5]);
           theta1_vector.push_back(tight_coupling_data[i][6]);
-          //std::cout<< i << std::endl;
           
           //higher order thetas are zero during tight coupling
           theta2_vector.push_back(0.);
