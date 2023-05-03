@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.8.18)  1 MAY 2023 16:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.8.18)  3 MAY 2023 23:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -508,7 +508,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks30
 \@floatcapt=\box60
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 14.
+Package hyperref Info: Option `colorlinks' set `true' on input line 15.
  (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count302
@@ -516,39 +516,39 @@ File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
 ) (/home/jorgen/src/master/ast5220/CMB/report/template.aux)
 \openout1 = `template.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 18.
-LaTeX Font Info:    Trying to load font information for OML+txmi on input line 18.
+LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 19.
+LaTeX Font Info:    Trying to load font information for OML+txmi on input line 19.
  (/usr/share/texlive/texmf-dist/tex/latex/txfonts/omltxmi.fd
 File: omltxmi.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 18.
-LaTeX Font Info:    Trying to load font information for OMS+txsy on input line 18.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 19.
+LaTeX Font Info:    Trying to load font information for OMS+txsy on input line 19.
  (/usr/share/texlive/texmf-dist/tex/latex/txfonts/omstxsy.fd
 File: omstxsy.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 18.
-LaTeX Font Info:    Trying to load font information for OMX+txex on input line 18.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 19.
+LaTeX Font Info:    Trying to load font information for OMX+txex on input line 19.
  (/usr/share/texlive/texmf-dist/tex/latex/txfonts/omxtxex.fd
 File: omxtxex.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 18.
-LaTeX Font Info:    Trying to load font information for U+txexa on input line 18.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 19.
+LaTeX Font Info:    Trying to load font information for U+txexa on input line 19.
  (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxexa.fd
 File: utxexa.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Trying to load font information for T1+txr on input line 18.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Trying to load font information for T1+txr on input line 19.
  (/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txr.fd
 File: t1txr.fd 2000/12/15 v3.1
 )
@@ -605,7 +605,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 \AtBeginShipoutBox=\box63
-Package hyperref Info: Link coloring ON on input line 18.
+Package hyperref Info: Link coloring ON on input line 19.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
@@ -615,407 +615,454 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count309
 )
-LaTeX Info: Redefining \ref on input line 18.
-LaTeX Info: Redefining \pageref on input line 18.
-LaTeX Info: Redefining \nameref on input line 18.
+LaTeX Info: Redefining \ref on input line 19.
+LaTeX Info: Redefining \pageref on input line 19.
+LaTeX Info: Redefining \nameref on input line 19.
  (/home/jorgen/src/master/ast5220/CMB/report/template.out) (/home/jorgen/src/master/ast5220/CMB/report/template.out)
 \@outlinefile=\write3
 \openout3 = `template.out'.
 
-LaTeX Font Info:    Trying to load font information for TS1+txr on input line 38.
+LaTeX Font Info:    Trying to load font information for TS1+txr on input line 39.
  (/usr/share/texlive/texmf-dist/tex/latex/txfonts/ts1txr.fd
 File: ts1txr.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Trying to load font information for OT1+txr on input line 38.
+LaTeX Font Info:    Trying to load font information for OT1+txr on input line 39.
  (/usr/share/texlive/texmf-dist/tex/latex/txfonts/ot1txr.fd
 File: ot1txr.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Trying to load font information for U+txsya on input line 38.
+LaTeX Font Info:    Trying to load font information for U+txsya on input line 39.
  (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsya.fd
 File: utxsya.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Trying to load font information for U+txsyb on input line 38.
+LaTeX Font Info:    Trying to load font information for U+txsyb on input line 39.
  (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsyb.fd
 File: utxsyb.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Trying to load font information for U+txmia on input line 38.
+LaTeX Font Info:    Trying to load font information for U+txmia on input line 39.
  (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxmia.fd
 File: utxmia.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Trying to load font information for U+txsyc on input line 38.
+LaTeX Font Info:    Trying to load font information for U+txsyc on input line 39.
  (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Trying to load font information for T1+txss on input line 38.
+LaTeX Font Info:    Trying to load font information for T1+txss on input line 39.
  (/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txss.fd
 File: t1txss.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Font shape `T1/txss/m/n' will be
-(Font)              scaled to size 16.41594pt on input line 38.
+(Font)              scaled to size 16.41594pt on input line 39.
 LaTeX Font Info:    Font shape `T1/txss/b/n' in size <17.28> not available
-(Font)              Font shape `T1/txss/bx/n' tried instead on input line 38.
+(Font)              Font shape `T1/txss/bx/n' tried instead on input line 39.
 LaTeX Font Info:    Font shape `T1/txss/bx/n' will be
-(Font)              scaled to size 16.41594pt on input line 38.
-LaTeX Font Info:    Trying to load font information for T1+txtt on input line 38.
+(Font)              scaled to size 16.41594pt on input line 39.
+LaTeX Font Info:    Trying to load font information for T1+txtt on input line 39.
  (/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Font shape `T1/txss/m/n' will be
-(Font)              scaled to size 8.54997pt on input line 38.
+(Font)              scaled to size 8.54997pt on input line 39.
 LaTeX Font Info:    Font shape `T1/txss/b/n' in size <9> not available
-(Font)              Font shape `T1/txss/bx/n' tried instead on input line 38.
-LaTeX Font Info:    Font shape `T1/txss/bx/n' will be
-(Font)              scaled to size 8.54997pt on input line 38.
-LaTeX Font Info:    Font shape `T1/txss/m/n' will be
-(Font)              scaled to size 10.40245pt on input line 39.
-LaTeX Font Info:    Font shape `T1/txss/b/n' in size <10.95> not available
 (Font)              Font shape `T1/txss/bx/n' tried instead on input line 39.
 LaTeX Font Info:    Font shape `T1/txss/bx/n' will be
-(Font)              scaled to size 10.40245pt on input line 39.
+(Font)              scaled to size 8.54997pt on input line 39.
+LaTeX Font Info:    Font shape `T1/txss/m/n' will be
+(Font)              scaled to size 10.40245pt on input line 40.
+LaTeX Font Info:    Font shape `T1/txss/b/n' in size <10.95> not available
+(Font)              Font shape `T1/txss/bx/n' tried instead on input line 40.
+LaTeX Font Info:    Font shape `T1/txss/bx/n' will be
+(Font)              scaled to size 10.40245pt on input line 40.
 
-Underfull \hbox (badness 1152) in paragraph at lines 44--49
+Underfull \hbox (badness 1152) in paragraph at lines 45--50
 \T1/txr/m/n/10 ho-mo-ge-neous and isotropic uni-verse gov-erned by the well
  []
 
 
-Underfull \hbox (badness 2753) in paragraph at lines 44--49
+Underfull \hbox (badness 2753) in paragraph at lines 45--50
 \T1/txr/m/n/10 known Fried-mann equa-tion [][]2[][]. The uni-verse we con-sider
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 44--49
+Underfull \hbox (badness 10000) in paragraph at lines 45--50
 
  []
 
 
-Underfull \hbox (badness 7291) in paragraph at lines 44--49
+Underfull \hbox (badness 7291) in paragraph at lines 45--50
 \T1/txr/m/n/10 Since our uni-verse is ap-prox-i-mately ho-mo-ge-neous and
  []
 
 LaTeX Font Info:    Font shape `T1/txss/m/n' will be
-(Font)              scaled to size 9.49997pt on input line 58.
+(Font)              scaled to size 9.49997pt on input line 59.
 LaTeX Font Info:    Font shape `T1/txss/m/it' in size <10> not available
-(Font)              Font shape `T1/txss/m/sl' tried instead on input line 58.
+(Font)              Font shape `T1/txss/m/sl' tried instead on input line 59.
 LaTeX Font Info:    Font shape `T1/txss/m/sl' will be
-(Font)              scaled to size 9.49997pt on input line 58.
+(Font)              scaled to size 9.49997pt on input line 59.
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--81
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 79--81
+Underfull \hbox (badness 10000) in paragraph at lines 80--82
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 92--97
+Underfull \hbox (badness 10000) in paragraph at lines 80--82
 
  []
 
 
-Package hyperref Warning: Suppressing link with empty target on input line 113.
+Underfull \hbox (badness 10000) in paragraph at lines 93--98
+
+ []
+
+
+Package hyperref Warning: Suppressing link with empty target on input line 114.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 135--141
+Underfull \hbox (badness 10000) in paragraph at lines 140--146
 
  []
 
 
-Underfull \hbox (badness 1708) in paragraph at lines 146--153
-\T1/txr/m/n/10 mo-men-tum ten-sor, which in turn will per-turb the met-ric.
+Underfull \hbox (badness 10000) in paragraph at lines 150--157
+
  []
 
 
-Underfull \hbox (badness 1383) in paragraph at lines 146--153
-\T1/txr/m/n/10 equa-tions. We can ap-ply lin-ear per-tur-ba-tion the-ory to the
+Underfull \hbox (badness 1127) in paragraph at lines 150--157
+\T1/txr/m/n/10 The per-tur-ba-tions in the pho-ton tem-per-a-ture field, $\OML/txmi/m/it/10 ^^NT$\T1/txr/m/n/10 , to-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 146--153
+Underfull \hbox (badness 10000) in paragraph at lines 158--165
 
+ []
+
+
+LaTeX Warning: Command \textless invalid in math mode on input line 196.
+
+
+Package hyperref Warning: Suppressing link with empty target on input line 221.
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 237--241
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 237--241
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 246--251
+
+ []
+
+
+Underfull \hbox (badness 1762) in paragraph at lines 246--251
+\T1/txr/m/n/10 Solutions of the back-ground uni-verse and the re-com-bi-na-
  []
 
 LaTeX Font Info:    Font shape `T1/txr/b/n' in size <9> not available
-(Font)              Font shape `T1/txr/bx/n' tried instead on input line 170.
+(Font)              Font shape `T1/txr/bx/n' tried instead on input line 262.
 LaTeX Font Info:    Font shape `T1/txr/b/n' in size <10> not available
-(Font)              Font shape `T1/txr/bx/n' tried instead on input line 173.
-<../figures/milestone3/test_delta_cdm_delta_b.pdf, id=121, 462.52798pt x 346.89601pt>
+(Font)              Font shape `T1/txr/bx/n' tried instead on input line 265.
+<../figures/milestone3/test_delta_cdm_delta_b.pdf, id=132, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/test_delta_cdm_delta_b.pdf Graphic file (type pdf)
 <use ../figures/milestone3/test_delta_cdm_delta_b.pdf>
-Package pdftex.def Info: ../figures/milestone3/test_delta_cdm_delta_b.pdf  used on input line 191.
+Package pdftex.def Info: ../figures/milestone3/test_delta_cdm_delta_b.pdf  used on input line 283.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
 
-Overfull \hbox (21.44412pt too wide) in paragraph at lines 191--193
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 283--285
 [][]
  []
 
-<../figures/milestone3/test_v_cdm_v_b.pdf, id=122, 462.52798pt x 346.89601pt>
+<../figures/milestone3/test_v_cdm_v_b.pdf, id=133, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/test_v_cdm_v_b.pdf Graphic file (type pdf)
 <use ../figures/milestone3/test_v_cdm_v_b.pdf>
-Package pdftex.def Info: ../figures/milestone3/test_v_cdm_v_b.pdf  used on input line 198.
+Package pdftex.def Info: ../figures/milestone3/test_v_cdm_v_b.pdf  used on input line 290.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
 
-Overfull \hbox (21.44412pt too wide) in paragraph at lines 198--200
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 290--292
 [][]
  []
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<../figures/milestone3/test_theta_0.pdf, id=123, 462.52798pt x 346.89601pt>
+<../figures/milestone3/test_theta_0.pdf, id=134, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/test_theta_0.pdf Graphic file (type pdf)
 <use ../figures/milestone3/test_theta_0.pdf>
-Package pdftex.def Info: ../figures/milestone3/test_theta_0.pdf  used on input line 206.
+Package pdftex.def Info: ../figures/milestone3/test_theta_0.pdf  used on input line 298.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
 
-Overfull \hbox (21.44412pt too wide) in paragraph at lines 206--207
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 298--299
 [][]
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../figures/milestone3/test_theta_1.pdf, id=124, 462.52798pt x 346.89601pt>
+<../figures/milestone3/test_theta_1.pdf, id=135, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/test_theta_1.pdf Graphic file (type pdf)
 <use ../figures/milestone3/test_theta_1.pdf>
-Package pdftex.def Info: ../figures/milestone3/test_theta_1.pdf  used on input line 212.
+Package pdftex.def Info: ../figures/milestone3/test_theta_1.pdf  used on input line 304.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
 
-Overfull \hbox (21.44412pt too wide) in paragraph at lines 212--213
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 304--305
 [][]
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../figures/milestone3/test_phi.pdf, id=125, 462.52798pt x 346.89601pt>
+<../figures/milestone3/test_phi.pdf, id=136, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/test_phi.pdf Graphic file (type pdf)
 <use ../figures/milestone3/test_phi.pdf>
-Package pdftex.def Info: ../figures/milestone3/test_phi.pdf  used on input line 218.
+Package pdftex.def Info: ../figures/milestone3/test_phi.pdf  used on input line 310.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
 
-Overfull \hbox (21.44412pt too wide) in paragraph at lines 218--219
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 310--311
 [][]
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../figures/milestone3/delta_gamma.pdf, id=126, 462.52798pt x 346.89601pt>
+
+Underfull \hbox (badness 1762) in paragraph at lines 317--331
+\T1/txr/m/n/10 dis-con-nected. Us-ing that Fourier modes en-ter the par-ti-cle
+ []
+
+
+Underfull \hbox (badness 1005) in paragraph at lines 317--331
+\T1/txr/m/n/10 the mass is first com-pressed by grav-ity, then the pres-sure
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 317--331
+
+ []
+
+
+Underfull \hbox (badness 1521) in paragraph at lines 317--331
+\T1/txr/m/n/10 In fig-ure [][]10[][] we see that the os-cil-la-tions in the bary-onic
+ []
+
+
+Package hyperref Warning: Suppressing link with empty target on input line 331.
+
+[3pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.331 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.331 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.331 
+       <../figures/milestone3/test_delta_cdm_delta_b.pdf> <../figures/milestone3/test_v_cdm_v_b.pdf>]
+<../figures/milestone3/delta_gamma.pdf, id=219, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/delta_gamma.pdf Graphic file (type pdf)
 <use ../figures/milestone3/delta_gamma.pdf>
-Package pdftex.def Info: ../figures/milestone3/delta_gamma.pdf  used on input line 231.
+Package pdftex.def Info: ../figures/milestone3/delta_gamma.pdf  used on input line 339.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
 
-Overfull \hbox (21.44412pt too wide) in paragraph at lines 231--232
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 339--340
 [][]
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../figures/milestone3/delta_cdm_delta_b.pdf, id=127, 462.52798pt x 346.89601pt>
+<../figures/milestone3/delta_cdm_delta_b.pdf, id=220, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/delta_cdm_delta_b.pdf Graphic file (type pdf)
 <use ../figures/milestone3/delta_cdm_delta_b.pdf>
-Package pdftex.def Info: ../figures/milestone3/delta_cdm_delta_b.pdf  used on input line 237.
+Package pdftex.def Info: ../figures/milestone3/delta_cdm_delta_b.pdf  used on input line 345.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
 
-Overfull \hbox (21.44412pt too wide) in paragraph at lines 237--238
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 345--346
 [][]
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../figures/milestone3/delta_cdm_delta_b_zoom.pdf, id=128, 462.52798pt x 346.89601pt>
+<../figures/milestone3/delta_cdm_delta_b_zoom.pdf, id=221, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/delta_cdm_delta_b_zoom.pdf Graphic file (type pdf)
 <use ../figures/milestone3/delta_cdm_delta_b_zoom.pdf>
-Package pdftex.def Info: ../figures/milestone3/delta_cdm_delta_b_zoom.pdf  used on input line 243.
+Package pdftex.def Info: ../figures/milestone3/delta_cdm_delta_b_zoom.pdf  used on input line 351.
 (pdftex.def)             Requested size: 300.63962pt x 225.47972pt.
 
-Overfull \hbox (44.56482pt too wide) in paragraph at lines 243--244
+Overfull \hbox (44.56482pt too wide) in paragraph at lines 351--352
 [][]
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../figures/milestone3/v_gamma.pdf, id=130, 462.52798pt x 346.89601pt>
+<../figures/milestone3/v_gamma.pdf, id=223, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/v_gamma.pdf Graphic file (type pdf)
 <use ../figures/milestone3/v_gamma.pdf>
-Package pdftex.def Info: ../figures/milestone3/v_gamma.pdf  used on input line 249.
+Package pdftex.def Info: ../figures/milestone3/v_gamma.pdf  used on input line 357.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
 
-Overfull \hbox (21.44412pt too wide) in paragraph at lines 249--250
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 357--358
 [][]
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../figures/milestone3/v_cdm_v_b.pdf, id=131, 462.52798pt x 346.89601pt>
+<../figures/milestone3/v_cdm_v_b.pdf, id=224, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/v_cdm_v_b.pdf Graphic file (type pdf)
 <use ../figures/milestone3/v_cdm_v_b.pdf>
-Package pdftex.def Info: ../figures/milestone3/v_cdm_v_b.pdf  used on input line 255.
+Package pdftex.def Info: ../figures/milestone3/v_cdm_v_b.pdf  used on input line 363.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
 
-Overfull \hbox (21.44412pt too wide) in paragraph at lines 255--257
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 363--365
 [][]
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../figures/milestone3/theta_2.pdf, id=132, 462.52798pt x 346.89601pt>
+<../figures/milestone3/theta_2.pdf, id=225, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/theta_2.pdf Graphic file (type pdf)
 <use ../figures/milestone3/theta_2.pdf>
-Package pdftex.def Info: ../figures/milestone3/theta_2.pdf  used on input line 262.
+Package pdftex.def Info: ../figures/milestone3/theta_2.pdf  used on input line 370.
 (pdftex.def)             Requested size: 300.63962pt x 225.47972pt.
 
-Overfull \hbox (44.56482pt too wide) in paragraph at lines 262--263
+Overfull \hbox (44.56482pt too wide) in paragraph at lines 370--371
 [][]
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../figures/milestone3/phi.pdf, id=133, 462.52798pt x 346.89601pt>
+<../figures/milestone3/phi.pdf, id=226, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/phi.pdf Graphic file (type pdf)
 <use ../figures/milestone3/phi.pdf>
-Package pdftex.def Info: ../figures/milestone3/phi.pdf  used on input line 268.
+Package pdftex.def Info: ../figures/milestone3/phi.pdf  used on input line 376.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
 
-Overfull \hbox (21.44412pt too wide) in paragraph at lines 268--269
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 376--377
 [][]
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../figures/milestone3/phi_psi.pdf, id=134, 462.52798pt x 346.89601pt>
+<../figures/milestone3/phi_psi.pdf, id=227, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/phi_psi.pdf Graphic file (type pdf)
 <use ../figures/milestone3/phi_psi.pdf>
-Package pdftex.def Info: ../figures/milestone3/phi_psi.pdf  used on input line 274.
+Package pdftex.def Info: ../figures/milestone3/phi_psi.pdf  used on input line 382.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
 
-Overfull \hbox (21.44412pt too wide) in paragraph at lines 274--275
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 382--383
 [][]
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+(/home/jorgen/src/master/ast5220/CMB/report/template.bbl
+Underfull \vbox (badness 1803) has occurred while \output is active []
 
-Package hyperref Warning: Suppressing link with empty target on input line 286.
 
-[2pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has been already used, duplicate ignored
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.286 \subsection
-                 {Implementation details}pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
+Package hyperref Warning: Suppressing link with empty target on input line 1.
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.286 \subsection
-                 {Implementation details} <../figures/milestone3/test_delta_cdm_delta_b.pdf>] (/home/jorgen/src/master/ast5220/CMB/report/template.bbl)
-
-Package hyperref Warning: Suppressing link with empty target on input line 318.
-
-[3pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+[4pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.318 \end{document}
-                    pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
+l.1 \begin{thebibliography}{2}
+                              pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.318 \end{document}
-                    pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
+l.1 \begin{thebibliography}{2}
+                              pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.318 \end{document}
-                    pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
+l.1 \begin{thebibliography}{2}
+                               <../figures/milestone3/test_theta_0.pdf> <../figures/milestone3/test_theta_1.pdf> <../figures/milestone3/test_phi.pdf>])
+
+Package hyperref Warning: Suppressing link with empty target on input line 426.
+
+[5pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.318 \end{document}
-                     <../figures/milestone3/test_v_cdm_v_b.pdf> <../figures/milestone3/test_theta_0.pdf> <../figures/milestone3/test_theta_1.pdf> <../figures/milestone3/test_phi.pdf>]
-
-Package hyperref Warning: Suppressing link with empty target on input line 318.
-
-[4pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.318 \end{document}
+l.426 \end{document}
                     pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.318 \end{document}
+l.426 \end{document}
                     pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.318 \end{document}
+l.426 \end{document}
                     pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.318 \end{document}
+l.426 \end{document}
                      <../figures/milestone3/delta_gamma.pdf> <../figures/milestone3/delta_cdm_delta_b.pdf> <../figures/milestone3/delta_cdm_delta_b_zoom.pdf> <../figures/milestone3/v_gamma.pdf>]
 
-Package hyperref Warning: Suppressing link with empty target on input line 318.
+Package hyperref Warning: Suppressing link with empty target on input line 426.
 
-[5pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) has been already used, duplicate ignored
+[6pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.318 \end{document}
+l.426 \end{document}
                     pdfTeX warning (ext4): destination with the same identifier (name{figure.11}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.318 \end{document}
+l.426 \end{document}
                     pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.318 \end{document}
+l.426 \end{document}
                     pdfTeX warning (ext4): destination with the same identifier (name{figure.13}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.318 \end{document}
+l.426 \end{document}
                      <../figures/milestone3/v_cdm_v_b.pdf> <../figures/milestone3/theta_2.pdf> <../figures/milestone3/phi.pdf> <../figures/milestone3/phi_psi.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 318.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 318.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 426.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 426.
  (/home/jorgen/src/master/ast5220/CMB/report/template.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 318.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 318.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 426.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 426.
 Package rerunfilecheck Info: File `template.out' has not changed.
 (rerunfilecheck)             Checksum: 2206627788FF8FAAF9DC8887E21B5D3D;1157.
  ) 
 Here is how much of TeX's memory you used:
- 10717 strings out of 481239
- 152221 string characters out of 5920377
- 440533 words of memory out of 5000000
- 25646 multiletter control sequences out of 15000+600000
- 618170 words of font info for 166 fonts, out of 8000000 for 9000
+ 10727 strings out of 481239
+ 152328 string characters out of 5920377
+ 443576 words of memory out of 5000000
+ 25650 multiletter control sequences out of 15000+600000
+ 622517 words of font info for 171 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 46i,12n,49p,363b,364s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 46i,12n,49p,372b,364s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtcxr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyb.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /home/jorgen/src/master/ast5220/CMB/report/template.pdf (5 pages, 276861 bytes).
+Output written on /home/jorgen/src/master/ast5220/CMB/report/template.pdf (6 pages, 289358 bytes).
 PDF statistics:
- 591 PDF objects out of 1000 (max. 8388607)
- 289 compressed objects within 3 object streams
- 47 named destinations out of 1000 (max. 500000)
+ 609 PDF objects out of 1000 (max. 8388607)
+ 305 compressed objects within 4 object streams
+ 49 named destinations out of 1000 (max. 500000)
  226 words of extra memory for PDF output out of 10000 (max. 10000000)
 

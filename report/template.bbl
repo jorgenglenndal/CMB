@@ -1,7 +1,10 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{2}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
+\bibitem[{Shen(2022)}]{Shen:2022}
+Shen, S. 2022, AST4320: Cosmology and Extragalactic Astrophysics Lecture 1 - 2
+
 \bibitem[{Winther(2023)}]{winther:2023}
-Winther, H.~A. 2023, Numerical Project
+Winther, H.~A. 2023, Numerical Project and Lecture Notes
 
 \end{thebibliography}

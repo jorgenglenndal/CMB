@@ -4,6 +4,7 @@
 %\usepackage[options]{natbib}
 \usepackage{txfonts}
 \usepackage{hyperref}
+\usepackage{amsmath}
 \usepackage{xcolor}
 \usepackage{float}           % set colors
 
@@ -129,12 +130,16 @@ Show and discuss the results.
 %3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
 %3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
 %3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+% Husk at det ikke er snakk om overdensity
+%husk a snakke om tight coupling 
+%husk a snakke om at vi løser fra radiation domination, men initial betingelsene er fra inflasjon p.g.a. horizon frys...
+%sound hoizon vs. particle horizon
 \section{Milestone III}
 %Some introduction about what it is all about.
 %In this milestone we look at 
-In this milestone we calculate the evolution of the structures in the universe. In practice, this is done by 
-solving the perturbed Einstein-Boltzmann equations numerically, which will give us the time evolution of different physical quantities of interest
-at different Fourier scales, $k$. We will go into more detail in the theory section. A detailed derivation of the relevant equations is given in \cite{winther:2023}. \\
+In this milestone we calculate the evolution of the structures in the universe from after inflation until today.  In practice, this is done by 
+solving the perturbed Einstein-Boltzmann equations numerically with initial conditions from inflation. This will give us the time evolution of the different physical quantities we are interested
+in at different Fourier scales, $k$. We will go into more detail in the theory section. A detailed derivation of the relevant equations is given in \cite{winther:2023}. \\
 \\
 Since the observed CMB is a measurement of the photon temperature field today, it is of great interest for us to calculate the photon temperature fluctuations 
 in the universe at all times and Fourier scales. These fluctuations can be evaluated today to reconstruct the CMB power spectrum we observe. 
@@ -142,27 +147,114 @@ in the universe at all times and Fourier scales. These fluctuations can be evalu
 \subsection{Theory}
 %The theory behind this milestone.
 %Boltzmann equations, spherical harmonics, perturbation theory...
-Since the universe is not homogeneous, we will introduce perturbations to the distribution functions, $f_i$, for baryons, photons and CDM, i.e. \[f_i(t,\vec{x},\vec{p})
- = \overline{f_i}(t,\vec{p}) + \delta f_i(t,\vec{x},\vec{p}),\] where $\bar{f_i}$ is the background distribution function and $\delta f_i$ is the perturbation. These perturbations will perturb the 
-energy momentum tensor, which in turn will perturb the metric. This will then change how particles move through space and time. We will therefore have a system of coupled differential equations.
-We can apply linear perturbation theory to the Einstein-Boltzmann equations in Fourier space with $x = \ln a$ as the time variable. We rewrite the equations
-in Fourier space because the differential equations become simpler. The photon temperature perturbations, $\Theta = \delta T/\bar{T}$ are expanded in Legendre multipoles,
-such that we are left with multipoles, $\Theta_\ell$ of the photon distribution.\\
+Some regions in the early universe expanded more rapidly than others during inflation due to quantum fluctuations in the inflaton field, \cite{winther:2023}. These fluctuations
+made the energy density of the universe inhomogeneous, which introduced fluctuations in the famous Friedmann-Lemaître-Robertson-Walker (FLRW) metric. We can find the initial conditions for the metric perturbations, $\Psi$ and $\Phi$, in the Newtonian gauge, and from there find the initial conditions for
+the energy density perturbations of interest. This is done in \cite{winther:2023}.\\
+\noindent
 \\
-The photon 
+The perturbations in the photon temperature field, $\delta T$, today are much smaller than the background temperature, $\overline{T}$. The same is true for the matter field on large scales.
+This suggests that we can apply linear perturbation theory on the distribution functions and expect 
+that the result will be valid today. The perturbed distribution functions, $f_i$, for baryons, photons and CDM take the form \[f_i(t,\vec{x},\vec{p})
+ = \overline{f_i}(t,\vec{p}) + \delta f_i(t,\vec{x},\vec{p}),\] where $\overline{f_i}$ is the background distribution function and $\delta f_i$ is the perturbation. These perturbations will of course perturb the 
+energy momentum tensor in the Einstein equations, which in turn will perturb the metric. This will then change how particles move through space and time, \cite{winther:2023}. We will therefore have a system of coupled differential equations.
+The perturbed Einstein-Boltzmann equations can be solved in Fourier space with $x = \ln a$ as the time variable. The photon temperature perturbations, here defined as the relative perturbation $\Theta = \delta T/\overline{T}$, are expanded in Legendre multipoles,
+such that we are left with multipoles, $\Theta_\ell$ of the photon distribution. Similarly, the CDM and baryon overdensities we solve for are defined as $\delta_\mathrm{CDM} = \frac{\delta \rho_{CDM}}{\overline{\rho}_{CDM}}$ and $\delta_\mathrm{b} = \frac{\delta \rho_{b}}{\overline{\rho}_{b}}$.
+The velocities are defined similarly, such that they are dimensionless. We do not solve the equations for polarization, and neutrino perturbations are not included.\\ 
+\\
+The initial conditions:
+$$
+\boxed{
+\begin{aligned}
+\Psi &= -\frac{2}{3} \\
+\Phi &= -\Psi \\
+\delta_{\rm CDM} &= \delta_b = -\frac{3}{2} \Psi \\
+v_{\rm CDM} &= v_b = -\frac{ck}{2\mathcal{H}} \Psi \\
+&\text{Photons:}\\
+\Theta_0 &= -\frac{1}{2} \Psi \\
+\Theta_1 &= +\frac{ck}{6\mathcal{H}}\Psi \\
+\Theta_2 &= -\frac{20ck}{45\mathcal{H}\tau^\prime} \Theta_1 \\
+\Theta_\ell &= -\frac{\ell}{2\ell+1} \frac{ck}{\mathcal{H}\tau^\prime} \Theta_{\ell-1}\\
+\end{aligned}
+}
+$$
 
+The photon equations:
+$$
+\boxed{
+\begin{aligned}
+\Theta^\prime_0 &= -\frac{ck}{\mathcal{H}} \Theta_1 - \Phi^\prime, \\
+\Theta^\prime_1 &=  \frac{ck}{3\mathcal{H}} \Theta_0 - \frac{2ck}{3\mathcal{H}}\Theta_2 +
+\frac{ck}{3\mathcal{H}}\Psi + \tau^\prime\left[\Theta_1 + \frac{1}{3}v_b\right], \\
+\Theta^\prime_\ell &= \frac{\ell ck}{(2\ell+1)\mathcal{H}}\Theta_{\ell-1} - \frac{(\ell+1)ck}{(2\ell+1)\mathcal{H}}
+\Theta_{\ell+1} + \tau^\prime\left[\Theta_\ell - \frac{1}{10}\Theta_2
+\delta_{\ell,2}\right],\\ 
+& \mathrm{where} \ \ 2 \leq \ell \textless \ell_{\textrm{max}} \\
+\Theta_{\ell}^\prime &= \frac{ck}{\mathcal{H}}
+\Theta_{\ell-1}-c\frac{\ell+1}{\mathcal{H}\eta(x)}\Theta_\ell+\tau^\prime\Theta_\ell,
+\quad\quad \ell = \ell_{\textrm{max}}\\
+\end{aligned}
+}
+$$
 
+Cold dark matter and baryons:
+$$
+\boxed{
+\begin{aligned}
+\delta_{\rm CDM}^\prime &= \frac{ck}{\mathcal{H}} v_{\rm CDM} - 3\Phi^\prime \\
+v_{\rm CDM}^\prime &= -v_{\rm CDM} -\frac{ck}{\mathcal{H}} \Psi \\
+\delta_b^\prime &= \frac{ck}{\mathcal{H}}v_b -3\Phi^\prime \\
+v_b^\prime &= -v_b - \frac{ck}{\mathcal{H}}\Psi + \tau^\prime R(3\Theta_1 + v_b) \\
+\end{aligned}
+}
+$$
+Metric perturbations:
+$$
+\boxed{
+\begin{aligned}
+\Phi^\prime &= \Psi - \frac{c^2k^2}{3\mathcal{H}^2} \Phi\\
+&+ \frac{H_0^2}{2\mathcal{H}^2}
+\left[\Omega_{\rm CDM 0} a^{-1} \delta_{\rm CDM} + \Omega_{b 0} a^{-1} \delta_b + 4\Omega_{\gamma 0}
+a^{-2}\Theta_0\right] \\
+\Psi &= -\Phi - \frac{12H_0^2}{c^2k^2a^2}\left[\Omega_{\gamma 0}\Theta_2\right], \\
+\end{aligned}
+}
+$$
+where $R = \frac{4\Omega_{\gamma 0}}{3\Omega_{b 0} a}$. Some of these equations are numerically unstable early on, where the large value of $\tau^\prime$ is multiplied by the small value of $(3\Theta_1+v_b)$.  
+This regime is known as the tight coupling regime, where the universe was opaque, and it can be related to time when the following three conditions hold simultaneously: $|\tau^\prime|>10$, $|\tau^\prime|>10\cdot \frac{ck}{\mathcal{H}}$ and
+$x\leq -8.3$. The unstable equations are rewritten below.
+
+$$
+\boxed{
+\begin{aligned}
+q &= \frac{-[(1-R)\tau^\prime + (1+R)\tau^{\prime\prime}](3\Theta_1+v_b)}{(1+R)\tau^\prime + \frac{\mathcal{H}^\prime}{\mathcal{H}} -1}\\
+  &\frac{-\frac{ck}{\mathcal{H}}\Psi + (1-\frac{\mathcal{H}^\prime}{\mathcal{H}})\frac{ck}{\mathcal{H}}(-\Theta_0 +
+2\Theta_2) - \frac{ck}{\mathcal{H}}\Theta_0^\prime}{(1+R)\tau^\prime + \frac{\mathcal{H}^\prime}{\mathcal{H}} -1}\\
+v_b^\prime &= \frac{1}{1+R} \left[-v_b - \frac{ck}{\mathcal{H}}\Psi + R(q +
+\frac{ck}{\mathcal{H}}(-\Theta_0 + 2\Theta_2) - \frac{ck}{\mathcal{H}}\Psi)\right]\\
+\Theta^\prime_1 &= \frac{1}{3} (q - v_b^\prime).
+\end{aligned}
+}
+$$
+The $2 \leq l$ photon multipoles in the tight coupling regime are given by the same expressions as in the initial conditions, but these multipoles are very small in this regime,
+so we can simply set them to zero. The $\Theta_2$ multipole is calculated for numerical stability.\\
+\\
+
+ 
 
 
 \subsection{Implementation details}
-Something about the numerical work.
+We solved the differential equations in two different regimes and "sewed" the solutions together.
+Since the last value in the first regime was used as an initial condition for the second regime, we removed the last value 
+in the first regime, when "sewing" the solutions together, to remove the overlap between the solutions. A for loop was used to loop through all the Fourier scales, $k$, of interest.
+The differential equations were solved using a Runge-Kutta 4 ODE solver. The solution was then splined with a 2D spline, since we have a complete solution in time for each $k$ value.\\ \\
+Solutions of the background universe and the recombination history of the universe was also used.
 
 \subsection{Results}
 \subsubsection{Test results}
 The code produces the following results with the cosmological test parameters given in table \ref{tab:test_parameters}. All the figures show plots at three different scales.
-In figures \ref{fig:test1} and \ref{fig:test2} we see the overdensity and the velocity, respectively, for both CDM and baryons. In figures \ref{fig:test3}
+In figures \ref{fig:test1} and \ref{fig:test2} we see the density perturbation and the velocity, respectively, for both CDM and baryons. In figures \ref{fig:test3}
 and \ref{fig:test4} we see the photon temperature monopole, $\Theta_0$, and the photon temperature dipole, $\Theta_1$, respectively. The gravitational potential, $\Phi$, is plotted
-in figure \ref{fig:test5}. All plots seem to agree with the plots produced by \cite{winther:2023}.   
+in figure \ref{fig:test5}. All plots seem to agree with the plots shown in \cite{winther:2023}.   
 
 
 \begin{table}[h!] %%h! er for å tvinge tabellen til å være nærmest mulig her i dokumentet
@@ -189,7 +281,7 @@ in figure \ref{fig:test5}. All plots seem to agree with the plots produced by \c
 \begin{figure}[h!]
    %\hspace{-0.48cm}   
    \includegraphics[scale=0.6]{../figures/milestone3/test_delta_cdm_delta_b.pdf}
-   \caption{The CDM overdensities, in solid lines, and the absolute value of the baryon overdensities,
+   \caption{The CDM overdensity, in solid lines, and the absolute value of the baryon overdensity,
     in dotted lines, are plotted at different scales, $k$.}\label{fig:test1}
 \end{figure}
 
@@ -204,32 +296,48 @@ in figure \ref{fig:test5}. All plots seem to agree with the plots produced by \c
 \begin{figure}[h!]
    %\hspace{-0.48cm}   
    \includegraphics[scale=0.6]{../figures/milestone3/test_theta_0.pdf}
-   \caption{The photon temperature monopole at different scales, $k$.}\label{fig:test3}
+   \caption{The photon temperature monopole, $\Theta_0$, at different scales, $k$.}\label{fig:test3}
 \end{figure}
 
 \begin{figure}[h!]
    %\hspace{-0.48cm}   
    \includegraphics[scale=0.6]{../figures/milestone3/test_theta_1.pdf}
-   \caption{The photon temperature dipole at different scales, $k$.}\label{fig:test4}
+   \caption{The photon temperature dipole, $\Theta_1$, at different scales, $k$.}\label{fig:test4}
 \end{figure}
 
 \begin{figure}[h!]
    %\hspace{-0.48cm}   
    \includegraphics[scale=0.6]{../figures/milestone3/test_phi.pdf}
-   \caption{The gravitational potential at different scales, $k$.}\label{fig:test5}
+   \caption{The gravitational potential, $\Phi$, at different scales, $k$.}\label{fig:test5}
 \end{figure}
 
 \subsubsection{Results}
 %theory section maybe???
 % write about the slope of delta_cdm and compare to analytical result...all plots in general
-Gravity travels with the same velocity as light. Therefore, the conformal time, $\eta$, gives us the maximum reach of gravity, e.g. if $\eta= 1$ Mpc we know that 
-scales up to 1 Mpc will cluster due to gravity. This is also reflected in our results, hopefully...  
+In figure \ref{fig:delta_cdm_delta_b_zoom}, which is a zoomed in version of figure \ref{fig:delta_cdm_delta_b}, we see more clearly what is going on. Gravity travels with the same speed as light. This means that the conformal time, $\eta$,
+gives us the maximum reach of gravity at any given time. Therefore, if the scale, $k$, of interest is larger than the conformal time, we should not see any correlation,
+since the scale is causally disconnected. Using that Fourier modes enter the particle horizon when $k\eta=1$, we find
+that the scale $k=10/\mathrm{Mpc}$ enters the particle horizon at $x\sim -15.4$.
+We see that our results are consistent with the theory, as CDM clusters on this scale at $x\sim -16$. The reason why the overdensity oscillates, is because 
+the mass is first compressed by gravity, then the pressure increases such that the mass rebounds. This process is then repeated until the Jeans mass is reached, where the Jeans mass is the mass needed to form structure.
+Since the Jeans mass, in a static universe, depends linearly on the sound speed, we do not expect baryon structure to form in general before recombination, where the sound speed was $\sim c$, \cite{Shen:2022}. However, right after recombination  
+the sound speed freezes out, and structures can more easily form. As recombination happened at $x=-7$, we can see in our results that the baryon overdensity starts to continously increase at this time. This supports the sound speed discussion.
+For CDM we do not have any oscillating behavior at early times since CDM is pressureless and gravity only has to works against the cosmic acceleration.   
+We note that the overdensity at some times is less than -1, which by definition is impossible. This is not a concern, since the quantities have not been scaled to represent physical values. 
+\\ \\
+In figure \ref{fig:v_cdm_v_b} we see that the oscillations in the baryonic overdensity has an expected corresponding oscillation in the baryonic fluid velocity, as the mass is contracting and rebounding repeatedly.
+At a larger scale, seen in green, the mode enters the particle horizon later, and the baryonic overdensity undergoes fewer oscillation. For even larger scales, seen in 
+red and blue, the modes enter the particle horizon after recombination, such that there are no oscillations.
+
+%In figure \ref{fig:delta_gamma} the photon overdensity. 
+%Velocity is negative right after perturbation has rebound
+
 %Show and discuss the results.
 
 \begin{figure}[h!]
    %\hspace{-0.48cm}   
    \includegraphics[scale=0.6]{../figures/milestone3/delta_gamma.pdf}
-   \caption{The photon density perturbation, $\delta_\gamma = 4\Theta_0$, at four different scales, $k$. }\label{fig:delta_gamma}
+   \caption{The comparable photon overdensity, $\delta_\gamma = 4\Theta_0$, at four different scales, $k$. }\label{fig:delta_gamma}
 \end{figure}
 
 \begin{figure}[h!]

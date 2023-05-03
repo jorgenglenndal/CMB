@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex template"] 1682884524 "template.aux" "template.bbl" "template" 1682950633
+["bibtex template"] 1683147434 "template.aux" "template.bbl" "template" 1683148081
   "./aa.bst" 1682879060 32103 296074362bd3e822c5209e1570c1d28f ""
-  "refs.bib" 1682879359 2333 a4ade942a590d0e2fb0296e2083ba454 ""
-  "template.aux" 1682950633 8236 bdafbe04e498fd477f4f0b93759fece9 "pdflatex"
+  "refs.bib" 1683145374 2548 8b7c7ec2f332b528f4734a0f46976557 ""
+  "template.aux" 1683147936 8444 c65f303cf456d76d783ba923cac53bf2 "pdflatex"
   (generated)
   "template.blg"
   "template.bbl"
-["pdflatex"] 1682950632 "/home/jorgen/src/master/ast5220/CMB/report/template.tex" "/home/jorgen/src/master/ast5220/CMB/report/template.pdf" "template" 1682950633
+["pdflatex"] 1683147936 "/home/jorgen/src/master/ast5220/CMB/report/template.tex" "/home/jorgen/src/master/ast5220/CMB/report/template.pdf" "template" 1683148081
   "../figures/milestone3/delta_cdm_delta_b.pdf" 1682777230 19209 9f5e0b574cb8e85abd78944e016fdb6d ""
-  "../figures/milestone3/delta_cdm_delta_b_zoom.pdf" 1682950631 18062 3c193b7f6899af2c5067a75a6fe84a40 ""
+  "../figures/milestone3/delta_cdm_delta_b_zoom.pdf" 1683106556 18062 a0b0e5d120a62b8962536de2789af7c3 ""
   "../figures/milestone3/delta_gamma.pdf" 1682777227 22651 b9aa52ec3b9dcdcc8862eb87a75d8cfd ""
   "../figures/milestone3/phi.pdf" 1682777237 12888 d2c0db1005dee48f8781ae13874e0a8b ""
   "../figures/milestone3/phi_psi.pdf" 1682777238 12147 182da4fc9e91cb8bac33da11b13007e7 ""
@@ -21,8 +21,8 @@
   "../figures/milestone3/v_cdm_v_b.pdf" 1682777233 21476 94c9be7a9bb39159bacee95450b00904 ""
   "../figures/milestone3/v_gamma.pdf" 1682777231 20869 88d096f1c7d4a402d6221de42dcc95d7 ""
   "/etc/texmf/web2c/texmf.cnf" 1660813866 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/jorgen/src/master/ast5220/CMB/report/template.aux" 1682950633 8236 bdafbe04e498fd477f4f0b93759fece9 ""
-  "/home/jorgen/src/master/ast5220/CMB/report/template.tex" 1682884521 13936 32f793d2609365d7dd0d9b954ca8fc25 ""
+  "/home/jorgen/src/master/ast5220/CMB/report/template.aux" 1683147936 8444 c65f303cf456d76d783ba923cac53bf2 ""
+  "/home/jorgen/src/master/ast5220/CMB/report/template.tex" 1683148081 21752 5ab1e47ed9ca5dec957035c2cfe5a6e8 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm" 1136768653 3584 adb004a0c8e7c46ee66cad73671f37b4 ""
@@ -182,14 +182,14 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1660813983 4770781 1ed1abab22da9c3e2cc82e4db562318b ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1660814020 8261191 34fb72e2c98bf55f98b504db79b18241 ""
   "aa.cls" 1633449284 63925 9ce735764be70454f59c9ada3bfbf8f6 ""
-  "template.aux" 1682950633 8236 bdafbe04e498fd477f4f0b93759fece9 "pdflatex"
-  "template.bbl" 1682884524 201 d968e0d4cb9ebb5225bf5bd88a9e3f4b "bibtex template"
-  "template.out" 1682950633 1157 2206627788ff8faaf9dc8887e21b5d3d "pdflatex"
-  "template.tex" 1682884521 13936 32f793d2609365d7dd0d9b954ca8fc25 ""
+  "template.aux" 1683147936 8444 c65f303cf456d76d783ba923cac53bf2 "pdflatex"
+  "template.bbl" 1683147435 333 e1365817e8a52a771a0781cd172a2c01 "bibtex template"
+  "template.out" 1683147936 1157 2206627788ff8faaf9dc8887e21b5d3d "pdflatex"
+  "template.tex" 1683148081 21752 5ab1e47ed9ca5dec957035c2cfe5a6e8 ""
   (generated)
   "/home/jorgen/src/master/ast5220/CMB/report/template.log"
+  "template.aux"
+  "template.log"
   "template.out"
   "/home/jorgen/src/master/ast5220/CMB/report/template.pdf"
-  "template.log"
   "template.pdf"
-  "template.aux"
