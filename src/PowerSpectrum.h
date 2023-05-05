@@ -31,6 +31,8 @@ class PowerSpectrum {
     const int n_k      = 100;
     const double k_min = Constants.k_min;
     const double k_max = Constants.k_max;
+    const int n_x = 100;
+    Vector x_array = Utils::linspace(-10.,0.,n_x);
     
     // The ells's we will compute Theta_ell and Cell for
     Vector ells{ 
@@ -103,6 +105,9 @@ class PowerSpectrum {
     
     // Do all the solving: bessel functions, LOS integration and then compute Cells
     void solve();
+
+    double get_j_ell(const double z, const int ell) const;
+
 
     // The dimensionless primordial power-spectrum Delta = 2pi^2/k^3 P(k)
     double primordial_power_spectrum(const double k) const;

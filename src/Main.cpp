@@ -68,7 +68,7 @@ int main(int argc, char **argv){
   Perturbations pert(&cosmo, &rec);
 
   pert.solve();
-  pert.info();
+  //pert.info();
   
   // Output perturbation quantities
   double kvalue0 = 0.001 / Constants.Mpc;
@@ -84,7 +84,9 @@ int main(int argc, char **argv){
   //=========================================================================
   // Module IV
   //=========================================================================
-
+  
+  // Source function can be replaced by expression in callin.
+  // LOS integral can be computed more accurately
   PowerSpectrum power(&cosmo, &rec, &pert, A_s, n_s, kpivot_mpc);
   power.solve();
   power.output("cells.txt");
