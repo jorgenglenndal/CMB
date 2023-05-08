@@ -42,14 +42,21 @@ BackgroundCosmology::BackgroundCosmology(
 
 // Solve the background
 void BackgroundCosmology::solve(){
+  
   Utils::StartTiming("Eta and t");
     
   //=============================================================================
   // DONE: Set the range of x and the number of points for the splines
   // For this Utils::linspace(x_start, x_end, npts) is useful
   //=============================================================================
-  int npts = 1e+3;
+  int npts = 1e3;
   Vector x_array = Utils::linspace(x_start, x_end, npts);
+  Vector Hp_vec;
+  for (int i=0;i<x_array.size();i++){
+   Hp_vec.push_back(exp(x_array[i])*H_of_x(x_array[i]));
+  }
+  //std::cout << "her" << std::endl;
+  Hp_of_x_spline.create(x_array,Hp_vec,"Hp");
 
   // The ODE for deta/dx
   ODEFunction detadx = [&](double x, const double *eta, double *detadx){
@@ -82,7 +89,7 @@ void BackgroundCosmology::solve(){
   // ...
   
   Vector eta_init{Constants.c/Hp_of_x(x_start)};
-  Vector t_init{1/(2*H_of_x(x_start))};
+  Vector t_init{1./(2.*H_of_x(x_start))};
   ODESolver ode_for_eta_of_x;
   ODESolver ode_for_t_of_x;
   ode_for_eta_of_x.solve(detadx, x_array, eta_init);
@@ -93,6 +100,12 @@ void BackgroundCosmology::solve(){
   auto t_array = ode_for_t_of_x.get_data_by_component(0);
   eta_of_x_spline.create(x_array,eta_array,"eta_of_x");
   t_of_x_spline.create(x_array,t_array,"t_of_x");
+  
+  
+  
+
+
+
 
   
 
@@ -120,8 +133,8 @@ double BackgroundCosmology::Hp_of_x(double x) const{
   // DONE: Implement...
   //=============================================================================
   //...
-  double Hp = exp(x)*H_of_x(x);
-  return Hp;
+  return exp(x)*H_of_x(x);
+  //return Hp_of_x_spline(x);
 }
 
 double BackgroundCosmology::dHpdx_of_x(double x) const{
@@ -134,6 +147,7 @@ double BackgroundCosmology::dHpdx_of_x(double x) const{
   double inside_the_root = (OmegaB+OmegaCDM)*pow(exp(x),-1.)+ (OmegaR+OmegaNu)*pow(exp(x),-2.)+OmegaK+OmegaLambda*pow(exp(x),2);
   double derivative_of_inside_the_root = -(OmegaB+OmegaCDM)*pow(exp(x),-1.) -2.* (OmegaR+OmegaNu)*pow(exp(x),-2.)+2.*OmegaLambda*pow(exp(x),2);
   return H0*1./2.*pow(inside_the_root,-1./2.)*derivative_of_inside_the_root;
+  //return Hp_of_x_spline.deriv_x(x);
 }
 
 double BackgroundCosmology::ddHpddx_of_x(double x) const{
@@ -146,7 +160,7 @@ double BackgroundCosmology::ddHpddx_of_x(double x) const{
   double inside_the_root = (OmegaB+OmegaCDM)*pow(exp(x),-1.)+ (OmegaR+OmegaNu)*pow(exp(x),-2.)+OmegaK+OmegaLambda*pow(exp(x),2);
   double derivative_of_inside_the_root = -(OmegaB+OmegaCDM)*pow(exp(x),-1.) -2.* (OmegaR+OmegaNu)*pow(exp(x),-2.)+2.*OmegaLambda*pow(exp(x),2);
   double double_derivative_of_inside_the_root = (OmegaB+OmegaCDM)*pow(exp(x),-1.) +4.* (OmegaR+OmegaNu)*pow(exp(x),-2.)+4.*OmegaLambda*pow(exp(x),2.);
-
+  //Hp_of_x_spline.deriv_xx(x);
   return H0*1./2.*(derivative_of_inside_the_root*(-1./2.)*pow(inside_the_root,-3./2.)*derivative_of_inside_the_root+pow(inside_the_root,-1./2.)*double_derivative_of_inside_the_root);
 }
 

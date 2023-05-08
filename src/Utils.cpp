@@ -160,11 +160,13 @@ namespace Utils{
     
     // The library fails for the largest arguments so simply put to zero
     // to avoid any issues with this (these large values not very relevant for us anyway)
+    //std::cout << "using c++17" << std::endl;
     if(x > 14000.0) return 0.0;
     
     return std::sph_bessel(ell, x);
 #else
     // Otherwise lets use GSL 
+    //std::cout << "using gsl" << std::endl;
    
     // For 'small' ell GSL fails for the largest arguments so simply put to zero
     // to avoid issues with this (these large values not very relevant for us anyway)

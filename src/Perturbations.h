@@ -9,6 +9,7 @@
 #include "Utils.h"
 #include "BackgroundCosmology.h"
 #include "RecombinationHistory.h"
+#include <iomanip>      // std::setprecision
 #include "armadillo"
 
 using Vector   = std::vector<double>;
@@ -21,12 +22,12 @@ class Perturbations{
     RecombinationHistory *rec  = nullptr;
    
     // The scales we integrate over
-    const int n_k        = 100.;
+    const int n_k        = 100;
     const double k_min   = Constants.k_min;
     const double k_max   = Constants.k_max;
     
     // Start and end of the time-integration
-    const int n_x        = 1000;
+    const int n_x        = 1e3;
     const double x_start = Constants.x_start;
     const double x_end   = Constants.x_today;
     //const double x_today = Constants.x_today;

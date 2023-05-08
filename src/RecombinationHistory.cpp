@@ -250,7 +250,7 @@ void RecombinationHistory::solve_for_optical_depth_tau(){
   Utils::StartTiming("opticaldepth");
 
   // Set up x-arrays to integrate over. We split into three regions as we need extra points in reionisation
-  const int npts = 4000;
+  const int npts = 1e3;
   Vector x_array = Utils::linspace(x_start, x_today, npts);
   Vector x_array_reverse = Utils::linspace(x_today, x_start, npts);
  
@@ -317,7 +317,7 @@ double RecombinationHistory::g_tilde(double x) const{
 //sound_horizon
 void RecombinationHistory::sound_horizon(){
    //may be overkill with x_very_very_early = -100
-    Vector x_array = Utils::linspace(x_very_very_early,x_today,4*npts_rec_arrays);
+    Vector x_array = Utils::linspace(x_start,x_today,npts_rec_arrays);
     const double c = Constants.c;
     const double sigma_T = Constants.sigma_T;
     const double OmegaR0 = cosmo->get_OmegaR(0.0);
@@ -333,9 +333,9 @@ void RecombinationHistory::sound_horizon(){
       dsdx[0] = cs/Hp;
       return GSL_SUCCESS;
     };
-  double R_init = 4.*OmegaR0/(3.*OmegaB0*exp(x_very_very_early));
+  double R_init = 4.*OmegaR0/(3.*OmegaB0*exp(x_start));
   double cs_init = c*sqrt(R_init/(3.*(1.+R_init)));
-  double Hp_init = cosmo->Hp_of_x(x_very_very_early);
+  double Hp_init = cosmo->Hp_of_x(x_start);
 
   ODESolver sound_horizon_ode;
   Vector sound_horizon_init = {cs_init/Hp_init};

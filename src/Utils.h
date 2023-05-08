@@ -13,6 +13,7 @@
 #include <complex_bessel.h>
 #endif
 #include "Spline.h"
+//#include "spline_lin.h"
 #include "ODESolver.h"
 
 // The constants used in this code. Everything is here in SI units
@@ -46,9 +47,12 @@ extern struct ConstantsAndUnits {
   const double xhi1        = 4.0 * epsilon_0;             // Ionization energy for singly ionized Helium
   
   // Min and max k-value
-  const double k_min = 0.00005 / Mpc;
-  const double k_max = 0.1     / Mpc;
-
+  const double k_min = 0.00005   / Mpc;
+  const double k_max = 0.3       / Mpc;///5  / Mpc;//0.3     / Mpcmak;//0.24     / Mpc;
+  
+  
+  //const double k_min_power = 0.000023   / Mpc;
+  //const double k_max_power = 0.01       / Mpc;///5
   //const double k_min = 1e-4 / Mpc;
   //const double k_max = 3e-1 / Mpc;
 

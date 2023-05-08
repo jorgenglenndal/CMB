@@ -3,7 +3,7 @@
 SHELL := /bin/bash
 
 # Set compiler (use =c++17 if you have this availiable)
-CC = g++ -std=c++11 
+CC = g++ -std=c++17 
 
 # Paths to GSL library
 
@@ -41,17 +41,18 @@ TARGETS := cmb
 all: $(TARGETS)
 
 # OBJECT FILES
-OBJS = Main.o Utils.o BackgroundCosmology.o RecombinationHistory.o Perturbations.o PowerSpectrum.o Spline.o ODESolver.o
+OBJS = Main.o Utils.o BackgroundCosmology.o RecombinationHistory.o Perturbations.o PowerSpectrum.o Spline.o ODESolver.o 
 
 # DEPENDENCIES
 Main.o                  : BackgroundCosmology.h RecombinationHistory.h Perturbations.h PowerSpectrum.h
 Spline.o                : Spline.h
+
 ODESolver.o             : ODESolver.h
 Utils.o                 : Utils.h Spline.h ODESolver.h
-BackgroundCosmology.o   : BackgroundCosmology.h Utils.h Spline.h ODESolver.h
+BackgroundCosmology.o   : BackgroundCosmology.h Utils.h Spline.h ODESolver.h 
 RecombinationHistory.o  : RecombinationHistory.h BackgroundCosmology.h
 Perturbations.o         : Perturbations.h BackgroundCosmology.h RecombinationHistory.h
-PowerSpectrum.o         : PowerSpectrum.h BackgroundCosmology.h RecombinationHistory.h Perturbations.h
+PowerSpectrum.o         : PowerSpectrum.h BackgroundCosmology.h RecombinationHistory.h Perturbations.h 
 Examples.o              : Utils.h Spline.h ODESolver.h
 
 examples: Examples.o Utils.o Spline.o ODESolver.o

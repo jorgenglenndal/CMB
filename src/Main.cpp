@@ -12,7 +12,14 @@ int main(int argc, char **argv){
   // Parameters
   //=========================================================================
 
-  // Background parameters
+  //Background parameters
+  //double h           = 0.7;//0.67;
+  //double OmegaB      = 0.05;
+  //double OmegaCDM    = 0.45;//0.267;
+  //double OmegaK      = 0.0;
+  //double Neff        = 0;//3.046;
+  //double TCMB        = 2.7255;
+
   double h           = 0.67;
   double OmegaB      = 0.05;
   double OmegaCDM    = 0.267;
@@ -71,28 +78,32 @@ int main(int argc, char **argv){
   //pert.info();
   
   // Output perturbation quantities
-  double kvalue0 = 0.001 / Constants.Mpc;
-  double kvalue1 = 0.01 / Constants.Mpc;
-  double kvalue2 = 0.1 / Constants.Mpc;
-  pert.output(kvalue0, "perturbations_k_0_001.txt");
-  pert.output(kvalue1, "perturbations_k_0_01.txt");
-  pert.output(kvalue2, "perturbations_k_0_1.txt");
+  //double kvalue0 = 0.001 / Constants.Mpc;
+  //double kvalue1 = 0.01 / Constants.Mpc;
+  //double kvalue2 = 0.1 / Constants.Mpc;
+  //pert.output(kvalue0, "perturbations_k_0_001.txt");
+  //pert.output(kvalue1, "perturbations_k_0_01.txt");
+  //pert.output(kvalue2, "perturbations_k_0_1.txt");
   
   // Remove when module is completed
-  return 0;
+  //return 0;
   
   //=========================================================================
   // Module IV
   //=========================================================================
   
-  // Source function can be replaced by expression in callin.
-  // LOS integral can be computed more accurately
+  
+  //takes 20 min to run
   PowerSpectrum power(&cosmo, &rec, &pert, A_s, n_s, kpivot_mpc);
   power.solve();
-  power.output("cells.txt");
-  
+  power.output("cells_result_warning.txt");
+  power.output_matter("matter_power_spectrum_result_warning.txt");
   // Remove when module is completed
-  return 0;
+  //power.output_Source("source_new.txt");
+  //power.output_45("45_new.txt");
+  //power.output_test45("test45_new.txt");
+  
 
   Utils::EndTiming("Everything");
+  return 0;
 }

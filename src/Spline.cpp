@@ -120,8 +120,8 @@ double Spline::eval(const double x) const{
   // If out of bounds show a warning and set x to boundary value
   out_of_bounds_check(x);
   double xx = x;
-  if(x < xmin) xx = xmin;
-  if(x > xmax) xx = xmax;
+  if(x < xmin) xx = 0.;
+  if(x > xmax) xx = 0.;
 
   // Return f, f' or f'' depending on value of deriv
 #ifdef _USEOPENMP
@@ -146,8 +146,8 @@ double Spline::eval_deriv(const double x, const int deriv) const{
   // If out of bounds show a warning and set x to boundary value
   out_of_bounds_check(x);
   double xx = x;
-  if(x < xmin) xx = xmin;
-  if(x > xmax) xx = xmax;
+  if(x < xmin) xx = 0.;
+  if(x > xmax) xx = 0.;
 
   // Return f, f' or f'' depending on value of deriv
 #ifdef _USEOPENMP

@@ -331,113 +331,113 @@ def milestone3():
     #print(x_k[nearest_index(eta_x_k,2*np.pi*Mpc/0.01)])
     #print(x_k[nearest_index(eta_x_k,2*np.pi*Mpc/0.001)])
     
-    plt.title("$\delta_\mathrm{CDM},\delta_b$")
-    plt.semilogy(x_k0,delta_cdm_k0,'b',label= "k = 0.001/Mpc",alpha=0.6) 
-    plt.semilogy(x_k0,abs(delta_b_k0),'--',color='b')
-    
-    plt.semilogy(x_k1,delta_cdm_k1,color= 'r',label= "k = 0.01/Mpc",alpha = 0.6)
-    plt.semilogy(x_k1,abs(delta_b_k1),'--',color ='r')
-    
-
-    green_ = (0, 0.65, 0)  # RGB tuple for green
-    plt.semilogy(x_k2,delta_cdm_k2,color = green_,label= "k = 0.1/Mpc",alpha = 0.6)
-    plt.semilogy(x_k2,abs(delta_b_k2),'--',color= green_)
-    #plt.show()
-    plt.xlim(-18,0)
-    plt.xlabel('x')
-    #plt.ylim(1e-10,1e5)
-    plt.legend()
-#    plt.savefig("test_delta_cdm_delta_b.pdf")
-    plt.show()
-
-    ###
-    plt.title("$v_\mathrm{CDM},v_b$")
-    plt.semilogy(x_k0,v_cdm_k0,'b', label= "k = 0.001/Mpc",alpha=0.6)
-    plt.semilogy(x_k0,abs(v_b_k0),'--',color='b')
-    
-    plt.semilogy(x_k1,v_cdm_k1,color='r',label= "k = 0.01/Mpc",alpha = 0.6)
-    plt.semilogy(x_k1,abs(v_b_k1),'--',color ='r')
-    
-    plt.semilogy(x_k2,v_cdm_k2,color = green_,label= "k = 0.1/Mpc",alpha = 0.6)
-    plt.semilogy(x_k2,abs(v_b_k2),'--',color=green_)
-
-    plt.xlim(-18,0)
-    plt.ylim(1e-6,1e2)
-    plt.legend()
-    plt.xlabel('x')
-    #plt.ylabel('[m/s]')
-    #plt.savefig("test_v_cdm_v_b.pdf")
-    plt.show()
-    
-    ###
-    plt.title("$\Theta_0$")
-    plt.plot(x_k0,theta0_k0,label="k = 0.001/Mpc")     
-    plt.plot(x_k1,theta0_k1,label="k = 0.01/Mpc")
-    plt.plot(x_k2,theta0_k2,label="k = 0.1/Mpc")
-    plt.xlabel('x')
-    plt.xlim(-18,0)
-    plt.ylim(-0.7,1)
-    plt.legend()
-    ##plt.savefig("test_theta_0.pdf")
-    plt.show()
-
-    ###
-    plt.title("$\Theta_1$")
-    plt.plot(x_k0,theta1_k0,label="k = 0.001/Mpc")     
-    plt.plot(x_k1,theta1_k1,label="k = 0.01/Mpc")
-    plt.plot(x_k2,theta1_k2,label="k = 0.1/Mpc",color=green_)
-
-    plt.xlabel('x')
-    plt.xlim(-18,0)
-    plt.ylim(-0.5,0.5)
-    plt.legend()
-    #plt.savefig("test_theta_1.pdf")
-    plt.show()
-
-    ###
-    plt.title("$\Phi$")
-    plt.plot(x_k0,Phi_k0,label="k = 0.001/Mpc")     
-    plt.plot(x_k1,Phi_k1,label="k = 0.01/Mpc")
-    plt.plot(x_k2,Phi_k2,label="k = 0.1/Mpc")
-
-    plt.xlabel('x')
-    plt.legend()
-    plt.xlim(-18,0)
-    plt.ylim(0,0.8)
-    #plt.savefig("test_phi.pdf")
-    plt.show()
-    
-
-    #plt.plot(x_k0,theta2_k0)
-    #plt.plot(x_k1,theta2_k1)
-    #plt.plot(x_k2,theta2_k2)
-    #plt.show()
-#
-#
-    #plt.plot(x_k0,Psi_k0)
-    ##plt.plot(x_k0,np.cos(k0*eta_x_k0/np.sqrt(3)))
+###    plt.title("$\delta_\mathrm{CDM},\delta_b$")
+###    plt.semilogy(x_k0,delta_cdm_k0,'b',label= "k = 0.001/Mpc",alpha=0.6) 
+###    plt.semilogy(x_k0,abs(delta_b_k0),'--',color='b')
+###    
+###    plt.semilogy(x_k1,delta_cdm_k1,color= 'r',label= "k = 0.01/Mpc",alpha = 0.6)
+###    plt.semilogy(x_k1,abs(delta_b_k1),'--',color ='r')
+###    
 ###
-    #plt.plot(x_k1,Psi_k1,'y')
-    ###plt.plot(x_k1,np.cos(k1*eta_x_k1/np.sqrt(3)),'--','y')
+###    green_ = (0, 0.65, 0)  # RGB tuple for green
+###    plt.semilogy(x_k2,delta_cdm_k2,color = green_,label= "k = 0.1/Mpc",alpha = 0.6)
+###    plt.semilogy(x_k2,abs(delta_b_k2),'--',color= green_)
+###    #plt.show()
+###    plt.xlim(-18,0)
+###    plt.xlabel('x')
+###    #plt.ylim(1e-10,1e5)
+###    plt.legend()
+####    plt.savefig("test_delta_cdm_delta_b.pdf")
+###    plt.show()
 ###
-    #plt.plot(x_k2,Psi_k2,'g')
-    ##plt.plot(x_k2,np.cos(k2*eta_x_k2/np.sqrt(3)),'--','g')
-    ##plt.xlim(-20,-8)
-    #plt.show()
-
-
-    #plt.plot(x_k0,Phi_k0+Psi_k0)
-    #plt.plot(x_k1,Phi_k1+Psi_k1)
-    #plt.plot(x_k2,Phi_k2+Psi_k2)
-    #plt.show()
-    #print(eta_x_k0*k0)
-
-    ###print(x_k0[nearest_index(eta_x_k0*k0,1)])
-    ###print(x_k1[nearest_index(eta_x_k1*k1,1)])
-    ###print(x_k2[nearest_index(eta_x_k1*k2,1)])
-
-    #print(len(x_k0),len(x_k1),len(x_k2))
-    #print(x_k[nearest_index(eta_x_k*10/Mpc,1)])
+###    ###
+###    plt.title("$v_\mathrm{CDM},v_b$")
+###    plt.semilogy(x_k0,v_cdm_k0,'b', label= "k = 0.001/Mpc",alpha=0.6)
+###    plt.semilogy(x_k0,abs(v_b_k0),'--',color='b')
+###    
+###    plt.semilogy(x_k1,v_cdm_k1,color='r',label= "k = 0.01/Mpc",alpha = 0.6)
+###    plt.semilogy(x_k1,abs(v_b_k1),'--',color ='r')
+###    
+###    plt.semilogy(x_k2,v_cdm_k2,color = green_,label= "k = 0.1/Mpc",alpha = 0.6)
+###    plt.semilogy(x_k2,abs(v_b_k2),'--',color=green_)
+###
+###    plt.xlim(-18,0)
+###    plt.ylim(1e-6,1e2)
+###    plt.legend()
+###    plt.xlabel('x')
+###    #plt.ylabel('[m/s]')
+###    #plt.savefig("test_v_cdm_v_b.pdf")
+###    plt.show()
+###    
+###    ###
+###    plt.title("$\Theta_0$")
+###    plt.plot(x_k0,theta0_k0,label="k = 0.001/Mpc")     
+###    plt.plot(x_k1,theta0_k1,label="k = 0.01/Mpc")
+###    plt.plot(x_k2,theta0_k2,label="k = 0.1/Mpc")
+###    plt.xlabel('x')
+###    plt.xlim(-18,0)
+###    plt.ylim(-0.7,1)
+###    plt.legend()
+###    ##plt.savefig("test_theta_0.pdf")
+###    plt.show()
+###
+###    ###
+###    plt.title("$\Theta_1$")
+###    plt.plot(x_k0,theta1_k0,label="k = 0.001/Mpc")     
+###    plt.plot(x_k1,theta1_k1,label="k = 0.01/Mpc")
+###    plt.plot(x_k2,theta1_k2,label="k = 0.1/Mpc",color=green_)
+###
+###    plt.xlabel('x')
+###    plt.xlim(-18,0)
+###    plt.ylim(-0.5,0.5)
+###    plt.legend()
+###    #plt.savefig("test_theta_1.pdf")
+###    plt.show()
+###
+###    ###
+###    plt.title("$\Phi$")
+###    plt.plot(x_k0,Phi_k0,label="k = 0.001/Mpc")     
+###    plt.plot(x_k1,Phi_k1,label="k = 0.01/Mpc")
+###    plt.plot(x_k2,Phi_k2,label="k = 0.1/Mpc")
+###
+###    plt.xlabel('x')
+###    plt.legend()
+###    plt.xlim(-18,0)
+###    plt.ylim(0,0.8)
+###    #plt.savefig("test_phi.pdf")
+###    plt.show()
+###    
+###
+###    #plt.plot(x_k0,theta2_k0)
+###    #plt.plot(x_k1,theta2_k1)
+###    #plt.plot(x_k2,theta2_k2)
+###    #plt.show()
+####
+####
+###    #plt.plot(x_k0,Psi_k0)
+###    ##plt.plot(x_k0,np.cos(k0*eta_x_k0/np.sqrt(3)))
+######
+###    #plt.plot(x_k1,Psi_k1,'y')
+###    ###plt.plot(x_k1,np.cos(k1*eta_x_k1/np.sqrt(3)),'--','y')
+######
+###    #plt.plot(x_k2,Psi_k2,'g')
+###    ##plt.plot(x_k2,np.cos(k2*eta_x_k2/np.sqrt(3)),'--','g')
+###    ##plt.xlim(-20,-8)
+###    #plt.show()
+###
+###
+###    #plt.plot(x_k0,Phi_k0+Psi_k0)
+###    #plt.plot(x_k1,Phi_k1+Psi_k1)
+###    #plt.plot(x_k2,Phi_k2+Psi_k2)
+###    #plt.show()
+###    #print(eta_x_k0*k0)
+###
+###    ###print(x_k0[nearest_index(eta_x_k0*k0,1)])
+###    ###print(x_k1[nearest_index(eta_x_k1*k1,1)])
+###    ###print(x_k2[nearest_index(eta_x_k1*k2,1)])
+###
+###    #print(len(x_k0),len(x_k1),len(x_k2))
+###    #print(x_k[nearest_index(eta_x_k*10/Mpc,1)])
     """
     Test over
     """
@@ -504,136 +504,136 @@ def milestone3():
     """
     density perturbations
     """
-    plt.title("$\delta_\gamma$")
-    #plt.title("$\Theta_0$")
-    plt.plot(x_k,4*theta0_k0,label="k = 0.001/Mpc")     
-    plt.plot(x_k,4*theta0_k1,label="k = 0.01/Mpc")
-    plt.plot(x_k,4*theta0_k2,label="k = 0.1/Mpc")
-    plt.plot(x_k10,4*theta0_k10,label="k = 10/Mpc",alpha = 0.6)
-    plt.xlabel('x')
-    plt.xlim(-18,0)
-    #plt.ylim(-0.7,1)
-    plt.legend()
-    ##plt.savefig("figures/milestone3/delta_gamma.pdf")
-    plt.show()
-
-    #epic plot
-    plt.title("$\delta_\mathrm{CDM},\delta_b$")
-    plt.plot(x_k,delta_cdm_k0,'b',label= "k = 0.001/Mpc",alpha=0.6) 
-    plt.plot(x_k,(delta_b_k0),'--',color='b')
-    plt.plot(x_k,delta_cdm_k1,color= 'r',label= "k = 0.01/Mpc",alpha = 0.6)
-    plt.plot(x_k,(delta_b_k1),'--',color ='r')
-    plt.plot(x_k,delta_cdm_k2,color = green_,label= "k = 0.1/Mpc",alpha = 0.6)
-    plt.plot(x_k,(delta_b_k2),'--',color= green_)
-    plt.plot(x_k10,delta_cdm_k10,color = 'k',label= "k = 10/Mpc",alpha = 0.6)
-    plt.plot(x_k10,(delta_b_k10),'--',color= 'k',alpha=0.6)
-    plt.xlim(-18,0)
-    plt.xlabel('x')
-    plt.ylim(-3,10)
-    plt.legend()
-    #plt.savefig("figures/milestone3/delta_cdm_delta_b_zoom.pdf")
-    plt.show()
-
-    plt.title("$\delta_\mathrm{CDM},\delta_b$")
-    plt.semilogy(x_k,delta_cdm_k0,'b',label= "k = 0.001/Mpc",alpha=0.6) 
-    plt.semilogy(x_k,abs(delta_b_k0),'--',color='b')
-    plt.semilogy(x_k,delta_cdm_k1,color= 'r',label= "k = 0.01/Mpc",alpha = 0.6)
-    plt.semilogy(x_k,abs(delta_b_k1),'--',color ='r')
-    plt.semilogy(x_k,delta_cdm_k2,color = green_,label= "k = 0.1/Mpc",alpha = 0.6)
-    plt.semilogy(x_k,abs(delta_b_k2),'--',color= green_)
-    plt.semilogy(x_k10,delta_cdm_k10,color = 'k',label= "k = 10/Mpc",alpha = 0.6)
-    #plt.semilogy(x_k10,np.exp(x_k10)/np.amax(np.exp(x_k10)))
-    #plt.semilogy(x_k10,delta_cdm_k10/np.amax(delta_cdm_k10))
-    #plt.semilogy(x_k10,delta_cdm_k10/np.amax(delta_cdm_k10))
-    plt.semilogy(x_k10,abs(delta_b_k10),'--',color= 'k',alpha=0.6)
-    plt.xlim(-18,0)
-    plt.xlabel('x')
-    #plt.ylim(0,1)
-    plt.legend()
-    ##plt.savefig("figures/milestone3/delta_cdm_delta_b.pdf")
-    plt.show()
-
-    """
-    velocity perturbations
-    """
-
-    plt.title('$v_\gamma$')
-    plt.plot(x_k,   -3*theta1_k0  ,label="k = 0.001/Mpc")     
-    plt.plot(x_k,    -3*theta1_k1 ,label="k = 0.01/Mpc")
-    plt.plot(x_k,    -3*theta1_k2 ,label="k = 0.1/Mpc")
-    plt.plot(x_k10,  -3*theta1_k10 ,label="k = 10/Mpc",alpha=0.6)
-    plt.xlabel('x')
-    plt.legend()
-    ##plt.savefig("v_gamma.pdf")
-    plt.show()
-
-    plt.title("$v_\mathrm{CDM},v_b$")
-    plt.semilogy(x_k,v_cdm_k0,'b', label= "k = 0.001/Mpc",alpha=0.6)
-    plt.semilogy(x_k,abs(v_b_k0),'--',color='b')
+###    plt.title("$\delta_\gamma$")
+###    #plt.title("$\Theta_0$")
+###    plt.plot(x_k,4*theta0_k0,label="k = 0.001/Mpc")     
+###    plt.plot(x_k,4*theta0_k1,label="k = 0.01/Mpc")
+###    plt.plot(x_k,4*theta0_k2,label="k = 0.1/Mpc")
+###    plt.plot(x_k10,4*theta0_k10,label="k = 10/Mpc",alpha = 0.6)
+###    plt.xlabel('x')
+###    plt.xlim(-18,0)
+###    #plt.ylim(-0.7,1)
+###    plt.legend()
+###    ##plt.savefig("figures/milestone3/delta_gamma.pdf")
+###    plt.show()
+###
+###    #epic plot
+###    plt.title("$\delta_\mathrm{CDM},\delta_b$")
+###    plt.plot(x_k,delta_cdm_k0,'b',label= "k = 0.001/Mpc",alpha=0.6) 
+###    plt.plot(x_k,(delta_b_k0),'--',color='b')
+###    plt.plot(x_k,delta_cdm_k1,color= 'r',label= "k = 0.01/Mpc",alpha = 0.6)
+###    plt.plot(x_k,(delta_b_k1),'--',color ='r')
+###    plt.plot(x_k,delta_cdm_k2,color = green_,label= "k = 0.1/Mpc",alpha = 0.6)
+###    plt.plot(x_k,(delta_b_k2),'--',color= green_)
+###    plt.plot(x_k10,delta_cdm_k10,color = 'k',label= "k = 10/Mpc",alpha = 0.6)
+###    plt.plot(x_k10,(delta_b_k10),'--',color= 'k',alpha=0.6)
+###    plt.xlim(-18,0)
+###    plt.xlabel('x')
+###    plt.ylim(-3,10)
+###    plt.legend()
+###    #plt.savefig("figures/milestone3/delta_cdm_delta_b_zoom.pdf")
+###    plt.show()
+###
+###    plt.title("$\delta_\mathrm{CDM},\delta_b$")
+###    plt.semilogy(x_k,delta_cdm_k0,'b',label= "k = 0.001/Mpc",alpha=0.6) 
+###    plt.semilogy(x_k,abs(delta_b_k0),'--',color='b')
+###    plt.semilogy(x_k,delta_cdm_k1,color= 'r',label= "k = 0.01/Mpc",alpha = 0.6)
+###    plt.semilogy(x_k,abs(delta_b_k1),'--',color ='r')
+###    plt.semilogy(x_k,delta_cdm_k2,color = green_,label= "k = 0.1/Mpc",alpha = 0.6)
+###    plt.semilogy(x_k,abs(delta_b_k2),'--',color= green_)
+###    plt.semilogy(x_k10,delta_cdm_k10,color = 'k',label= "k = 10/Mpc",alpha = 0.6)
+###    #plt.semilogy(x_k10,np.exp(x_k10)/np.amax(np.exp(x_k10)))
+###    #plt.semilogy(x_k10,delta_cdm_k10/np.amax(delta_cdm_k10))
+###    #plt.semilogy(x_k10,delta_cdm_k10/np.amax(delta_cdm_k10))
+###    plt.semilogy(x_k10,abs(delta_b_k10),'--',color= 'k',alpha=0.6)
+###    plt.xlim(-18,0)
+###    plt.xlabel('x')
+###    #plt.ylim(0,1)
+###    plt.legend()
+###    ##plt.savefig("figures/milestone3/delta_cdm_delta_b.pdf")
+###    plt.show()
+###
+###    """
+###    velocity perturbations
+###    """
+###
+###    plt.title('$v_\gamma$')
+###    plt.plot(x_k,   -3*theta1_k0  ,label="k = 0.001/Mpc")     
+###    plt.plot(x_k,    -3*theta1_k1 ,label="k = 0.01/Mpc")
+###    plt.plot(x_k,    -3*theta1_k2 ,label="k = 0.1/Mpc")
+###    plt.plot(x_k10,  -3*theta1_k10 ,label="k = 10/Mpc",alpha=0.6)
+###    plt.xlabel('x')
+###    plt.legend()
+###    ##plt.savefig("v_gamma.pdf")
+###    plt.show()
+###
+###    plt.title("$v_\mathrm{CDM},v_b$")
+###    plt.semilogy(x_k,v_cdm_k0,'b', label= "k = 0.001/Mpc",alpha=0.6)
+###    plt.semilogy(x_k,abs(v_b_k0),'--',color='b')
+###    
+###    plt.semilogy(x_k,v_cdm_k1,color='r',label= "k = 0.01/Mpc",alpha = 0.6)
+###    plt.semilogy(x_k,abs(v_b_k1),'--',color ='r')
+###    
+###    plt.semilogy(x_k,v_cdm_k2,color = green_,label= "k = 0.1/Mpc",alpha = 0.6)
+###    plt.semilogy(x_k,abs(v_b_k2),'--',color=green_)
+###
+###    plt.semilogy(x_k10,v_cdm_k10,color = 'k',label= "k = 10/Mpc",alpha = 0.6)
+###    plt.semilogy(x_k10,abs(v_b_k10),'--',color='k',alpha=0.6)
+###
+###    plt.xlim(-18,0)
+###    #plt.ylim(1e-6,1e2)
+###    plt.legend()
+###    plt.xlabel('x')
+###    ##plt.savefig("figures/milestone3/v_cdm_v_b.pdf")
+###    plt.show()
+###
+###    """
+###    Photon quadrupole
+###    """
+###
+###    plt.title("$\Theta_2$")
+###    plt.plot(x_k,theta2_k0,label="k = 0.001/Mpc")     
+###    plt.plot(x_k,theta2_k1,label="k = 0.01/Mpc")
+###    plt.plot(x_k,theta2_k2,label="k = 0.1/Mpc",color=green_)
+###    plt.plot(x_k10,theta2_k10,label="k = 10/Mpc",color='k')
+###    plt.xlabel('x')
+###    plt.xlim(-18,0)
+###    #plt.ylim(-0.5,0.5)
+###    plt.legend()
+###    ##plt.savefig("figures/milestone3/theta_2.pdf")
+###    plt.show()
+###
+###    """
+###    Phi and Psi
+###    """
+###    plt.title("$\Phi$")
+###    plt.plot(x_k,Phi_k0,label="k = 0.001/Mpc")     
+###    plt.plot(x_k,Phi_k1,label="k = 0.01/Mpc")
+###    plt.plot(x_k,Phi_k2,label="k = 0.1/Mpc")
+###    plt.plot(x_k10,Phi_k10,label="k = 10/Mpc")
+###    plt.xlabel('x')
+###    plt.legend()
+###    plt.xlim(-18,0)
+###    #plt.ylim(0,0.8)
+###    ##plt.savefig("figures/milestone3/phi.pdf")
+###    plt.show()
+###
+###    plt.title("$\Phi + \Psi$")
+###    plt.plot(x_k,Phi_k0 + Psi_k0,label="k = 0.001/Mpc")     
+###    plt.plot(x_k,Phi_k1 + Psi_k1,label="k = 0.01/Mpc")
+###    plt.plot(x_k,Phi_k2 + Psi_k2,label="k = 0.1/Mpc")
+###    plt.plot(x_k10,Phi_k10 + Psi_k10,label="k = 10/Mpc")
+###    plt.xlabel('x')
+###    plt.legend()
+###    plt.xlim(-18,0)
+###    #plt.ylim(0,0.8)
+###    ##plt.savefig("figures/milestone3/phi_psi.pdf")
+###    plt.show()
+###    #print('here')
+###    #print(x_k10[nearest_index(eta_x_k10*10/Mpc,1)])
+###    #print(x_k[nearest_index(eta_x_k,2*np.pi*Mpc/0.1)])
+###    #print(x_k[nearest_index(eta_x_k,2*np.pi*Mpc/0.01)])
     
-    plt.semilogy(x_k,v_cdm_k1,color='r',label= "k = 0.01/Mpc",alpha = 0.6)
-    plt.semilogy(x_k,abs(v_b_k1),'--',color ='r')
-    
-    plt.semilogy(x_k,v_cdm_k2,color = green_,label= "k = 0.1/Mpc",alpha = 0.6)
-    plt.semilogy(x_k,abs(v_b_k2),'--',color=green_)
-
-    plt.semilogy(x_k10,v_cdm_k10,color = 'k',label= "k = 10/Mpc",alpha = 0.6)
-    plt.semilogy(x_k10,abs(v_b_k10),'--',color='k',alpha=0.6)
-
-    plt.xlim(-18,0)
-    #plt.ylim(1e-6,1e2)
-    plt.legend()
-    plt.xlabel('x')
-    ##plt.savefig("figures/milestone3/v_cdm_v_b.pdf")
-    plt.show()
-
-    """
-    Photon quadrupole
-    """
-
-    plt.title("$\Theta_2$")
-    plt.plot(x_k,theta2_k0,label="k = 0.001/Mpc")     
-    plt.plot(x_k,theta2_k1,label="k = 0.01/Mpc")
-    plt.plot(x_k,theta2_k2,label="k = 0.1/Mpc",color=green_)
-    plt.plot(x_k10,theta2_k10,label="k = 10/Mpc",color='k')
-    plt.xlabel('x')
-    plt.xlim(-18,0)
-    #plt.ylim(-0.5,0.5)
-    plt.legend()
-    ##plt.savefig("figures/milestone3/theta_2.pdf")
-    plt.show()
-
-    """
-    Phi and Psi
-    """
-    plt.title("$\Phi$")
-    plt.plot(x_k,Phi_k0,label="k = 0.001/Mpc")     
-    plt.plot(x_k,Phi_k1,label="k = 0.01/Mpc")
-    plt.plot(x_k,Phi_k2,label="k = 0.1/Mpc")
-    plt.plot(x_k10,Phi_k10,label="k = 10/Mpc")
-    plt.xlabel('x')
-    plt.legend()
-    plt.xlim(-18,0)
-    #plt.ylim(0,0.8)
-    ##plt.savefig("figures/milestone3/phi.pdf")
-    plt.show()
-
-    plt.title("$\Phi + \Psi$")
-    plt.plot(x_k,Phi_k0 + Psi_k0,label="k = 0.001/Mpc")     
-    plt.plot(x_k,Phi_k1 + Psi_k1,label="k = 0.01/Mpc")
-    plt.plot(x_k,Phi_k2 + Psi_k2,label="k = 0.1/Mpc")
-    plt.plot(x_k10,Phi_k10 + Psi_k10,label="k = 10/Mpc")
-    plt.xlabel('x')
-    plt.legend()
-    plt.xlim(-18,0)
-    #plt.ylim(0,0.8)
-    ##plt.savefig("figures/milestone3/phi_psi.pdf")
-    plt.show()
-    #print('here')
-    #print(x_k10[nearest_index(eta_x_k10*10/Mpc,1)])
-    #print(x_k[nearest_index(eta_x_k,2*np.pi*Mpc/0.1)])
-    #print(x_k[nearest_index(eta_x_k,2*np.pi*Mpc/0.01)])
-
 
 
 def nearest_index(array, target_value):
@@ -643,4 +643,130 @@ def nearest_index(array, target_value):
 
     
 milestone3()
+
+
+def milestone4():
+    
+
+    loaded_file = np.loadtxt('lcdm_pk007_delta.dat')
+    clas = np.loadtxt('test_02_z1_pk.dat')
+
+    #early = np.loadtxt('lcdm_pk000_T00.dat')
+    #print(loaded_file)
+    x = loaded_file[:,0]
+    y = loaded_file[:,1]
+
+    x_class = clas[:,0]
+    y_class = clas[:,1]
+
+    #x1 = early[:,0]
+    #y1 = early[:,1]
+    #print(y)
+    #plt.loglog(x1,y1)
+    #plt.show()
+    plt.loglog(x,y*2*np.pi**2/x**3,label = "gevolution")
+    plt.loglog(x_class,y_class,label="CLASS")
+    plt.xlim(1e-2,2*1e0)
+    plt.ylim(1e1,1e5)
+    #plt.savefig("matter_spectrum.pdf")
+    matter_spectrum = np.loadtxt('matter_power_spectrum_result.txt')
+    k = matter_spectrum[:,0]
+    P_k = matter_spectrum[:,1]
+    plt.loglog(k,P_k,label = "Our code")
+    plt.legend()
+    plt.show()
+    
+
+
+   
+###
+###    source = np.loadtxt('source_new.txt')
+###    x = source[:,0]
+###    S = source[:,1]
+###    S1 = source[:,2]
+###    S2 = source[:,3]
+###    #S3 = source[:,4]
+###    #S4 = source[:,5]
+###    plt.plot(x,S)
+###    plt.show()
+###    plt.plot(x,S1)
+###    plt.show()
+###    plt.plot(x,S2)
+###    #plt.show()
+###    #plt.plot(x,S3)
+###    #plt.show()
+###    #plt.plot(x,S4)
+###    plt.show()
+
+
+    
+    #test results
+
+    matter_spectrum = np.loadtxt('matter_power_spectrum_test_result.txt')
+    k = matter_spectrum[:,0]
+    P_k = matter_spectrum[:,1]
+    plt.loglog(k,P_k)
+    plt.show()
+    Cl = np.loadtxt('cells_test_result.txt')
+    ell = Cl[:,0]
+    Cell = Cl[:,1]#/(1e6 * 2.7255)**2
+    plt.loglog(ell,Cell)
+    #plt.ylim(80,5*1e3)
+    plt.show()
+    
+
+
+    """
+    results
+    """
+
+    ###matter_spectrum = np.loadtxt('matter_power_spectrum_result.txt')
+    ###k = matter_spectrum[:,0]
+    ###P_k = matter_spectrum[:,1]
+    ###plt.loglog(k,P_k)
+    ###plt.show()
+    
+    Cl = np.loadtxt('cells_result.txt')
+    ell = Cl[:,0]
+    Cell = Cl[:,1]#/(1e6 * 2.7255)**2
+    plt.semilogx(ell,Cell)
+    #plt.ylim(80,5*1e3)
+    plt.show()
+
+###    eq_45 = np.loadtxt('45_new.txt')
+###    k_45 = eq_45[:,0]
+###    f_45 = eq_45[:,1]#/(1e6 * 2.7255)**2
+###    plt.plot(k_45,f_45)
+###    #plt.xlim(0,100)
+###    #plt.ylim(0,3)
+###    #plt.ylim(0.8*1e2,5*1e3)
+###    plt.show()
+###
+###    test_45 = np.loadtxt('test45_new.txt')
+###    k_test_45 = test_45[:,0]
+###    y_test_45 = test_45[:,1]#/(1e6 * 2.7255)**2
+###    plt.plot(k_test_45,y_test_45)
+###    #plt.show()
+###    y2_test_45 = test_45[:,2]#/(
+###    #y3_test_45 = test_45[:,3]#/(
+###    #y2_test_45 = test_45[:,2]#/(
+###    ###y4_test_45 = test_45[:,4]#/(
+###    plt.plot(k_test_45,y2_test_45,alpha=0.6,linestyle='--')
+###    #plt.xlim(0,100)
+###    #plt.ylim(0,3)
+###    #plt.ylim(0.8*1e2,5*1e3)
+###    plt.show()
+###    #plt.plot(k_test_45,y3_test_45)
+###    #plt.show()
+###    ###plt.plot(k_test_45,y4_test_45)
+###    ###plt.show()
+
+
+
+milestone4()
+
+
+
+
+    
 

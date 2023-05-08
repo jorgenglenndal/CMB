@@ -217,7 +217,7 @@ void Perturbations::integrate_perturbations(){
 
 
   }
-  Utils::EndTiming("integrateperturbation");
+  
 
 
   //only relevant when calculatong for single k value
@@ -265,6 +265,7 @@ void Perturbations::integrate_perturbations(){
   Theta_spline[5].create(x_array,k_array,theta5_vector,"theta5_spline");
   Theta_spline[6].create(x_array,k_array,theta6_vector,"theta6_spline");
   Theta_spline[7].create(x_array,k_array,theta7_vector,"theta7_spline");
+  Utils::EndTiming("integrateperturbation");
 
 }
 
@@ -470,65 +471,108 @@ void Perturbations::compute_source_functions(){
   //=============================================================================
   // ...
   // ...
-  arma::vec k_array_arma = arma::logspace(log10(k_min),log10(k_max),n_k);
+  //arma::vec k_array_arma = arma::logspace(log10(k_min),log10(k_max),n_k);
+  //
+  //Vector k_array;
+  //for (int i=0;i<k_array_arma.size();i++){
+  //    k_array.push_back(k_array_arma[i]);
+  //}
+  //k_array.push_back(k_max);
+  Vector k_array = Utils::linspace(k_min,k_max,n_k);
+  //double k_min = k_min*Mpc;
+  //double k_max = k_max*Mpc;
+
+  //for (int i=0;i<n_k;i++){
+  //  k_array.push_back(k_min_+(k_max_-k_min_)*(i/(n_k-1))*(i/(n_k-1)));
+  //  std::cout <<  k_array[i] << std::endl;
+  //}
+  //k_array.push_back(k_max);
   
-  Vector k_array;
-  for (int i=0;i<k_array_arma.size();i++){
-      k_array.push_back(k_array_arma[i]);
-  }
-  Vector x_array = Utils::linspace(x_start,x_end,n_x);
-
+  Vector x_array = Utils::linspace(-10.,x_end,round(1e3));
+  
   // Make storage for the source functions (in 1D array to be able to pass it to the spline)
-  Vector ST_array(k_array.size() * x_array.size());
-  Vector SE_array(k_array.size() * x_array.size());
-
+  Vector ST_array;//(k_array.size() * x_array.size());
+  ST_array.clear();
+  //Vector SE_array(k_array.size() * x_array.size());
+  double dx;
+  //const double c             = Constants.c;
+  const double c = Constants.c;
+  //Vector x_array_source;
   // Compute source functions
-  for(auto ix = 0; ix < x_array.size(); ix++){
-    const double x = x_array[ix];
-    for(auto ik = 0; ik < k_array.size(); ik++){
-      const double k = k_array[ik];
 
-      // NB: This is the format the data needs to be stored 
-      // in a 1D array for the 2D spline routine source(ix,ik) -> S_array[ix + nx * ik]
-      const int index = ix + n_x * ik;
+  for(auto ik = 0; ik < k_array.size(); ik++){
+    const double k = k_array[ik];
+    double ck = c*k;
+    //x_array_source.clear();
+    //x_array_source.push_back(-10.);
+    for(auto ix = 0; ix < x_array.size(); ix++){
+      const double x = x_array[ix];
+      const double Hp            = cosmo->Hp_of_x(x);
+      const double tau           = rec->tau_of_x(x);
+      const double g_tilde       = rec->g_tilde_of_x(x);
+      
+      const double dHpdx         = cosmo->dHpdx_of_x(x);
+      const double dg_dxtilde    = rec->dgdx_tilde_of_x(x);
+      const double ddg_ddxtilde  = rec->ddgddx_tilde_of_x(x);
+      const double ddHpddx       = cosmo->ddHpddx_of_x(x);
+      const double theta2        = get_Theta(x,k,2);
+      const double dtheta2dx     = get_dTheta2dx(x,k);
+      const double ddtheta2ddx   = get_ddTheta2ddx(x,k);
 
-      //=============================================================================
-      // TODO: Compute the source functions
-      //=============================================================================
-      // Fetch all the things we need...
-       const double Hp            = cosmo->Hp_of_x(x);
-       const double tau           = rec->tau_of_x(x);
-       const double g_tilde       = rec->g_tilde_of_x(x);
-       const double c             = Constants.c;
-       const double dHpdx         = cosmo->dHpdx_of_x(x);
-       const double dg_dxtilde    = rec->dgdx_tilde_of_x(x);
-       const double ddg_ddxtilde  = rec->ddgddx_tilde_of_x(x);
-       const double ddHpddx       = cosmo->ddHpddx_of_x(x);
-       const double theta2        = get_Theta(x,k,2);
-       const double dtheta2dx     = get_dTheta2dx(x,k);
-       const double ddtheta2ddx   = get_ddTheta2ddx(x,k);
-       
+      //dx = 2.*M_PI*cosmo->Hp_of_x(x)/(10.*ck);
+      //if (x+dx >= 0.){
+      //    x_array_source.push_back(0.);
+      //    ST_array.push_back(g_tilde*(get_Theta(x,k,0)+get_Psi(x,k)+1./4.*get_Theta(x,k,2)) + exp(-tau)*(get_dPsidx(x,k)-get_dPhidx(x,k))
+      //     -1./(c*k)*(dHpdx*g_tilde*get_v_b(x,k)+Hp*dg_dxtilde*get_v_b(x,k)+Hp*g_tilde*get_dv_bdx(x,k))+ 3./(4.*c*c*k*k)
+      //     *((dHpdx*dHpdx + Hp*ddHpddx)*g_tilde*theta2 + 3.*Hp*dHpdx*(dg_dxtilde*theta2 + g_tilde*dtheta2dx) + Hp*Hp*(ddg_ddxtilde*theta2 + 2.*dg_dxtilde*dtheta2dx + g_tilde*ddtheta2ddx)));
+      //    break;
+      //}
+      //x_array_source.push_back(x+dx);
+
+
+
+
+
+        // NB: This is the format the data needs to be stored 
+        // in a 1D array for the 2D spline routine source(ix,ik) -> S_array[ix + nx * ik]
+      //const int index = ix + n_x * ik;
+
+        //=============================================================================
+        // TODO: Compute the source functions
+        //=============================================================================
+        // Fetch all the things we need...
+
+         
+         //const double dx            = 2.*M_PI*Hp/(c*k)
+
+
+
       // ...
       // ...
 
       // Temperatur source using splines for the derivatives
-      ST_array[index] = g_tilde*(get_Theta(x,k,0)+get_Psi(x,k)+1./4.*get_Theta(x,k,2)) + exp(-tau)*(get_dPsidx(x,k)-get_dPhidx(x,k))
+      ST_array.push_back(g_tilde*(get_Theta(x,k,0)+get_Psi(x,k)+1./4.*get_Theta(x,k,2)) + exp(-tau)*(get_dPsidx(x,k)-get_dPhidx(x,k))
            -1./(c*k)*(dHpdx*g_tilde*get_v_b(x,k)+Hp*dg_dxtilde*get_v_b(x,k)+Hp*g_tilde*get_dv_bdx(x,k))+ 3./(4.*c*c*k*k)
-           *(dHpdx*(dHpdx*g_tilde*theta2+Hp*dg_dxtilde*theta2+Hp*g_tilde*dtheta2dx) + Hp*(ddHpddx*g_tilde*theta2+dHpdx*dg_dxtilde*theta2+dHpdx*g_tilde*dtheta2dx
-           +dHpdx*dg_dxtilde*theta2+Hp*ddg_ddxtilde*theta2+Hp*dg_dxtilde*dtheta2dx+dHpdx*g_tilde*dtheta2dx+Hp*dg_dxtilde*dtheta2dx+Hp*g_tilde*ddtheta2ddx));     
-
+           *((dHpdx*dHpdx + Hp*ddHpddx)*g_tilde*theta2 + 3.*Hp*dHpdx*(dg_dxtilde*theta2 + g_tilde*dtheta2dx) + Hp*Hp*(ddg_ddxtilde*theta2 + 2.*dg_dxtilde*dtheta2dx + g_tilde*ddtheta2ddx)));
+           //(dHpdx*(dHpdx*g_tilde*theta2+Hp*dg_dxtilde*theta2+Hp*g_tilde*dtheta2dx) + Hp*(ddHpddx*g_tilde*theta2+dHpdx*dg_dxtilde*theta2+dHpdx*g_tilde*dtheta2dx
+           //+dHpdx*dg_dxtilde*theta2+Hp*ddg_ddxtilde*theta2+Hp*dg_dxtilde*dtheta2dx+dHpdx*g_tilde*dtheta2dx+Hp*dg_dxtilde*dtheta2dx+Hp*g_tilde*ddtheta2ddx));     
+      //std::cout << ST_array[ix+n_x*ik] << std::endl; 
       // Polarization source
-      if(Constants.polarization){
-        SE_array[index] = 0.0;
-      }
+      //if(Constants.polarization){
+      //  //SE_array[index] = 0.0;
+      //}
     }
   }
-
+  //if (x_array_source[x_array_source.size()-1] < 0.){
+  //      std::cout << "x did not reach 0 in perturbation souurce" << std::endl;
+  //    }
   // Spline the source functions
+  //std::cout << "565" << std::endl;
   ST_spline.create (x_array, k_array, ST_array, "Source_Temp_x_k");
-  if(Constants.polarization){
-    SE_spline.create (x_array, k_array, SE_array, "Source_Pol_x_k");
-  }
+  //std::cout << "584" << std::endl;
+  //if(Constants.polarization){
+  //  SE_spline.create (x_array, k_array, SE_array, "Source_Pol_x_k");
+  //}
 
   Utils::EndTiming("source");
 }
