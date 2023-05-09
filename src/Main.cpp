@@ -75,18 +75,18 @@ int main(int argc, char **argv){
   Perturbations pert(&cosmo, &rec);
 
   pert.solve();
-  //pert.info();
+  pert.info();
   
   // Output perturbation quantities
-  //double kvalue0 = 0.001 / Constants.Mpc;
-  //double kvalue1 = 0.01 / Constants.Mpc;
-  //double kvalue2 = 0.1 / Constants.Mpc;
-  //pert.output(kvalue0, "perturbations_k_0_001.txt");
-  //pert.output(kvalue1, "perturbations_k_0_01.txt");
-  //pert.output(kvalue2, "perturbations_k_0_1.txt");
+  double kvalue0 = 0.001 / Constants.Mpc;
+  double kvalue1 = 0.01 / Constants.Mpc;
+  double kvalue2 = 0.1 / Constants.Mpc;
+  pert.output(kvalue0, "perturbations_k_0_001.txt");
+  pert.output(kvalue1, "perturbations_k_0_01.txt");
+  pert.output(kvalue2, "perturbations_k_0_1.txt");
   
   // Remove when module is completed
-  //return 0;
+  return 0;
   
   //=========================================================================
   // Module IV
