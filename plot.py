@@ -86,7 +86,7 @@ The Omegas
 #plt.title('$t(x)\ \ \ (yr) $')
 #plt.semilogy(x[(-18 < x) & (x<=0)],t_x[(-18 < x) & (x<=0)]/(60*60*24*356))
 #plt.xlabel('x')
-##plt.savefig('t_x.pdf')
+#plt.savefig('t_x.pdf')
 #plt.show()
 
 
@@ -194,7 +194,7 @@ sigma_OmegaL = np.sqrt(1/(len(loaded_fitting_file[:,0])-1)*OmegaL_squared_sum)
 #plt.plot(OmegaL_linspace,1/(sigma_OmegaL*np.sqrt(2*np.pi))*np.exp(-(OmegaL_linspace-OmegaL_avg)**2/(2*sigma_OmegaL**2)))
 #plt.show()
 
-print(chi2_min)
+#print(chi2_min)
 h_linspace = np.linspace(np.amin(chains_h),np.amax(chains_h),800)
 #plt.title('Probability density $p(H_0) \ \ \ (100\ \mathrm{km}/\mathrm{s}/\mathrm{Mpc})^{-1}$')
 #plt.hist(chains_h,density=True,bins=35,alpha=0.6)
@@ -220,35 +220,6 @@ g_tilde_x = rec_loaded[:,6]
 dg_tildedx_x = rec_loaded[:,7]
 ddg_tildeddx_x = rec_loaded[:,8]
 
-#plt.semilogy(x_rec,Xe_x)
-#plt.title('Xe')
-#plt.xlim(-12,0)
-#plt.show()
-#
-#
-#plt.semilogy(x_rec,tau_x,label='tau')
-#plt.semilogy(x_rec,-dtaudx_x,label='-dtaudx')
-#plt.semilogy(x_rec,ddtau_ddx_x,label='ddtauddx')
-#plt.xlim(-12,0)
-#plt.ylim(10**-8,10**8)
-#plt.legend()
-#plt.show()
-#
-#plt.plot(x_rec,g_tilde_x)
-#plt.title('g_tilde')
-#plt.xlim(-12,0)
-#plt.show()
-#
-#plt.plot(x_rec,dg_tildedx_x)
-#plt.xlim(-12,0)
-#plt.title('dg_tildedx')
-#plt.show()
-#
-#plt.plot(x_rec,ddg_tildeddx_x)
-#plt.xlim(-12,0)
-#plt.title('ddg_tildeddx')
-#plt.show()
-
 g_tilde_test = np.trapz(g_tilde_x,x_rec,dx=(x_rec[1]-x_rec[0]))
 #print(g_tilde_test)
 
@@ -256,6 +227,54 @@ g_tilde_max = np.amax(g_tilde_x)
 #print(g_tilde_max)
 x_decoupling = x_rec[np.argmax(g_tilde_x)]
 #print(x_decoupling)
+
+##plt.semilogy(x_rec,Xe_x,label='X_e')
+##plt.plot(np.ones(10)*x_decoupling,np.linspace(0,2,10),color='k',linestyle='dashed',alpha=0.6,label='Time of Recombination')
+##plt.title('Xe')
+##plt.xlim(-12,0)
+##plt.ylim(0,2)
+##plt.xlabel('x')
+##plt.legend()
+###plt.savefig("figures/milestone2/X_e.pdf")
+##plt.show()
+
+
+##plt.semilogy(x_rec,tau_x,label='tau')
+##plt.semilogy(x_rec,-dtaudx_x,label='-dtaudx')
+##plt.semilogy(x_rec,ddtau_ddx_x,label='ddtauddx')
+##plt.plot(np.ones(10)*x_decoupling,np.linspace(-100,1e12,10),color='k',linestyle='dashed',alpha=0.6,label='Time of Recombination')
+##plt.xlim(-12,0)
+##plt.ylim(10**-8,10**8)
+##plt.xlabel('x')
+##plt.legend()
+###plt.savefig("figures/milestone2/taus.pdf")
+##plt.show()
+
+
+
+#plt.title('g_tilde')
+plt.plot(x_rec,g_tilde_x,label=r"$\tilde{g}$")
+#plt.plot(np.ones(10)*x_decoupling,np.linspace(-5,1e100,10),color='k',linestyle='dashed',alpha=0.6,label='Time of Recombination')
+#plt.xlim(-12,0)
+#plt.ylim(-0.2,5)
+plt.xlabel('x')
+#plt.legend()
+
+#plt.show()
+
+plt.plot(x_rec,dg_tildedx_x/10,label=r"$\frac{d\tilde{g}}{dx}\cdot \frac{1}{10}$")#,label="")
+#plt.xlim(-12,0)
+#plt.title('dg_tildedx')
+#plt.show()
+
+plt.plot(x_rec,ddg_tildeddx_x/300,label=r"$\frac{d^2\tilde{g}}{dx^2}\cdot \frac{1}{300}$")
+plt.xlim(-7.5,-6.4)
+#plt.title('ddg_tildeddx')
+plt.legend()
+plt.savefig("figures/milestone2/g_tilde_plots.pdf")
+plt.show()
+
+
 
 #fp << x                    << " ";
 #fp <<std::setprecision(15) <<Xe_of_x(x)           << " ";
