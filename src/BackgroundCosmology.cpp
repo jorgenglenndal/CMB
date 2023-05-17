@@ -27,7 +27,10 @@ BackgroundCosmology::BackgroundCosmology(
   OmegaNu = Neff*7./8.*pow(4./11.,4./3.)*OmegaR;
   OmegaLambda = 1.-(OmegaK + OmegaB + OmegaCDM + OmegaR + OmegaNu);
   
-  //std::cout << OmegaLambda << std::endl;
+  //std::cout << (OmegaR + OmegaNu)/(OmegaCDM+OmegaB) << std::endl;
+  //std::cout << pow((OmegaCDM+OmegaB)/(OmegaLambda),1./3.) << std::endl;
+  //std::cout << log(pow((OmegaCDM+OmegaB)/(OmegaLambda),1./3.)) << std::endl;
+
   
                    // Neutrino density today (follows from TCMB and Neff)
 
@@ -107,7 +110,18 @@ void BackgroundCosmology::solve(){
 
 
 
+  //std::cout << t_of_x(log((OmegaR + OmegaNu)/(OmegaCDM+OmegaB)))/(60.*60.*24.*365.*1e3) << std::endl;
+  //std::cout << t_of_x(log(pow((OmegaCDM+OmegaB)/(OmegaLambda),1./3.)))/(60.*60.*24.*365.*1e9) <<std::endl;
+ 
+  //std::cout << t_of_x(1.904)/(60.*60.*24.*365.*1e9) <<std::endl;
+  //std::cout << t_of_x(1.9039)/(60.*60.*24.*365.*1e9) <<std::endl;
+  //std::cout << t_of_x(1.9038)/(60.*60.*24.*365.*1e9) <<std::endl;
+  //std::cout << t_of_x(1.9037)/(60.*60.*24.*365.*1e9) <<std::endl;
+  //std::cout << t_of_x(1.9036)/(60.*60.*24.*365.*1e9) <<std::endl;
+  //std::cout << t_of_x(1.9035)/(60.*60.*24.*365.*1e9) <<std::endl;
   
+
+
 
   Utils::EndTiming("Eta and t");
 }

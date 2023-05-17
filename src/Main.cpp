@@ -42,14 +42,14 @@ int main(int argc, char **argv){
   // Set up and solve the background
   BackgroundCosmology cosmo(h, OmegaB, OmegaCDM, OmegaK, Neff, TCMB);
   cosmo.solve();
-  //cosmo.info();  
+  cosmo.info();  
   // Output background evolution quantities
   //cosmo.output("cosmology.txt");
 
   //mcmc_fit_to_supernova_data("data/supernovadata.txt", "results.txt");
 
   // Remove when module is completed
-  //return 0;
+  return 0;
 
   //=========================================================================
   // Module II

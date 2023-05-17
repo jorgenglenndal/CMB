@@ -18,7 +18,7 @@
 
 \begin{document} 
 
-   \title{Temporary title: CMB power spectrum...}
+   \title{A Theoretical Prediction of the CMB Power Spectrum}
 
    \author{J. A. Glenndal}
 
@@ -31,7 +31,7 @@
 
   \abstract{An abstract for the paper. Describe the paper. What is the paper about, what are the main results, etc.}
 
-   \keywords{   cosmic microwave background  --
+   \keywords{   cosmic microwave background (CMB) --
                 large-scale structure of Universe
                }
 
@@ -40,25 +40,31 @@
 \section{Introduction}
 Write an introduction here. Give context to the paper. Citations to relevant papers. You only need to do this in the end for the last milestone.
 
+%Include plot of best fit for luminosity distance if time allows it
+
 \section{Milestone I}
-%Some introduction about what it is all about.
-In this milestone we will look at the expansion history of a homogeneous and isotropic universe governed by the well known Friedmann equation \ref{Friedmann}.
+%\vspace{-2cm}
+In this milestone we look at the expansion history of a homogeneous and isotropic universe governed by the well known Friedmann equation \ref{Friedmann}.
 The universe we consider consists of baryonic matter ($\Omega_b$), cold dark matter ($\Omega_\mathrm{CDM}$), radiation ($\Omega_\gamma$), neutrinos ($\Omega_\nu$)
 and dark energy ($\Omega_\Lambda$), where $\Omega$ is the mass/energy density divided by the critical density ($\rho_c = 3H^2/8\pi G$).\\
 \\
-Since our universe is approximately homogeneous and isotropic on large scales, the solution we calculate will be  
+We calculate the time evolution of several important quantities that we will need later. For instance, the expansion history is important to know, since
+the redshift of the CMB photons measured today is dependent on how fast the universe has expanded during the journey of the photons. Further, the background solution
+will in later milestones be perturbed to obtain a solution for the perturbations that existed during the release of the CMB photons. These perturbations will change the energy of the photons,
+since some photons had to climb out of the potential well created by the perturbations.
 
 
-
-Since our goal in the end is to study the
-cosmic microwave background (CMB), the homogeneous solution of the universe is of great interest. This is because the CMB is close to
-being homogeneous with perturbations of order $10^{-5}$.
+%Since our goal in the end is to study the
+%cosmic microwave background (CMB), the homogeneous solution of the universe is of great interest. This is because the CMB is close to
+%being homogeneous with perturbations of order $10^{-5}$.
      
 
 
 \subsection{Theory}
 %The theory behind this milestone.
 The parameters we use for our universe are given below.
+
+%We assume k =0, always?
 %\vspace*{-1.5cm}
 
 \begin{equation}
@@ -81,22 +87,41 @@ The parameters we use for our universe are given below.
 where the subscript 0 denotes today's value. $h$ is the dimensionless Hubble constant. More details can be found at \cite{winther:2023}. \\ \\
 
 \noindent
+The geometry of a flat, isotropic and homogeneous universe expressed in comoving spherical coordinates with cosmic time, $t$, is given by the Friedmann-Lemaître-Robertson-Walker (FLRW) metric seen in equation \ref{eq:M1_FLRW}.
+\begin{equation}\label{eq:M1_FLRW}
+   ds^2 = -c^2 dt^2 + a^2(t) \left(dr^2 + r^2 (d\theta^2 + \sin^2\theta 
+d\phi^2)\right) \\
+\end{equation}
 The Friedmann equation is given by
 \begin{equation}\label{Friedmann}
       H = H_0 \sqrt{(\Omega_{b0}+\Omega_{\rm CDM 0})a^{-3} + (\Omega_{\gamma 0} + \Omega_{\nu 0}) a^{-4} + \Omega_{k 0} a^{-2} + \Omega_{\Lambda 0}},
 \end{equation}
-where $a$ is the scale factor and  $H = \frac{\dot{a}}{a}$. We will not use cosmic time ($t$) as our time variable.
+where $a$ is the scale factor and  $H = \frac{\dot{a}}{a}$. We will not use cosmic time, $t$, as our time variable.
 Instead, we use $x=\ln a$ as our dimensionless time variable. This implies that $a = e^x$ for conversion. Since $a(t=0)=0$ and $a(t=t_0)=1$
 we get $t=0 \iff x = -\infty$ and $t=t_0 \iff x = 0$. The cosmic time as a function of $x$ be found from the differential equation 
 \begin{equation}\label{cosmic_time_differential_equation}
       \frac{dt}{dx} = \frac{1}{H},
 \end{equation}
-which can be solved numerically. \\ \\
+which can be solved numerically. The equation will be solved from the radiation dominated era until today. The initial condition is therefore given by $t(x_\mathrm{start})=\frac{1}{2H(x_\mathrm
+{start})}$. We also define the scaled Hubble parameter defined by $\mathcal{H}\equiv aH$, which will often occur in later equations.
+The conformal time, $\eta$, measured in length, as another time variable. This quantity is the comoving distance light has travelled since the big bang,
+and after inflation it is strictly increasing with time. For photons travelling radially in a flat universe, the FLRW metric tells us that the comoving distance, $\eta$, 
+light has travelled in cosmic time, $t$, is given by
+\begin{equation}
+   \frac{d\eta}{dt} = \frac{c}{a}. 
+\end{equation}
+Using substitutions, we get that
+\begin{equation}
+   \frac{d\eta}{dx} = \frac{c}{\mathcal
+   H},
+\end{equation}
+which can be solved numerically using $\eta(x_\mathrm{start})=\frac{c}{\mathcal{H}(x_\mathrm{start})}$.
 \noindent
-We also use a scaled Hubble parameter defined by $\mathcal{H}\equiv aH$
+\\ \\
 The evolution of the $\Omega$s can be expressed as a function of $a$ as showed below. 
 \begin{equation}
       \hspace*{2cm}
+      \boxed{
    \begin{aligned}
       \Omega_{k}(a) &= \frac{\Omega_{k0}}{a^2H(a)^2/H_0^2}\\
       \Omega_{\rm CDM}(a) &= \frac{\Omega_{\rm CDM 0}}{a^3H(a)^2/H_0^2} \\
@@ -105,14 +130,151 @@ The evolution of the $\Omega$s can be expressed as a function of $a$ as showed b
       \Omega_{\nu}(a) &= \frac{\Omega_{\nu 0}}{a^4H(a)^2/H_0^2} \\
       \Omega_{\Lambda}(a) &= \frac{\Omega_{\Lambda 0}}{H(a)^2/H_0^2}.
    \end{aligned}
+      }
+\end{equation}
+The luminosity distance is given by $d_L = \frac{r}{a}$, where $r$ is the comoving distance light has travelled between some source and us, given by 
+$$
+\boxed{
+\begin{aligned}
+r &= \begin{cases}
+\chi \cdot \frac{\sin \left( \sqrt{|\Omega_{k 0}}| H_0 \chi /c \right)}{\left(\sqrt{|\Omega_{k 0}|}H_0\chi / c\right)} & \Omega_{k 0} < 0\\
+\chi & \Omega_{k 0} =0 \\
+\chi \cdot \frac{\sinh \left( \sqrt{|\Omega_{k 0}|} H_0 \chi / c\right)}{\left(\sqrt{|\Omega_{k 0}|}H_0\chi / c\right) } & \Omega_{k 0} > 0,
+\end{cases}
+\end{aligned}
+}
+$$
+where $\chi= \eta(x=0)-\eta(x)$.\\
+\\
+Lastly, to find the best fit parameters of our universe, we can compare our theoretical model to supernova data, $d_L^\mathrm{obs}$. In equation \ref{eq:M1_chi} 
+$z$ is the redshift and $\sigma$ is the uncertainty. We sample different $\chi^2$ values using Metropolis MCMC.
+\begin{equation} \label{eq:M1_chi}
+\chi^2(h,\Omega_{m0}, \Omega_{k0}) = \sum_{i=1}^N \frac{[(d_L(z_i,h,\Omega_{m0},\Omega_{k0}) - d_L^{\rm obs}(z_i)]^2 }{\sigma_i^2}
 \end{equation}
 
-
 \subsection{Implementation details}
-Something about the numerical work.
+The code needs $h$, $\Omega_B$, $\Omega_{CDM}$, $\Omega_K$, $N_{eff}$ and $T_{CMB}$ to run. 
+The differential equations are solved using a Runge-Kutta 4 ODE solver, and the result was splined using a cubic spline.
 
 \subsection{Results}
-Show and discuss the results.
+%Show and discuss the results.
+
+\subsection{Testing the code}
+In figure \ref{fig:M1_test_1} we see that the code produces the expected results when comparing to the plots in \cite{winther:2023}. The time of radiation matter equality is
+shown in table \ref{tab:M1_times}, and takes the value of $x=-8.13$. The time of matter dark energy equality is at $x = -0.26$. When looking at the plots, we see that 
+the results take the expected analytical values around the correct times.  
+
+\begin{figure}
+   %\hspace{-1cm}
+   \includegraphics[scale=0.5]{../figures/milestone1/demonstrate_that_code_works.pdf}
+   \caption{Plots to demonstrate that the code works properly. The dotted lines are the theoretical predictions.}\label{fig:M1_test_1}
+
+\end{figure}
+
+
+
+\subsection{Our results}
+
+
+
+In figure \ref{fig:M1_Hp} we show a plot of the conformal Hubble parameter, $\mathcal{H}(x)$, which will often appear in calculations. $\mathcal{H}(x)$ is in actuality just $\dot{a}$, i.e. the rate of which the scale factor changes 
+with respect to $x$. For two galaxies following the Hubble flow, the comoving distance, $d_\mathrm{comoving}$, is constant and equal to the physical distance today, since $d = a\cdot d_\mathrm{comoving}$.
+The rate of change in the distance between them, $v$, is simply $v = \dot{a}\cdot d_\mathrm{comoving} = \mathcal{H}d_\mathrm{comoving} = Hd$, which is the Hubble law.
+Since we study the FLRW universe, we know that massive particles follow the Hubble flow, so $v$ tells us firstly that at any given time, particles will move away from us 
+twice as fast if they are twice as far away. Secondly, $\mathcal{H}(x)$ is, at any given time, the constant of proportionality for the first relation. In other words, $\mathcal{H}(x)$
+is the expansion rate of the universe. In the plot, we see that this rate was largest at early times. We also see that the slope changes around radiation matter equality and around matter dark energy equality.
+This can be understood by solving the Friedmann equation with one energy density component at a time. When dark energy becomes more dominant in the total energy density of the universe, the universe start to expand more rapidly again.
+This is because the mass density has become too low for mass to be bound by "gravity". This happens at some time before matter dark energy equality as we can see
+in the table \ref{tab:M1_times}.\\
+\\
+In figure \ref{fig:M1_t_x} we see the cosmic time, which is the time measured by an observer following the Hubble flow, plotted against $x$. The scale factor is proportional to $t^{1/2}$ during radiation domination, and proportional to $t^{2/3}$ during matter domination, \cite{Dodelson:MC}.
+This explains why there is a change in the slope around radiation matter equality. As expected, the time today is of order giga years.\\
+\\
+In figure \ref{fig:M1_eta_x} we see the conformal time, $\eta(x)$. The conformal time, measured in length, is the distance light could have travelled, in comoving coordinates,
+since the big bang. Measured in time, $\eta$ is then the amount of time light would have used to travel $\eta$ in length. The conversion factor between time and length is the speed of light.
+Since $a=1$ today, $\eta(0)$ is then the size of the observable universe today, since light could have travelled those distances since the big bang. $\eta(x)$ is the comoving distance of causality.
+The physical distance of causality at cosmic time, $t$, is then $a(t)\cdot \eta(x(t))$. The conformal time, in time, is larger than the cosmic time since the universe has expanded.
+The expansion made all distances larger, and if we freeze the expansion, light would need more than 13.8 billion years to travel across the radius of the observable universe.
+From table \ref{tab:M1_times} we see that light would need 46.3 billion years to travel this distance. Again we see that the slope changes around radiation matter equality, which is related to the change in $\mathcal{H}$.
+The physical reason for why $\eta$ can change with respect to the cosmic time, is that the scale factor changes with time. If the scale factor is constant, $\eta$ will grow linearly. If the 
+universe expands with the speed of light everywhere, $\eta$ will be constant, since light will not move relative to the comoving coordinates.\\
+\\
+In figure \ref{fig:M1_Omegas} we see how much each energy density parameter contributes to the sum of the energy density parameters. We see that the dark energy component
+remains a small part of the total energy density in the universe until recently relative to the age of the universe. In the future, dark energy will be the only relevant density parameter,
+so the universe will expand faster in the future compared to today. In the radiation dominated era, the universe was dominated by relativistic particles. As the universe
+expanded and cooled down, the particles lost energy, and the energy content was dominated by non-relativistic matter. As the universe continued to expand, the mass density
+decreases with the scale factor in all three spatial dimensions, i.e. $\rho \propto \frac{1}{a^3}$. Since the cosmological constant is constant everywhere, the total amount of dark energy
+must increase when more space is created. This is observed close to $x=0$ in the plot.\\
+\\
+In figure \ref{fig:M1_data} we see that our model of the universe predicts a luminosity distance curve that agrees reasonably well with observations. This suggests that the universe is close to being flat.
+In figure \ref{fig:M1_constraints} we see the $1\sigma$ and $2\sigma$ constraints from MCMC fits to supernova data in the $\Omega_\Lambda$ vs. $\Omega_M$ plane. 
+The average value of the small Hubble parameter was $h= 0.70$ with $1\sigma = 0.0064$. We allowed curvature when fitting the data, and our best fit suggests, with $\chi^2=29.28$, that the curvature density parameter, $\Omega_K$,
+is equal to 0.11.  
+
+
+%by the scale factor, so it will be smaller than $H$ except for today where $a = 1$. Large values of $\mathcal{H}$ tells us that the      
+
+
+
+\begin{figure}[h!]
+   \includegraphics[scale=0.6]{../figures/milestone1/Hp_x.pdf}
+   \caption{The conformal Hubble parameter as a function of $x$.}\label{fig:M1_Hp}
+\end{figure}
+
+\begin{figure}[h!]
+   \includegraphics[scale=0.6]{../figures/milestone1/t_x.pdf}
+   \caption{The cosmic time as a function of $x$.}\label{fig:M1_t_x}
+\end{figure}
+
+\begin{figure}[h!]
+   \includegraphics[scale=0.6]{../figures/milestone1/eta_x.pdf}
+   \caption{The conformal time as a function of $x$.}\label{fig:M1_eta_x}
+\end{figure}
+
+\begin{figure}[h!]
+   \includegraphics[scale=0.6]{../figures/milestone1/Omegas.pdf}
+   \caption{The density parameters as a function of $x$.}\label{fig:M1_Omegas}
+\end{figure}
+
+\begin{figure}[h!]
+   \includegraphics[scale=0.6]{../figures/milestone1/dataplot.pdf}
+   \caption{The theoretical luminosity distance, divided by redshift, is plotted against redshift. Actual data from supernova observations is overplotted.}\label{fig:M1_data}
+\end{figure}
+
+\begin{figure}[h!]
+   \includegraphics[scale=0.6]{../figures/milestone1/constraints.pdf}
+   \caption{The $1\sigma$ and $2\sigma$ constraints from MCMC fits to supernova data in the $\Omega_\Lambda$ vs. $\Omega_M$ plane.}\label{fig:M1_constraints}
+\end{figure}
+
+\begin{figure}[h!]
+   \includegraphics[scale=0.6]{../figures/milestone1/prob_dist_H0.pdf}
+   \caption{The probability distribution of the Hubble parameter fitted with a Gaussian.}\label{fig:M1_prob_dist}
+\end{figure}
+
+\noindent
+\\
+In table \ref{tab:M1_times} we show some times for different events in the universe.
+\begin{table}[h!] %%h! er for å tvinge tabellen til å være nærmest mulig her i dokumentet
+   %\begin{center}
+     \caption{Important times in cosmology stated in $x$, $z$ and $t$.} %Tabelltekst
+     \label{tab:M1_times}
+     \begin{tabular}{l|l|r|l} % for hver kolonne har du {a|b|c} der a er for 1.kolonne, b for 2. kolonne etc, l=venstrestil, r=høyrestilt, c = senterstilt. Se posisjonen til tallene i de forskjellige kolonnene. Har du 4 kolonner der alle er senterstilt blir det f.eks. {c|c|c|c}
+       \textbf{Event} & \textbf{x, z, t}\\ %innhold i hver kolonne, legg til flere her hvis du har flere kolonner
+       %(i) & (m) & (m/s)\\ %enheter for hver kolonne
+       \hline %en horisontall linje for å skille overskriften fra tallene under. Vil du ha en slik linje mellom hver rad i tabellen så legg til en \hline mellom hver rad nedover her. Merk \\ er som vanlig linjeskift mens & skiller kolonner
+       Radiation-Matter equality & -8.13,  3400.33, 51.06 [$10^3$ yr] \\
+       Matter-Dark energy equality & -0.26, 0.29, 10.38 [Gyr]        \\
+       Time of cosmic acceleration & -0.49, 0.63, 7.76 [Gyr]\\
+       Age of the universe today & 0.00, 0.00, 13.86 [Gyr]  \\
+       Conformal time today  & 1.90, -0.85, 46.32 [Gyr]\\
+
+       %$Y_\mathrm{p}$ & 0\\
+       \hline
+     \end{tabular}
+   %\end{center}
+ \end{table}
+
+
 
 \section{Milestone II}
 Some introduction about what it is all about.
@@ -124,13 +286,11 @@ The theory behind this milestone.
 Something about the numerical work.
 
 \subsection{Results}
-Show and discuss the results.
+%Show and discuss the results.
 
 
-%3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-%3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-%3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-% Husk at det ikke er snakk om overdensity
+
+
 %husk a snakke om tight coupling 
 %husk a snakke om at vi løser fra radiation domination, men initial betingelsene er fra inflasjon p.g.a. horizon frys...
 %sound hoizon vs. particle horizon

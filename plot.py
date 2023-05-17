@@ -194,7 +194,7 @@ sigma_OmegaL = np.sqrt(1/(len(loaded_fitting_file[:,0])-1)*OmegaL_squared_sum)
 #plt.plot(OmegaL_linspace,1/(sigma_OmegaL*np.sqrt(2*np.pi))*np.exp(-(OmegaL_linspace-OmegaL_avg)**2/(2*sigma_OmegaL**2)))
 #plt.show()
 
-
+print(chi2_min)
 h_linspace = np.linspace(np.amin(chains_h),np.amax(chains_h),800)
 #plt.title('Probability density $p(H_0) \ \ \ (100\ \mathrm{km}/\mathrm{s}/\mathrm{Mpc})^{-1}$')
 #plt.hist(chains_h,density=True,bins=35,alpha=0.6)
@@ -642,7 +642,7 @@ def nearest_index(array, target_value):
 
 
     
-milestone3()
+#milestone3()
 
 
 def milestone4():
