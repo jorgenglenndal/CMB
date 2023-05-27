@@ -155,6 +155,7 @@ $z$ is the redshift and $\sigma$ is the uncertainty. We sample different $\chi^2
 \subsection{Implementation details}
 The code needs $h$, $\Omega_B$, $\Omega_{CDM}$, $\Omega_K$, $N_{eff}$ and $T_{CMB}$ to run. 
 The differential equations are solved using a Runge-Kutta 4 ODE solver, and the result was splined using a cubic spline.
+We solve from $x=-20$ until $x=5$ with 1000 points linearly spaced.
 
 \subsection{Results}
 %Show and discuss the results.
@@ -164,7 +165,7 @@ In figure \ref{fig:M1_test_1} we see that the code produces the expected results
 shown in table \ref{tab:M1_times}, and takes the value of $x=-8.13$. The time of matter dark energy equality is at $x = -0.26$. When looking at the plots, we see that 
 the results take the expected analytical values around the correct times.  
 
-\begin{figure}
+\begin{figure}[H]
    %\hspace{-1cm}
    \includegraphics[scale=0.5]{../figures/milestone1/demonstrate_that_code_works.pdf}
    \caption{Plots to demonstrate that the code works properly. The dotted lines are the theoretical predictions.}\label{fig:M1_test_1}
@@ -216,37 +217,37 @@ is equal to 0.11.
 
 
 
-\begin{figure}[h!]
+\begin{figure}[H]
    \includegraphics[scale=0.6]{../figures/milestone1/Hp_x.pdf}
    \caption{The conformal Hubble parameter as a function of $x$.}\label{fig:M1_Hp}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
    \includegraphics[scale=0.6]{../figures/milestone1/t_x.pdf}
    \caption{The cosmic time as a function of $x$.}\label{fig:M1_t_x}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
    \includegraphics[scale=0.6]{../figures/milestone1/eta_x.pdf}
    \caption{The conformal time as a function of $x$.}\label{fig:M1_eta_x}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
    \includegraphics[scale=0.6]{../figures/milestone1/Omegas.pdf}
    \caption{The density parameters as a function of $x$.}\label{fig:M1_Omegas}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
    \includegraphics[scale=0.6]{../figures/milestone1/dataplot.pdf}
    \caption{The theoretical luminosity distance, divided by redshift, is plotted against redshift. Actual data from supernova observations is overplotted.}\label{fig:M1_data}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
    \includegraphics[scale=0.6]{../figures/milestone1/constraints.pdf}
    \caption{The $1\sigma$ and $2\sigma$ constraints from MCMC fits to supernova data in the $\Omega_\Lambda$ vs. $\Omega_M$ plane.}\label{fig:M1_constraints}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
    \includegraphics[scale=0.6]{../figures/milestone1/prob_dist_H0.pdf}
    \caption{The probability distribution of the Hubble parameter fitted with a Gaussian.}\label{fig:M1_prob_dist}
 \end{figure}
@@ -254,7 +255,7 @@ is equal to 0.11.
 \noindent
 \\
 In table \ref{tab:M1_times} we show some times for different events in the universe.
-\begin{table}[h!] %%h! er for å tvinge tabellen til å være nærmest mulig her i dokumentet
+\begin{table}[H] %%h! er for å tvinge tabellen til å være nærmest mulig her i dokumentet
    %\begin{center}
      \caption{Important times in cosmology stated in $x$, $z$ and $t$.} %Tabelltekst
      \label{tab:M1_times}
@@ -277,32 +278,167 @@ In table \ref{tab:M1_times} we show some times for different events in the unive
 
 
 \section{Milestone II}
-Some introduction about what it is all about.
+%Some introduction about what it is all about.
+%Calculated the optical depth and the visibility function, which is important for the intensity of the CMB photons.
+When the photon temperature in the universe became too low for photons to ionize the hydrogen atom, a period of recombination begun in the universe. In this period, neutral hydrogen
+started to form, and the free electron density decreased. This led to a dramatic change in the scattering rate of light, since photons scatter on free electrons. After this period, light could travel mostly freely towards us. These 
+photons are the CMB photons that we in the end wish to study.\\
+\\  
+The aim of this milestone is to calculate the optical depth for photons emitted at time $x$ observed by us today, and the visibility function. More details on these functions later. 
 
 \subsection{Theory}
-The theory behind this milestone.
+
+The photon intensity can decrease when photons travel through a medium. This can be due to Thomson scattering, where photons interact with free electrons and the direction
+of propagation changes. For an initial intensity $I_0$, the resulting intensity at any given displacement from the origin, $y$, inside the medium can be described by
+\begin{equation}
+   I(y) = I_0e^{-\tau(y)},
+\end{equation}   
+where $\tau(y)$ is the optical depth as a function of $y$. Since intensity is a conserved quantity if light travels unimpeded,
+the optical depth can tell us how much of the initial intensity that has been lost due to processes in the medium, e.g. scattering. $\tau$ is defined by
+\begin{equation}
+   \tau(\eta) = \int_{\eta}^{\eta_0} n_e(\eta') \sigma_T a(\eta') d\eta',
+\end{equation}
+where $n_e$ is the free electron density and $\sigma_T$ is the Thomson cross-section. The optical depth is here defined as a function of conformal time, 
+such that $\tau(\eta)$ is related to the fraction of the intensity that remains today over the initial intensity at $\eta$. The differential equation for $\tau$ as a function
+of our time variable $x$ is 
+\begin{equation}
+   \tau' = \frac{d\tau}{dx} = -\frac{c n_e \sigma_T }{H}.
+\end{equation} 
+
+We define the free electron fraction as
+\begin{equation}
+X_e =  n_e/n_H,
+\end{equation}
+where $n_H$ is the proton density. We assume no heavier elements. Using that the mass of a proton is approximately equal to the mass of hydrogen, $m_H$
+we get \begin{equation}
+   n_H = \frac{\Omega_{b0} \rho_{c0}}{m_H a^3}.
+\end{equation}
+$X_e$ can be solved in two different regimes. The first regime is when everything is in equilibrium, and the second regime is when the free electron fraction starts to decrease.
+The first regime is governed by the Saha equation given by
+\begin{equation}
+   \frac{X_e^2}{1-X_e} = \frac{1}{n_b} \left(\frac{m_e
+T_b}{2\pi}\right)^{3/2} e^{-\epsilon_0/T_b},
+\end{equation}
+where $n_b = n_H$, $m_e$ is the electron mass, $T_b$ is the baryon temperature and $\epsilon_0$ is the ionization energy of hydrogen. Since the Saha equation hold when 
+photons and baryons are in equilibrium, the baryon temperature is equal to the photon temperature, $T_{CMB}/a$. The second regime is governed by the Peebles equation given below
+\begin{equation}
+   \frac{dX_e}{dx} = \frac{C_r(T_b)}{H} \left[\beta(T_b)(1-X_e) - n_H
+\alpha^{(2)}(T_b)X_e^2\right],
+\end{equation}
+where 
+$$
+\boxed{
+\begin{aligned}
+C_r(T_b) &= \frac{\Lambda_{2s\rightarrow1s} + \Lambda_{\alpha}}{\Lambda_{2s\rightarrow1s} + \Lambda_{\alpha} + \beta^{(2)}(T_b)}, \,\,{\rm (dimensionless)},\\
+H &,  \,\,{\rm (dimension~1/s)}\\
+\Lambda_{2s\rightarrow1s} &= 8.227 \textrm{s}^{-1}, \,\,{\rm (dimension~1/s)}\\
+\Lambda_{\alpha} &= H\frac{(3\epsilon_0)^3}{(8\pi)^2 n_{1s}}, \,\,{\rm (dimension~1/s)}\\
+n_{1s} &= (1-X_e)n_H, \,\,{\rm (dimension~1/m^3)}\\
+n_H &= (1-Y_p)\frac{3H_0^2\Omega_{b0}}{8\pi G m_H a^3}, \,\,{\rm (dimension~1/m^3)}\\
+\beta^{(2)}(T_b) &= \beta(T_b) e^{3\epsilon_0/4T_b}, \,\,{\rm (dimension~1/s)}\\
+\beta(T_b) &= \alpha^{(2)}(T_b) \left(\frac{m_eT_b}{2\pi}\right)^{3/2} e^{-\epsilon_0/T_b}, \,\,{\rm (dimension~1/s)} \\
+\alpha^{(2)}(T_b) &= \frac{64\pi}{\sqrt{27\pi}}\frac{\alpha^2}{m_e^2}\sqrt{\frac{\epsilon_0}{T_b}}\phi_2(T_b), \,\,{\rm (dimension~m^3/s)}\\
+\phi_2(T_b) &= 0.448\ln(\epsilon_0/T_b), \,\,{\rm (dimensionless)}.
+\end{aligned}
+}
+$$
+where $\alpha \simeq \frac{1}{137.0359992}$. We now take transition rates between the 1s and 2s quantum states of the hydrogen atom.\\
+\\
+The visibility function is given by $\tilde{g}(x) = -\tau'e^{-\tau}$. \\
+\\
+Finally, the sound horizon is given by 
+$$\boxed{\begin{aligned}   
+   s(x) &= \int_0^{a} \frac{c_s dt}{a} = \int_{-\infty}^{x} \frac{c_s dx}{\mathcal{H}} \to \frac{ds(x)}{dx}
+ = \frac{c_s}{\mathcal{H}}\\
+ &\text{with}\,\,\,s(x_{\rm ini}) = \frac{c_s(x_{\rm ini})}{\mathcal{H}(x_{\rm ini})}     
+\end{aligned}}$$ 
+ where $c_s = c \sqrt{\frac{R}{3(1+R)}}$ where $R = \frac{4\Omega_{\gamma 0}}{3\Omega_{b 0} a}$.
 
 \subsection{Implementation details}
-Something about the numerical work.
+The code needs the background solution found in the previous milestone in order to run. The code solves the Saha and Peebles equations and calculates the optical depth and the visibility function.
+The differential equations are solved with a Runge-Kutta 4 ODE solver, and the result is splines using a cubic spline.
+We solve the quantities of interest from $x=-20$ until $x=0$. We solve for 1000 points linearly spaced. 
+We switch from the Saha equation to the Peebles equation when $X_e$ reaches 0.99.
+
+
 
 \subsection{Results}
-%Show and discuss the results.
+\subsubsection{Testing the code.}
+The code was mainly tested by comparing our plots to the plots of \cite{winther:2023} and \cite{Callin}.
+
+\subsubsection{Our results}
+In figure \ref{fig:M2:X_e} we see how the free electron fraction, $X_e$, evolves with time $x$. The blue plot is the free electron fraction using a combination of both
+the Saha and the Peebles equations. We see that before recombination, there were equally many free electrons as there were protons. Around recombination, we see 
+that $X_e$ has dropped to a tenth of its initial value, such that there are 10 times fewer free electrons at this time, using that the comoving proton density is constant. We aslo see
+that $X_e$ seems to stabilize before it reaches $10^{-4}$. The Saha prediction is plotted in orange. We see that the Saha equation predicts that $X_e$ decreases more rapidly, and does not 
+stabilize, but goes to zero. We see from the dotted line that recombination happens after $X_e$ has started to decrease, which is consistent with intuition, as there must be fewer free electrons after atoms have started to form.
+The time of recombination was calculated using the visibility function, which
+we will discuss later.\\
+\\
+In figure \ref{fig:M2:taus} we see the optical depth for photons emitted at time $x$ received by us today. Since the optical depth tells us how the intensity of light decreases as it travels through a medium,
+we expect $\tau$ in general to be larger for larger $x$ values as light has travelled a longer distance. We also expect $\tau$ to be larger if $X_e$ is closer to one, since light scatters off free electrons. We clearly see that the optical depth is very large for photons that were 
+emitted before recombination. After recombination, the universe became transparent. This is seen in the plot, as $\tau$ is several orders of magnitude lower after recombination, which
+means that photons emitted after recombination travelled mostly unimpeded. The reason why the optical depth decreases with $x$ before recombination when $X_e$ is constant is because light
+travels a shorter distance through the medium when $x$ decreases. $\tau$ is obviously zero at $x=0$ since there is no time for light to be scattered from $x=0$ to $x=0$. We see that $\tau$ is of order $10^4$ at x=-12.
+This means that the observed intensity for light emitted at $x=-12$ is approximately a factor $10^{-4343}$ smaller than the initial intensity. Therefore, it is not possible,
+in a practical sense at least, to detect photons that were emitted before recombination.\\ 
+\\
+  
+\begin{figure}[H]
+   \includegraphics[scale=0.5]{../figures/milestone2/X_e.pdf}
+   \caption{The free electron fraction, $X_e$, plotted against $x$. The Saha prediction is also included in orange.}\label{fig:M2:X_e}
+\end{figure}
+
+\begin{figure}[H]
+   \includegraphics[scale=0.5]{../figures/milestone2/taus.pdf}
+   \caption{The optical depth with its first and second derivatives are plotted against $x$.}\label{fig:M2:taus}
+\end{figure}
+
+\begin{figure}[H]
+   \includegraphics[scale=0.5]{../figures/milestone2/g_tilde_plots.pdf}
+   \caption{The visibility function with its first and second derivatives are plotted against $x$.}\label{fig:M2:g_tilde_plots}
+\end{figure}
+
+\noindent
+In figure \ref{fig:M2:g_tilde_plots} we see the visibility function.
+Since the visibility function tells us the probability density that a photon scattered for the last time at $x$, the peak in the visibility function tells us the time 
+when a photon was most likely to have scattered for the last time. By defining the last scattering surface to happen at this time, we get a value of $x=-6.98$ for the last scattering surface. The corresponding 
+redshift is $z = 1079.73$ with cosmic time $t=378004$ years. Recombination is the time when free electrons combined with protons to form hydrogen. This was possible
+since the photon temperature was, in general, too low to free the electrons by ionizing the hydrogen atoms. Recombination can therefore be defined when the abundance of 
+free electrons reached a threshold value. We choose recombination to happen when the free electron fraction takes the value of 0.1. Doing this we get exactly the same
+value of $x$ as we did for the time of the last scattering surface. This reason why the values are exactly the same could be related to the splines, or to the
+resolution in $x$ not being precise enough when extracting information from the arrays. Either way, this suggests that recombination happens very close to the last scattering
+surface. Knowing this, we can use the prediction of $X_e$ from the Saha equation to give an estimate of both when recombination and the last scattering surface happened according to the Saha equation.
+Using $X_e=0.1$ in the Saha equation we get that recombination happened at $x= -7.14$, $z = 1260$, $t=290354$ years.
+From figure \ref{fig:M2:X_e} we see that the Saha equation predicts that the free electron fraction drops more rapidly than the Peebles eqaution predicts. Recombination will therefore happen earlier
+using the Saha equation.\\
+\\
+The free electron density today is $2\cdot 10^{-4}$ meaning that for every two free electrons in the universe today, there are ten thousand protons. Since the comoving 
+number density of protons is constant, we see that the free electron fraction can be rewritten into $\frac{{n_e}_\mathrm{today}}{{n_e}_\mathrm{initial}} = 2\cdot 10^{-4}$, such that free electrons 
+are five thousand times rarer today as they were initially, i.e. before recombination.\\
+\\
+The sound horizon is the distance sound could have travelled in the proton-electron-photon plasma from the Big Bang until recombination, where the plasma ceases to exist.
+Since primordial energy density contrasts created sound waves in the plasma, and these sound waves froze as the plasma became neutral, we can expect to see those sound 
+waves in the universe today. The sound horizon at recombination was 0.145 Gpc in comoving coordinates, i.e. in FLRW coordinates. To get the physical distance at any given time, we
+can multiply by the value of the scale factor at that time. Since we are only interested in physical distances today, we multiply by $a_0 =1$, such that the physical distance
+of the sound horizon, at recombination, measured today is 0.145 Gpc. We therefore expect 0.145 Gpc to be the largest distances where the CMB is in equilibrium,
+since heat could not travel further than those distances. Therefore, people were surprised when CMB photons from the opposite sides of the universe appeared to be very close to equilibrium. This problem was solved by inflation.  
 
 
 
 
-%husk a snakke om tight coupling 
+\section{Milestone III}
 %husk a snakke om at vi løser fra radiation domination, men initial betingelsene er fra inflasjon p.g.a. horizon frys...
 %sound hoizon vs. particle horizon
-\section{Milestone III}
 %Some introduction about what it is all about.
 %In this milestone we look at 
 In this milestone we calculate the evolution of the structures in the universe from after inflation until today.  In practice, this is done by 
 solving the perturbed Einstein-Boltzmann equations numerically with initial conditions from inflation. This will give us the time evolution of the different physical quantities we are interested
 in at different Fourier scales, $k$. We will go into more detail in the theory section. A detailed derivation of the relevant equations is given in \cite{winther:2023}. \\
 \\
-Since the observed CMB is a measurement of the photon temperature field today, it is of great interest for us to calculate the photon temperature fluctuations 
-in the universe at all times and Fourier scales. These fluctuations can be evaluated today to reconstruct the CMB power spectrum we observe. 
+The observed CMB is a measurement of the photon temperature field today. In order to reconstruct the statistical properties of the observations, we need
+to know how the structures in the universe evolved from some initial state to the state we observe today. This is important as matter perturbations will source gravitational
+wells that, by relativistic effects, will redshift the photons originating from inside the well. This will directly increase the photon temperature fluctuations that we are interested in.   
 
 \subsection{Theory}
 %The theory behind this milestone.
@@ -396,7 +532,7 @@ v_b^\prime &= \frac{1}{1+R} \left[-v_b - \frac{ck}{\mathcal{H}}\Psi + R(q +
 }
 $$
 The $2 \leq l$ photon multipoles in the tight coupling regime are given by the same expressions as in the initial conditions, but these multipoles are very small in this regime,
-so we can simply set them to zero. The $\Theta_2$ multipole is calculated for numerical stability.\\
+so we can simply set them to zero, but we choose to calculate the $\Theta_2$ multipole for higher accuracy.\\
 \\
 
  
@@ -407,9 +543,11 @@ We solved the differential equations in two different regimes and "sewed" the so
 Since the last value in the first regime was used as an initial condition for the second regime, we removed the last value 
 in the first regime, when "sewing" the solutions together, to remove the overlap between the solutions. A for loop was used to loop through all the Fourier scales, $k$, of interest.
 The differential equations were solved using a Runge-Kutta 4 ODE solver. The solution was then splined with a 2D spline, since we have a complete solution in time for each $k$ value.\\ \\
-Solutions of the background universe and the recombination history of the universe was also used.
+Solutions of the background universe and the recombination history of the universe was also used. We solved the system from x=-20 to x=0 with 1000 linearly spaced points.
+The $k/Mpc$ values range from $5\cdot 10^{-5}$ to 0.3 with 100 logarithmically spaced points.
 
 \subsection{Results}
+
 \subsubsection{Test results}
 The code produces the following results with the cosmological test parameters given in table \ref{tab:test_parameters}. All the figures show plots at three different scales.
 In figures \ref{fig:test1} and \ref{fig:test2} we see the density perturbation and the velocity, respectively, for both CDM and baryons. In figures \ref{fig:test3}
@@ -474,70 +612,108 @@ in figure \ref{fig:test5}. All plots seem to agree with the plots shown in \cite
 \subsubsection{Results}
 %theory section maybe???
 % write about the slope of delta_cdm and compare to analytical result...all plots in general
+For our results we have againn used the fiducial cosmology parameters of \cite{winther:2023} where neutrinos are included in the background, but they are not perturbed. We therefore expect our results to differ from the test results.\\
+\\
 In figure \ref{fig:delta_cdm_delta_b_zoom}, which is a zoomed in version of figure \ref{fig:delta_cdm_delta_b}, we see more clearly what is going on. Gravity travels with the same speed as light. This means that the conformal time, $\eta$,
 gives us the maximum reach of gravity at any given time. Therefore, if the scale, $k$, of interest is larger than the conformal time, we should not see any correlation,
 since the scale is causally disconnected. Using that Fourier modes enter the particle horizon when $k\eta=1$, we find
 that the scale $k=10/\mathrm{Mpc}$ enters the particle horizon at $x\sim -15.4$.
-We see that our results are consistent with the theory, as CDM clusters on this scale at $x\sim -16$. The reason why the overdensity oscillates, is because 
-the mass is first compressed by gravity, then the pressure increases such that the mass rebounds. This process is then repeated until the Jeans mass is reached, where the Jeans mass is the mass needed to form structure.
+We see that our results are consistent with the theory, as CDM clusters on this scale at $x\sim -16$. The reason why the baryonic overdensity oscillates, is because 
+the mass is first compressed by gravity, then the radiation pressure increases such that the mass rebounds, as seen in figure \ref{fig:delta_cdm_delta_b_delta_gamma}. This process is then repeated until the Jeans mass is reached, where the Jeans mass is the mass needed to form structure.
 Since the Jeans mass, in a static universe, depends linearly on the sound speed, we do not expect baryon structure to form in general before recombination, where the sound speed was $\sim c$, \cite{Shen:2022}. However, right after recombination  
-the sound speed freezes out, and structures can more easily form. As recombination happened at $x=-7$, we can see in our results that the baryon overdensity starts to continously increase at this time. This supports the sound speed discussion.
+the sound speed freezes out, i.e. the photons pressure is released, and structures can more easily form. As recombination happened at $x\sim -7$, we can see in our results that the baryon overdensity starts to continously increase at this time for scales that have entered the horizon.
 For CDM we do not have any oscillating behavior at early times since CDM is pressureless and gravity only has to works against the cosmic acceleration.   
-We note that the overdensity at some times is less than -1, which by definition is impossible. This is not a concern, since the quantities have not been scaled to represent physical values. 
+We note that the overdensity at some times is less than -1, which by definition is impossible in real space. This is not a concern, since the quantities are in Fourier space, and they have not been scaled to represent physical values. 
 \\ \\
 In figure \ref{fig:v_cdm_v_b} we see that the oscillations in the baryonic overdensity has an expected corresponding oscillation in the baryonic fluid velocity, as the mass is contracting and rebounding repeatedly.
 At a larger scale, seen in green, the mode enters the particle horizon later, and the baryonic overdensity undergoes fewer oscillation. For even larger scales, seen in 
-red and blue, the modes enter the particle horizon after recombination, such that there are no oscillations.
+red and blue, the modes enter the particle horizon after recombination and there are no oscillations as expected.\\
+\\
+In figure \ref{fig:delta_gamma} we see how the temperature overdensity behaves for different scales. The corresponding oscillations in the photon fluid velocity can be seen in figure \ref{fig:v_gamma}.
+At early times, the photons interact strongly with the baryons, such that they equilibrize. This is clearly seen in figure \ref{fig:delta_cdm_delta_b_delta_gamma}. After 
+recombination, the photons will no longer follow the evolution of the baryons. This is because the baryons cluster more and more due to gravity, while photons
+do not. We see from the orange graph in \ref{fig:delta_gamma} that the temperature overdensity increases as the scale enters
+the horizon and the evolution follows that of the baryons. However, at recombination, the pressure is released, so the temperature does not increase again with the baryons
+as we observe for smaller scales that enter the horizon at earlier times. Since the orange graph, with $k = 0.01/Mpc$ is large at recombination, we expect there to be strong
+correlation in the CMB power spectrum at these comoving scales, since it is the photons released at recombination we observe today. We note that the photon overdensity in the blue graph, with $k = 0.001/Mpc$
+which enters the horizon later, also increases with the baryon overdensity even after recombination when the photons have decoupled from the baryons. This may suggest that
+there are still some interactions between the photons and the baryons. Another explanation is seen from figures \ref{fig:phi} and \ref{fig:phi_psi} where the gravitational potentials are plotted.
+We see that for large scales at late times, the potentials are at their largest value. This may explain why the photons cluster even after recombination, since general relativity predicts that 
+light is affected by the gravitational potential.\\
+\\
+The evolution of the gravitational potential in \ref{phi} is clearly dependent on when the scale crosses the horizon, and if the crossing happens in the radiation 
+era or in the matter era. In the radiation era, the photon perturbations will be the dominant quantity that can affect the potential. 
+Since the photon perturbations do not grow in time, the potential will be washed out due to the expansion of the universe.
+This is clearly observed in the plot, as the scales that enter in the radiation era starts to decrease as they cross the horizon. For the scales that enter in 
+the matter era, the evolution is quite different. Inside the matter era, the dominant quantity to affect the potential is the matter perturbations. We know that the matter
+perturbations grow in the matter era, and it can be shown analytically that the potential will be constant, but it takes some time before the universe becomes
+matter dominated after radiation-matter equality. We note that the $k = 0.001/Mpc$ scale is the only scale that
+increases with time, and this happens before it enters the horizon. In our test plots we saw that this scale decreases as the other scales, but here we have included neutrinos in the background.
+However, we did not perturb the neutrinos, and this may cause some inconsistencies which lead to results that are hard to interpret. The fact that the potential changes before horizon crossing is also unexpected, and should be explored in future studies.
+At very late times, the potential decreases again due to dark energy,
+which washes out the potential through more rapid expansion.\\
+\\
+In figure \ref{fig:phi_psi} we see that the sum of the potentials are large for large scales at late times. The potential $\Phi$ in the Newtonian gauge can be related 
+to the Newtonian gravitational potential. We see that during the matter era, there is a strong potential at large scales.\\
+\\
+In figure \ref{fig:theta2} we see the photon quadrupole, which is analogous to a higher order Taylor expansion term. This term will therefore tell us about the 
+finer structure of the photon temperature fluctuations. Since the observed CMB is a measurement of the photon temperature fluctuations that originate
+from the universe at recombination, $x \sim -7$, we can expect there to be correlation at scales corresponding to $k = 0.1/Mpc$. The larger scale, $k = 0.001/Mpc$, 
+is very small and flat at this time, so we should not expect to see correlations at these scales.    
 
-%In figure \ref{fig:delta_gamma} the photon overdensity. 
-%Velocity is negative right after perturbation has rebound
 
 %Show and discuss the results.
 
-\begin{figure}[h!]
+\begin{figure}[H]
    %\hspace{-0.48cm}   
    \includegraphics[scale=0.6]{../figures/milestone3/delta_gamma.pdf}
    \caption{The comparable photon overdensity, $\delta_\gamma = 4\Theta_0$, at four different scales, $k$. }\label{fig:delta_gamma}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
    %\hspace{-0.48cm}   
    \includegraphics[scale=0.6]{../figures/milestone3/delta_cdm_delta_b.pdf}
    \caption{The CDM overdensity and the absolute value of the baryon overdensity plotted at four different scales, $k$. The solid lines are for CDM and the dotted lines are for baryons.}\label{fig:delta_cdm_delta_b}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
    %\hspace{-0.48cm}   
    \includegraphics[scale=0.65]{../figures/milestone3/delta_cdm_delta_b_zoom.pdf}
    \caption{A closer look at figure \ref{fig:delta_cdm_delta_b} with linear y-scale and with the correct sign for the baryon overdensity.}\label{fig:delta_cdm_delta_b_zoom}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
+   %\hspace{-0.48cm}   
+   \includegraphics[scale=0.65]{../figures/milestone3/delta_cdm_delta_b_delta_gamma.pdf}
+   \caption{Same as figure \ref{fig:delta_cdm_delta_b_zoom} at $k=10/Mpc$ with radiation overdensity included.}\label{fig:delta_cdm_delta_b_delta_gamma}
+\end{figure}
+
+\begin{figure}[H]
    %\hspace{-0.48cm}   
    \includegraphics[scale=0.6]{../figures/milestone3/v_gamma.pdf}
    \caption{The photon velocity perturbation, $v_\gamma=-3\Theta_1$, at four different scales, $k$.}\label{fig:v_gamma}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
    %\hspace{-0.48cm}   
    \includegraphics[scale=0.6]{../figures/milestone3/v_cdm_v_b.pdf}
    \caption{The CDM velocities, in solid lines, and the absolute value of the baryon velocities,
    in dotted lines, are plotted at four different scales, $k$.}\label{fig:v_cdm_v_b}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
    %\hspace{-0.48cm}   
    \includegraphics[scale=0.65]{../figures/milestone3/theta_2.pdf}
    \caption{The photon temperature quadrupole, $\Theta_2$, at four different scales, $k$.}\label{fig:theta2}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
    %\hspace{-0.48cm}   
    \includegraphics[scale=0.6]{../figures/milestone3/phi.pdf}
-   \caption{The gravitational potential at four different scales, $k$.}\label{fig:phi}
+   \caption{The gravitational potential at four different scales, $k$. The dotted line denotes the time of horizon crossing for the scale with the same color.}\label{fig:phi}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
    %\hspace{-0.48cm}   
    \includegraphics[scale=0.6]{../figures/milestone3/phi_psi.pdf}
    \caption{The sum of the two gravitational potentials, $\Phi$ and $\Psi$, at four different scales, $k$.}\label{fig:phi_psi}

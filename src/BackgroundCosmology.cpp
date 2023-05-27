@@ -119,7 +119,8 @@ void BackgroundCosmology::solve(){
   //std::cout << t_of_x(1.9037)/(60.*60.*24.*365.*1e9) <<std::endl;
   //std::cout << t_of_x(1.9036)/(60.*60.*24.*365.*1e9) <<std::endl;
   //std::cout << t_of_x(1.9035)/(60.*60.*24.*365.*1e9) <<std::endl;
-  
+  //std::cout << "here" << std::endl;
+  //std::cout << t_of_x(-7.14142828565713)/(60.*60.*24.*365) <<std::endl;
 
 
 

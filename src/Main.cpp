@@ -42,14 +42,14 @@ int main(int argc, char **argv){
   // Set up and solve the background
   BackgroundCosmology cosmo(h, OmegaB, OmegaCDM, OmegaK, Neff, TCMB);
   cosmo.solve();
-  cosmo.info();  
+  //cosmo.info();  
   // Output background evolution quantities
-  //cosmo.output("cosmology.txt");
+  cosmo.output("cosmology.txt");
 
   //mcmc_fit_to_supernova_data("data/supernovadata.txt", "results.txt");
 
   // Remove when module is completed
-  return 0;
+  //return 0;
 
   //=========================================================================
   // Module II
@@ -62,7 +62,8 @@ int main(int argc, char **argv){
   //rec.info();
 
   // Output recombination quantities
-  //rec.output("recombination.txt");
+  //rec.output("recombination_separate_solutions.txt");
+  rec.output("recombination.txt");
   
   // Remove when module is completed
   //return 0;
@@ -75,7 +76,7 @@ int main(int argc, char **argv){
   Perturbations pert(&cosmo, &rec);
 
   pert.solve();
-  pert.info();
+  //pert.info();
   
   // Output perturbation quantities
   double kvalue0 = 0.001 / Constants.Mpc;
@@ -96,8 +97,8 @@ int main(int argc, char **argv){
   //takes 20 min to run
   PowerSpectrum power(&cosmo, &rec, &pert, A_s, n_s, kpivot_mpc);
   power.solve();
-  power.output("cells_result_warning.txt");
-  power.output_matter("matter_power_spectrum_result_warning.txt");
+  //power.output("cells_result_warning.txt");
+  //power.output_matter("matter_power_spectrum_result_warning.txt");
   // Remove when module is completed
   //power.output_Source("source_new.txt");
   //power.output_45("45_new.txt");

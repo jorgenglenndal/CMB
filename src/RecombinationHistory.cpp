@@ -21,6 +21,7 @@ void RecombinationHistory::solve(){
     
   // Compute and spline Xe, ne
   solve_number_density_electrons();
+  solve_number_density_electrons_with_separate_solutions();
    
   // Compute and spline tau, dtaudx, ddtauddx, g, dgdx, ddgddx, ...
   solve_for_optical_depth_tau();
@@ -39,7 +40,7 @@ void RecombinationHistory::solve_number_density_electrons(){
   //=============================================================================
   // DONE: Set up x-array and make arrays to store X_e(x) and n_e(x) on
   //=============================================================================
-  Vector x_array = Utils::linspace(x_start,x_end,npts_rec_arrays); 
+  Vector x_array = Utils::linspace(x_start,x_today,npts_rec_arrays); 
   
   //linspaces from 0 to 1 because I just want a vector with npts_rec_arrays elements
   Vector Xe_arr  = Utils::linspace(0.,1.,npts_rec_arrays);
@@ -127,6 +128,7 @@ void RecombinationHistory::solve_number_density_electrons(){
   
   Xe_of_x_spline.create(x_array,Xe_arr,"Xe");
   log_ne_of_x_spline.create(x_array,log_ne,"ne");
+  //std::cout<< Xe_of_x_spline(-6.9859707941588) << std::endl;
 
 
   //=============================================================================
@@ -137,6 +139,122 @@ void RecombinationHistory::solve_number_density_electrons(){
   //...
 
   Utils::EndTiming("Xe");
+}
+void RecombinationHistory::solve_number_density_electrons_with_separate_solutions(){
+  Utils::StartTiming("Xe separate solutions");
+  
+  //=============================================================================
+  // DONE: Set up x-array and make arrays to store X_e(x) and n_e(x) on
+  //=============================================================================
+  Vector x_array = Utils::linspace(x_start,x_today,npts_rec_arrays); 
+  
+  //linspaces from 0 to 1 because I just want a vector with npts_rec_arrays elements
+  Vector Xe_arr_saha  = Utils::linspace(0.,1.,npts_rec_arrays);
+  Vector ne_arr_saha  = Utils::linspace(0.,1.,npts_rec_arrays);
+
+  //Vector Xe_arr_peebels  = Utils::linspace(0.,1.,npts_rec_arrays);
+  Vector ne_arr_peebles  = Utils::linspace(0.,1.,npts_rec_arrays);
+
+  // Calculate recombination history
+  //bool saha_regime = true;
+  for(int i = 0; i < npts_rec_arrays; i++){
+    //std::cout << i << std::endl;
+
+    //==============================================================
+    // DONE: Get X_e from solving the Saha equation so
+    // implement the function electron_fraction_from_saha_equation
+    //==============================================================
+    auto Xe_ne_data = electron_fraction_from_saha_equation(x_array[i]);
+
+    // Electron fraction and number density
+    const double Xe_current = Xe_ne_data.first;
+    const double ne_current = Xe_ne_data.second;
+    
+    Xe_arr_saha[i] = Xe_current;
+    ne_arr_saha[i] = ne_current;
+  }
+
+    // Are we still in the Saha regime?
+    //if(Xe_current < Xe_saha_limit)
+    //  //std::cout << Xe_current << std::endl;
+    //  saha_regime = false;
+      
+
+    //if(saha_regime){
+    //  //std::cout << "saha" << std::endl; 
+    //  Xe_arr[i] = Xe_current;
+    //  ne_arr[i] = ne_current;
+    //  //=============================================================================
+    //  // DONE: Store the result we got from the Saha equation
+    //  //=============================================================================
+    //  //...
+    //  //...
+
+    
+
+      //==============================================================
+      // DONE: Compute X_e from current time til today by solving 
+      // the Peebles equation (NB: if you solve all in one go remember to
+      // exit the for-loop!)
+      // Implement rhs_peebles_ode
+      //==============================================================
+      //...
+      //...
+      //std::cout << "202" << std::endl;
+      // The Peebles ODE equation
+//      ODESolver peebles_Xe_ode;
+//      ODEFunction dXedx = [&](double x, const double *Xe, double *dXedx){
+//        return rhs_peebles_ode(x, Xe, dXedx);
+//      };
+//      //std::cout << "208" << std::endl;
+//      //=============================================================================
+//      // DONE: Set up IC, solve the ODE and fetch the result 
+//      //=============================================================================
+//      //...
+//      //...
+//      //Vector Xe_init{Xe_current};
+//      const double OmegaB0      = cosmo->get_OmegaB(0.0);
+//      const double G           = Constants.G;
+//
+//      const double rho_c0 = 3.*pow(cosmo->get_H0(),2.)/(8.*M_PI*G);
+//      const double m_H         = Constants.m_H;
+//
+//      Vector init;
+//      init.push_back(Xe_arr_saha[0]);  std::cout << init[0] << std::endl;
+//      peebles_Xe_ode.solve(dXedx, x_array, init); //std::cout << "223" << std::endl;
+//      auto Xe_peebles = peebles_Xe_ode.get_data_by_component(0);
+//      for (int i=0; i < npts_rec_arrays;i++){
+//        double nb = OmegaB0*rho_c0/(m_H*exp(3.*x_array[i]));
+//        ne_arr_peebles[i] = Xe_peebles[i]*nb;
+//
+//      }
+    
+  
+  //taking the logarithm of ne since it varies a lot (for the spline). Xe does not vary to the same extent...
+  Vector log_ne_saha = Utils::linspace(0.,1,npts_rec_arrays); 
+  //Vector log_ne_peebles = Utils::linspace(0.,1,npts_rec_arrays); 
+
+  for (int i=0;i < npts_rec_arrays;i++){
+     log_ne_saha[i] = log(ne_arr_saha[i]);
+     //log_ne_peebles[i] = log(ne_arr_peebles[i]);
+  }
+  
+  Xe_of_x_saha_spline.create(x_array,Xe_arr_saha,"Xe_saha");
+  //std::cout<< "Xe_spline here" << std::endl;
+  log_ne_of_x_saha_spline.create(x_array,log_ne_saha,"ne_saha");
+
+  //Xe_of_x_peebles_spline.create(x_array,Xe_peebles,"Xe_peebles");
+  //log_ne_of_x_peebles_spline.create(x_array,log_ne_peebles,"ne_peebles");
+
+
+  //=============================================================================
+  // DONE: Spline the result. Implement and make sure the Xe_of_x, ne_of_x 
+  // functions are working
+  //=============================================================================
+  //...
+  //...
+
+  Utils::EndTiming("Xe separate solutions");
 }
 
 //====================================================
@@ -185,7 +303,7 @@ std::pair<double,double> RecombinationHistory::electron_fraction_from_saha_equat
 // The right hand side of the dXedx Peebles ODE
 //====================================================
 int RecombinationHistory::rhs_peebles_ode(double x, const double *Xe, double *dXedx){
-
+  //std::cout << x << std::endl;
   // Current value of a and X_e
   const double X_e         = Xe[0];
   const double a           = exp(x);
@@ -416,6 +534,26 @@ double RecombinationHistory::Xe_of_x(double x) const{
 
   return Xe_of_x_spline(x);
 }
+double RecombinationHistory::Xe_of_x_peebles(double x) const{
+
+  //=============================================================================
+  // DONE: Implement
+  //=============================================================================
+  //...
+  //...
+
+  return Xe_of_x_peebles_spline(x);
+}
+double RecombinationHistory::Xe_of_x_saha(double x) const{
+
+  //=============================================================================
+  // DONE: Implement
+  //=============================================================================
+  //...
+  //...
+
+  return Xe_of_x_saha_spline(x);
+}
 
 double RecombinationHistory::ne_of_x(double x) const{
 
@@ -464,6 +602,8 @@ void RecombinationHistory::output(const std::string filename) const{
     fp << g_tilde_of_x(x)      << " ";
     fp << dgdx_tilde_of_x(x)   << " ";
     fp << ddgddx_tilde_of_x(x) << " ";
+    fp <<std::setprecision(15) <<Xe_of_x_saha(x)           << " ";
+    //fp <<std::setprecision(15) <<Xe_of_x_peebles(x)           << " ";
     fp << "\n";
   };
   std::for_each(x_array.begin(), x_array.end(), print_data);

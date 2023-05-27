@@ -47,6 +47,7 @@ class RecombinationHistory{
     
     // Solve for Xe 
     void solve_number_density_electrons();
+    void solve_number_density_electrons_with_separate_solutions();
     
     //===============================================================
     // [2] Compute tau and visibility functions
@@ -65,6 +66,11 @@ class RecombinationHistory{
     Spline tau_of_x_spline{"tau"}; 
     Spline g_tilde_of_x_spline{"g"};  
     Spline sound_horizon_spline{"SH"};
+
+    Spline Xe_of_x_saha_spline{"Xe_saha"};
+    Spline log_ne_of_x_saha_spline{"ne_saha"};
+    Spline Xe_of_x_peebles_spline{"Xe_peebles"};
+    Spline log_ne_of_x_peebles_spline{"ne_peebles"};
 
   public:
 
@@ -96,6 +102,9 @@ class RecombinationHistory{
     double ne_of_x(double x) const;
     double get_Yp() const;
     double get_sound_horizon(double x) const;
+
+    double Xe_of_x_saha(double x) const;
+    double Xe_of_x_peebles(double x) const;
 };
 
 #endif
