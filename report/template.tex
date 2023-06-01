@@ -27,9 +27,15 @@
               \email{j.a.glenndal@astro.uio.no}
              }
 
-   \date{}
+   \date{June 01, 2023}
 
-  \abstract{An abstract for the paper. Describe the paper. What is the paper about, what are the main results, etc.}
+  \abstract{We calculated the CMB power spectrum following the paper of \cite{Callin}. The calculations were divided into four milestones, where we first solved the background universe,
+  followed by the recombination history of the universe. We then calculated the perturbation history of the universe, using linear perturbation theory, and finally the CMB power spectrum using the line of sight
+  integration approach to get the photon temperature multipoles, $\Theta_\ell$, at all Fourier scales, $k$, evaluated today. For the cosmological parameters, we used the Planck 2018 best fits, but we removed neutrinos, since 
+  we do not perturb them. We found that the power spectrum 
+  had peaks corresponding to compressions and decompressions in the plasma that existed before recombination where the hydrogen atom formed and the universe became transparent. The first four peaks were located 
+  between $\ell \sim 10^2$ and $\ell\sim 10^3$. For larger $\ell$ we observed photon diffusion. For smaller $\ell$ we compared our result to data and observed that
+  our results are consistent with observations.}
 
    \keywords{   cosmic microwave background (CMB) --
                 large-scale structure of Universe
@@ -38,9 +44,23 @@
    \maketitle
 
 \section{Introduction}
-Write an introduction here. Give context to the paper. Citations to relevant papers. You only need to do this in the end for the last milestone.
+The CMB power spectrum can tell us a lot about the universe. Since the universe is homogeneous and isotropic on large scales, the Friedmann-Lemaître-Robertson-Walker
+line element describes the geometry in our universe. From this metric, one can use the well known Friedmann equations to calculate the time evolution of the energy components and the 
+expansion history of the universe. As the power spectrum will change with these parameters, one can in principle use the observed power spectrum to constrain the energy components of the universe today. Further, the power spectrum
+tells us about recombination. This is possible since the power spectrum is length scale dependent, and perturbations created sound waves in the plasma that travelled until recombination, where
+the plasma became neutral. The sound waves then froze out and left a detectable imprint scale on the photon temperature field. There is much more to learn from the power spectrum.\\
+\\
+In milestone 1 we look at the background universe, and discuss the results. In milestone 2 we look at more closely at recombination and the evolution of the free electron density in the universe.
+In milestone 3 we use linear perturbation theory to perturb the Einstein and Boltzmann equations. These coupled differential equations are solved numerically and the solution
+is discussed. In the last milestone, everything is put together, and we present the matter and CMB power spectra.
+\\
+The paper of \cite{Callin} and the web page of \cite{winther:2023} were especially useful for the calculation of the CMB power spectrum.
 
-%Include plot of best fit for luminosity distance if time allows it
+
+
+
+
+
 
 \section{Milestone I}
 %\vspace{-2cm}
@@ -165,8 +185,8 @@ In figure \ref{fig:M1_test_1} we see that the code produces the expected results
 shown in table \ref{tab:M1_times}, and takes the value of $x=-8.13$. The time of matter dark energy equality is at $x = -0.26$. When looking at the plots, we see that 
 the results take the expected analytical values around the correct times.  
 
-\begin{figure}[H]
-   %\hspace{-1cm}
+\begin{figure}[h!]
+   \hspace{-1cm}
    \includegraphics[scale=0.5]{../figures/milestone1/demonstrate_that_code_works.pdf}
    \caption{Plots to demonstrate that the code works properly. The dotted lines are the theoretical predictions.}\label{fig:M1_test_1}
 
@@ -217,37 +237,37 @@ is equal to 0.11.
 
 
 
-\begin{figure}[H]
+\begin{figure}[h!]
    \includegraphics[scale=0.6]{../figures/milestone1/Hp_x.pdf}
    \caption{The conformal Hubble parameter as a function of $x$.}\label{fig:M1_Hp}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    \includegraphics[scale=0.6]{../figures/milestone1/t_x.pdf}
    \caption{The cosmic time as a function of $x$.}\label{fig:M1_t_x}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    \includegraphics[scale=0.6]{../figures/milestone1/eta_x.pdf}
    \caption{The conformal time as a function of $x$.}\label{fig:M1_eta_x}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    \includegraphics[scale=0.6]{../figures/milestone1/Omegas.pdf}
    \caption{The density parameters as a function of $x$.}\label{fig:M1_Omegas}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    \includegraphics[scale=0.6]{../figures/milestone1/dataplot.pdf}
    \caption{The theoretical luminosity distance, divided by redshift, is plotted against redshift. Actual data from supernova observations is overplotted.}\label{fig:M1_data}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    \includegraphics[scale=0.6]{../figures/milestone1/constraints.pdf}
    \caption{The $1\sigma$ and $2\sigma$ constraints from MCMC fits to supernova data in the $\Omega_\Lambda$ vs. $\Omega_M$ plane.}\label{fig:M1_constraints}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    \includegraphics[scale=0.6]{../figures/milestone1/prob_dist_H0.pdf}
    \caption{The probability distribution of the Hubble parameter fitted with a Gaussian.}\label{fig:M1_prob_dist}
 \end{figure}
@@ -255,7 +275,7 @@ is equal to 0.11.
 \noindent
 \\
 In table \ref{tab:M1_times} we show some times for different events in the universe.
-\begin{table}[H] %%h! er for å tvinge tabellen til å være nærmest mulig her i dokumentet
+\begin{table} %%h! er for å tvinge tabellen til å være nærmest mulig her i dokumentet
    %\begin{center}
      \caption{Important times in cosmology stated in $x$, $z$ and $t$.} %Tabelltekst
      \label{tab:M1_times}
@@ -384,17 +404,17 @@ This means that the observed intensity for light emitted at $x=-12$ is approxima
 in a practical sense at least, to detect photons that were emitted before recombination.\\ 
 \\
   
-\begin{figure}[H]
+\begin{figure}[h!]
    \includegraphics[scale=0.5]{../figures/milestone2/X_e.pdf}
    \caption{The free electron fraction, $X_e$, plotted against $x$. The Saha prediction is also included in orange.}\label{fig:M2:X_e}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    \includegraphics[scale=0.5]{../figures/milestone2/taus.pdf}
    \caption{The optical depth with its first and second derivatives are plotted against $x$.}\label{fig:M2:taus}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    \includegraphics[scale=0.5]{../figures/milestone2/g_tilde_plots.pdf}
    \caption{The visibility function with its first and second derivatives are plotted against $x$.}\label{fig:M2:g_tilde_plots}
 \end{figure}
@@ -666,56 +686,56 @@ is very small and flat at this time, so we should not expect to see correlations
 
 %Show and discuss the results.
 
-\begin{figure}[H]
+\begin{figure}[h!]
    %\hspace{-0.48cm}   
    \includegraphics[scale=0.6]{../figures/milestone3/delta_gamma.pdf}
    \caption{The comparable photon overdensity, $\delta_\gamma = 4\Theta_0$, at four different scales, $k$. }\label{fig:delta_gamma}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    %\hspace{-0.48cm}   
    \includegraphics[scale=0.6]{../figures/milestone3/delta_cdm_delta_b.pdf}
    \caption{The CDM overdensity and the absolute value of the baryon overdensity plotted at four different scales, $k$. The solid lines are for CDM and the dotted lines are for baryons.}\label{fig:delta_cdm_delta_b}
 \end{figure}
 
-\begin{figure}[H]
-   %\hspace{-0.48cm}   
+\begin{figure}[h!]
+   \hspace{-1cm}   
    \includegraphics[scale=0.65]{../figures/milestone3/delta_cdm_delta_b_zoom.pdf}
    \caption{A closer look at figure \ref{fig:delta_cdm_delta_b} with linear y-scale and with the correct sign for the baryon overdensity.}\label{fig:delta_cdm_delta_b_zoom}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    %\hspace{-0.48cm}   
    \includegraphics[scale=0.65]{../figures/milestone3/delta_cdm_delta_b_delta_gamma.pdf}
    \caption{Same as figure \ref{fig:delta_cdm_delta_b_zoom} at $k=10/Mpc$ with radiation overdensity included.}\label{fig:delta_cdm_delta_b_delta_gamma}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    %\hspace{-0.48cm}   
    \includegraphics[scale=0.6]{../figures/milestone3/v_gamma.pdf}
    \caption{The photon velocity perturbation, $v_\gamma=-3\Theta_1$, at four different scales, $k$.}\label{fig:v_gamma}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    %\hspace{-0.48cm}   
    \includegraphics[scale=0.6]{../figures/milestone3/v_cdm_v_b.pdf}
    \caption{The CDM velocities, in solid lines, and the absolute value of the baryon velocities,
    in dotted lines, are plotted at four different scales, $k$.}\label{fig:v_cdm_v_b}
 \end{figure}
 
-\begin{figure}[H]
-   %\hspace{-0.48cm}   
+\begin{figure}[h!]
+   \hspace{-1cm}   
    \includegraphics[scale=0.65]{../figures/milestone3/theta_2.pdf}
    \caption{The photon temperature quadrupole, $\Theta_2$, at four different scales, $k$.}\label{fig:theta2}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    %\hspace{-0.48cm}   
    \includegraphics[scale=0.6]{../figures/milestone3/phi.pdf}
    \caption{The gravitational potential at four different scales, $k$. The dotted line denotes the time of horizon crossing for the scale with the same color.}\label{fig:phi}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    %\hspace{-0.48cm}   
    \includegraphics[scale=0.6]{../figures/milestone3/phi_psi.pdf}
    \caption{The sum of the two gravitational potentials, $\Phi$ and $\Psi$, at four different scales, $k$.}\label{fig:phi_psi}
@@ -724,8 +744,11 @@ is very small and flat at this time, so we should not expect to see correlations
 
 
 \section{Milestone IV}
-%for milestone 3 we turn of neutrinos, as they may lead to inconsistencies
 %Some introduction about what it is all about.
+The perturbations we solved in the previous milestone are necessary in order to calculate what we should expect the universe to look like here and now. Since the only way of observing the universe
+is by changing the angle of observation today, we must calculate the angular dependency of the photon temperature field evaluated today. The transformation between scale, $k$, and
+direction, $n$, is through the spherical harmonics. The goal is therefore to have all the photon multipoles evaluated at all scales today, then transform this quantity
+such that we can recreate observations.  
 
 \subsection{Theory}
 %The theory behind this milestone.
@@ -743,12 +766,14 @@ where the source function is defined as
 
 \begin{equation}
    \begin{aligned}
-   \tilde{S}(k,x) &= \tilde{g}\left[ \Theta_0 + \Psi + \frac{1}{4}\Pi\right] + e^{-\tau} \left[\Psi^\prime-\Phi^\prime\right] \\
+   \tilde{S}(k,x) &= \tilde{g}\left[ \Theta_0 + \Psi + \frac{1}{4}\Theta_2\right] + e^{-\tau} \left[\Psi^\prime-\Phi^\prime\right] \\
    &-\frac{1}{ck}\frac{d}{dx}(\mathcal{H}\tilde{g}v_b) + \frac{3}{4c^2k^2} \frac{d}{dx}
    \left[\mathcal{H}\frac{d}{dx} (\mathcal{H}\tilde{g}\Theta_2)\right]. 
    \end{aligned}
 \end{equation}
-$j_\ell(y)$ is the spherical Bessel function.\\
+$j_\ell(y)$ is the spherical Bessel function. The source function can be understood qualitatively. The first term is the photon monopole and the potential scaled by the visibility 
+function evaluated along the line of sight. The potential will redshift the photons, as they climb out of the gravitational well. The second term is the Integrated 
+Sachs-Wolfe (ISW) effect, which accounts for how the potentials change during the different eras. The third term is a Doppler term and the fourth term comes from scattering \cite{winther:2023}.\\
 \\
 The CMB power spectrum can now be expressed as 
    \begin{equation}
@@ -768,21 +793,37 @@ where $\Delta_M(k,x) \equiv \frac{c^2k^2\Phi(k,x)}{\frac{3}{2}\Omega_{M 0} a^{-1
 \subsection{Implementation details}
 %bessel slpline did not work
 %used trapezoid for the integrals
-Something about the numerical work.
-
+%Something about the numerical work.
+The code uses the results from the previous milestones, and the only new input parameters are the three parameters in the Harrison-Zel'dovich spectrum for the primordial power
+spectrum. We made some new splines needed for the source function by using the built-in methods for getting the derivative and the double derivative of a spline.  When performing the line of sight integration, we used the trapezoid rule, with a variable step length as proposed by \cite{Callin}. However, this 
+resolution was not fine enough, so we changed it for different ranges of $\ell$. The $k$ range where the integrand was highly non-zero was also dependent on $\ell$. 
+Of this reason, we made several ranges of different $\ell$ values where a specific $k$ array would be used. This was done to reduce computation time as we encountered problems when splining 
+the Bessel functions. The $k$ ranges are
+called 
+\begin{verbatim}
+   n_k_zone_i,
+\end{verbatim} where i runs from zero to five. The details are found in the PowerSpectrum.h file. The ranges for the $\ell$ values are listed below.
+$\ell <= 10$, $10 < \ell  <=30$, $30 < \ell<=100$, $100 <\ell <=300$, $300 <\ell <=700$ and $\ell > 700$.\\
+\\
+The $C_\ell$ integral is solved using the trapezoid rule with the substitution $dk\rightarrow d\log k$ with a variable step length.\\
+\\
+The source function is calculated using $k$ values linearly spaced from $5\cdot 10^{-5}$/Mpc to 0.3/Mpc with 100 points. The $x$ values range from $x=-10$ to $x=0$ with 
+1000 linearly spaced points. The result was splined with a 2D spline.
 \subsection{Results}
+%write more on the matter perturbations in milestone 3
+%CMB large odd peaks suggest alot of CDM, as CDM acts as a driver of compression and slows decompression
 
 \subsubsection{Test results}
 In figures \ref{fig:m4_matter_test} and \ref{fig:m4_cell_test} we have plotted the plots shown in \cite{winther:2023} under "testing your code". We see that the CMB power
 spectrum has the same shape, but the values are too large. The same can be said about the matter power spectrum. This suggests that our results will in general be too large.
 There can be many reasons for this discrepancy, but we believe the error comes either from the calculation of the source function, or from an early $k$ cut-off for the $C_\ell$ integration as we will discuss later.
 
-\begin{figure}[H]
+\begin{figure}[h!]
    \includegraphics[scale=0.6]{../figures/milestone4/matter_test.pdf}
    \caption{The matter power spectrum with test parameters given by \ref{tab:test_parameters}.}\label{fig:m4_matter_test}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    \includegraphics[scale=0.6]{../figures/milestone4/cell_test.pdf}
    \caption{The CMB power spectrum with test parameters given by \ref{tab:test_parameters}.}\label{fig:m4_cell_test}
 \end{figure}
@@ -790,85 +831,138 @@ There can be many reasons for this discrepancy, but we believe the error comes e
 
 
 \subsubsection{Our results}
-In figures \ref{fig:m4_theta2},\ref{fig:m4_theta10},\ref{fig:m4_theta100} and \ref{fig:m4_theta1200} we see some of the photon multipoles $\Theta_\ell(k)$ at $x=0$. 
-We clearly see that these functions are oscillating as expected due to the periodic nature of the spherical Bessel functions. The $k$ range in the plot is the range used
+In figures \ref{fig:m4_theta2}, \ref{fig:m4_theta10}, \ref{fig:m4_theta100} and \ref{fig:m4_theta1200} we see some of the photon multipoles
+$\Theta_\ell(k)$ at $x=0$. 
+If we simply view the higher order photon multipoles as correction terms to the photon
+overdensity, we see that the photon overdensity corrections oscillate with respect to scale today. Since higher order photon
+multipoles correspond to higher order corrections, we expect the
+higher order multipoles to be small compared to lower orders, and relevant only at smaller scales, i.e. larger $k$. This is consistent with our results. We also observe that
+the oscillations are damped. This feature is most clearly seen in figure \ref{fig:m4_theta1200}. One explanation for the damping is that at smaller scales, the photon perturbations are washed out due to photon scattering. Photon scattering is a process
+that naturally equilibrize the temperature such that perturbations are washed out. This effect is known as photon diffusion. Since all the plots are evaluated at today, 
+there is no photon scattering anymore, but we still observe the result of the scattering that happened before recombination. The oscillations can therefore
+be viewed as old sound waves that have frozen out because the pre-recombination plasma, in which the waves propagated, does not exist anymore.\\
+\\
+The $k$ range in the plots is the range used
 in the integral in equation \ref{eq:m4_cell}. We see that the cut-off in the $k$ range seems too early. However, since we only need ${\Theta_\ell}^2$ the problem is not
-as serious. This is seen in figures \ref{fig:m4_comparison1} and \ref{fig:m4_comparison2}. The cut-off exists only to reduce computation time.
-
-\begin{figure}[H]
+as serious. This is seen in figures \ref{fig:m4_comparison1} and \ref{fig:m4_comparison2}. The cut-off exists only to reduce computation time. 
+In figure \ref{fig:m4_comparison1}
+we clearly see that the oscillations are asymmetric. This is because the cold dark matter component drives the overdensity such that the compressions become larger than
+it would have with baryons only. When the photon pressure decompresses the overdensity, the cold dark matter will slow down the expansion under gravity, and the decompression
+is reduced. This explains the asymmetry, but it is only a qualitative explanation, as we have not plotted the actual photon overdensity $\sim \Theta_0$. 
+\begin{figure}[h!]
    \includegraphics[scale=0.6]{../figures/milestone4/theta_2.pdf}
    \caption{The transfer function, $\Theta_2(k)$.}\label{fig:m4_theta2}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    \includegraphics[scale=0.6]{../figures/milestone4/theta_10.pdf}
    \caption{The transfer function, $\Theta_{10}(k)$.}\label{fig:m4_theta10}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    \includegraphics[scale=0.6]{../figures/milestone4/theta_100.pdf}
    \caption{The transfer function, $\Theta_{100}(k)$.}\label{fig:m4_theta100}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
+   %\hspace{-2.0cm}
    \includegraphics[scale=0.6]{../figures/milestone4/theta_1200.pdf}
    \caption{The transfer function, $\Theta_{1200}(k)$.}\label{fig:m4_theta1200}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    \includegraphics[scale=0.6]{../figures/milestone4/comparison1.pdf}
    \caption{The transfer function, $\Theta_{10}$ and its square both normalized to one.}\label{fig:m4_comparison1}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    \includegraphics[scale=0.6]{../figures/milestone4/comparison2.pdf}
    \caption{The transfer function, $\Theta_{100}$ and its square both normalized to one.}\label{fig:m4_comparison2}
 \end{figure}
 
 
+In figures \ref{fig:m4_theta2_squared}, \ref{fig:m4_theta10_squared}, \ref{fig:m4_theta100_squared} and \ref{fig:m4_theta1200_squared} we see a part of the integrand
+in equation \ref{eq:m4_cell}. All values are positive, and there is extra damping for large scales, as $k$ is in the denominator. These plots are obviously closely related to the $\Theta_\ell$s. 
 
-\begin{figure}[H]
+
+\begin{figure}[h!]
    \includegraphics[scale=0.6]{../figures/milestone4/theta_2_squared.pdf}
    \caption{The integrand of the $C_{2}$ integral.}\label{fig:m4_theta2_squared}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    \includegraphics[scale=0.6]{../figures/milestone4/theta_10_squared.pdf}
    \caption{The integrand of the $C_{10}$ integral.}\label{fig:m4_theta10_squared}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    \includegraphics[scale=0.6]{../figures/milestone4/theta_100_squared.pdf}
    \caption{The integrand of the $C_{100}$ integral.}\label{fig:m4_theta100_squared}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
+   \hspace{-1cm}
    \includegraphics[scale=0.6]{../figures/milestone4/theta_1200_squared.pdf}
    \caption{The integrand of the $C_{1200}$ integral.}\label{fig:m4_theta1200_squared}
 \end{figure}
 
 
+In figure \ref{fig:m4_matter_PS} we show the matter power spectrum compared with results from other publicly available codes. The main difference between our result and
+the result from CLASS, \cite{CLASS}, is that we have not included neutrinos. The result from gevolution, \cite{gevolution},
+was obtained from a dark matter simulation with relatively few particles, and is included
+here only to add credibility to our code. In figure \ref{fig:m4_matter_PS_data} we have again plotted the matter power spectrum today, but we have also added data from observations.
+We again see that our matter power spectrum is too large. This is expected, as our test results indicated that our code produces too large values for both the matter and CMB power spectra. The most 
+notable result is that the matter spectrum only grows up to some scale, $k_{eq}$ entering the horizon at radiation matter equality, after which it starts to decrease.
+This can be understood from figure \ref{fig:phi}, where the potential, at scales 
+entering the horizon before radiation matter domination, decreases drastically. This will suppress any matter perturbation, which in turn will suppress the power spectrum,
+since the power spectrum simply measures the strength of a perturbation on different scales. We also see that the potential remains much larger for scales entering the horizon after equality.
+This will lead to more power in the spectrum at these scales, as the matter will cluster more. Since the perturbations also grow with time, we can not only look at the potential. For scales that entered the horizon at late times,
+the perturbations will be small relative to the scales that entered earlier, but later than equality. Therefore, for smaller and smaller scales that entered the horizon before equality, the perturbations are more and more suppressed by the decreasing potential, so the power spectrum decreases more and more.
+For scales larger that equality, the potential will be larger for larger scales, but these scales have little time to grow, so the largest perturbations today are those who entered the horizon at equality. Those entering after had less time to grow, so the power spectrum decreases for very large scales.
+This is observed in the power spectrum.\\
+\\
+In figure \ref{fig:m4_cell} we see the CMB power spectrum with data overplotted. We observe that our result lies within the uncertainty at low $\ell$s. The reason why the
+uncertainty is large at low $\ell$ is because small $\ell$s correspond to large scales, and correspondingly fewer measurements. We have calculated the average CMB power spectrum
+over all universes, but we only live in exactly one, so there can be statistical variance. For large $\ell$ this uncertainty is suppressed as we use more measurements.
+We observe several peaks in the power spectrum. The first peak from the left is a compression, followed be a decompression seen in the second peak. The third peak is another 
+compression and so on. These oscillations originate from the time before recombination when the plasma was oscillating back and forth due to gravity and radiation pressure. The reason why there are 
+no peaks at larger scales, is that the sound waves did not have enough time to travel larger distances, as the plasma became neutral and ceased to exist at recombination. If recombination had happened later, the sound waves could have travelled
+larger distances, and the first peak would be located at larger scales. Since the large scales entered the horizon more recently, they would not have changes so much, and the power spectrum at these scales will be similar
+to the initial conditions. 
+At small scales we clearly see the photon diffusion we discussed earlier.
 
 
-
-\begin{figure}[H]
+\begin{figure}[h!]
    \includegraphics[scale=0.6]{../figures/milestone4/matter_PS.pdf}
    \caption{The matter power spectrum compared to the result of publicly available codes CLASS(Boltzmann) and gevolution(relativistic N-body). CLASS was run with Planck cosmology and gevolution was run for dark matter.}\label{fig:m4_matter_PS}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    \includegraphics[scale=0.6]{../figures/milestone4/matter_PS_data.pdf}
-   \caption{The matter power spectrum with data.}\label{fig:m4_matter_PS_data}
+   \caption{The matter power spectrum with data. The uncertainty, in red, is only an upper bound.}\label{fig:m4_matter_PS_data}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h!]
    \includegraphics[scale=0.6]{../figures/milestone4/cell.pdf}
    \caption{The CMB power spectrum.}\label{fig:m4_cell}
 \end{figure}
 \section{Conclusions}
 
-Write a short summary and conclusion in the end. 
-
+We were able to calculate a CMB power spectrum in four steps. We started by calculating the evolution of the background universe in milestone 1. We found that the universe is 13.86 Gyr in cosmic time,
+which is consistent with modern science.
+In milestone 2 we 
+calculated the recombination history of the universe. This was done by solving equations for the free electron density as a function of time. Our main result was that recombination happened at ca. 380
+thousand years in cosmic time. This is also consistent with expectations. In the third milestone we 
+calculated the evolution of perturbations in the background. Here we got many results, and they were mostly in agreement with expectations.   
+Then, finally in milestone 4 we were able to put everything together using the line of sight integration. After the integral 
+was calculated we could easily calculate the CMB power spectrum. As expected, we observed several peaks corresponding to compressions and decompressions in the plasma
+that existed before recombination. Our results were more or less in agreement with observations.\\
+\\   
+Improvements can be done by including neutrinos and polarization. In addition, our code produces too large values for the power spectra and it is very slow. In order to improve 
+accuracy, we should avoid taking the first and second derivatives of a spline, and use the correct analytical expressions especially when calculating the source function. The integrals in milestone 4 can be solved
+as a differential equation instead of using the trapezoid rule. In order to speed up the code the Bessel function should be splined. When we used the splined Bessel function
+we observed a phase shift with respect to the exact function. This was serious, since the error was located near recombination where several quantities change rapidly.
+ 
 %\begin{acknowledgements}
 %      I thank my mom for financial support!!!
 %\end{acknowledgements}

@@ -13,12 +13,12 @@ int main(int argc, char **argv){
   //=========================================================================
 
   //Background parameters
-  double h           = 0.7;//0.67;
-  double OmegaB      = 0.05;
-  double OmegaCDM    = 0.45;//0.267;
-  double OmegaK      = 0.0;
-  double Neff        = 0;//3.046;
-  double TCMB        = 2.7255;
+  //double h           = 0.7;//0.67;
+  //double OmegaB      = 0.05;
+  //double OmegaCDM    = 0.45;//0.267;
+  //double OmegaK      = 0.0;
+  //double Neff        = 0;//3.046;
+  //double TCMB        = 2.7255;
 
   //double h           = 0.67;
   //double OmegaB      = 0.05;
@@ -27,12 +27,12 @@ int main(int argc, char **argv){
   //double Neff        = 3.046;
   //double TCMB        = 2.7255;
 
-  //double h           = 0.67;
-  //double OmegaB      = 0.05;
-  //double OmegaCDM    = 0.267;
-  //double OmegaK      = 0.0;
-  //double Neff        = 0.;//3.046;
-  //double TCMB        = 2.7255;
+  double h           = 0.67;
+  double OmegaB      = 0.05;
+  double OmegaCDM    = 0.267;
+  double OmegaK      = 0.0;
+  double Neff        = 0.;//3.046;
+  double TCMB        = 2.7255;
 
 
   // Recombination parameters
@@ -107,13 +107,13 @@ int main(int argc, char **argv){
   //takes 16 min to run
   PowerSpectrum power(&cosmo, &rec, &pert, A_s, n_s, kpivot_mpc);
   power.solve();
-  power.output("cells_result_test_311610.txt");
+  //power.output("cells_result_test_311610.txt");
   //power.output_matter("matter_power_spectrum_result_no_neutronos.txt");
   // Remove when module is completed
   //power.output_Source("source_new.txt");
   //power.output_45("45_new.txt");
   //power.output_test45("test45_new.txt");
-  power.output_matter("matter_test_311610.txt");
+  //power.output_matter("matter_test_311610.txt");
   //power.output_stuff("stuff_2.txt");
   //power.output_stuff("stuff_3.txt");
   //power.output_stuff("stuff_4.txt");

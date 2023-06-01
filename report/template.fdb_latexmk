@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex template"] 1685615933 "template.aux" "template.bbl" "template" 1685615935
+["bibtex template"] 1685656344 "template.aux" "template.bbl" "template" 1685656357
   "./aa.bst" 1682879060 32103 296074362bd3e822c5209e1570c1d28f ""
-  "refs.bib" 1684572713 2868 3da38b9fa5c81baf1d32c91ab119ebaf ""
-  "template.aux" 1685615934 18365 df61806e3dd37f13e4ea20d266a15bfb "pdflatex"
+  "refs.bib" 1685638541 3278 3e5a87fede765a35ebac8e28f80d88e4 ""
+  "template.aux" 1685656346 18700 1fe8e1b9d502d10bef280f00db41eebf "pdflatex"
   (generated)
   "template.bbl"
   "template.blg"
-["pdflatex"] 1685615933 "/home/jorgen/src/master/ast5220/CMB/report/template.tex" "/home/jorgen/src/master/ast5220/CMB/report/template.pdf" "template" 1685615935
+["pdflatex"] 1685656344 "/home/jorgen/src/master/ast5220/CMB/report/template.tex" "/home/jorgen/src/master/ast5220/CMB/report/template.pdf" "template" 1685656357
   "../figures/milestone1/Hp_x.pdf" 1678274882 16794 312481de2053470837539e6fb9f5e70e ""
   "../figures/milestone1/Omegas.pdf" 1678274876 17684 78528b41b44860f5f3d3a886787502cb ""
   "../figures/milestone1/constraints.pdf" 1678274884 241415 097bc801b7764066a02dd7f6c22f8500 ""
@@ -48,8 +48,8 @@
   "../figures/milestone4/theta_2.pdf" 1685545767 11093 7825456f9302a3fc8665806ddb67a985 ""
   "../figures/milestone4/theta_2_squared.pdf" 1685546413 11857 770ed96401ddb20a13dedbd315e33e48 ""
   "/etc/texmf/web2c/texmf.cnf" 1660813866 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/jorgen/src/master/ast5220/CMB/report/template.aux" 1685615934 18365 df61806e3dd37f13e4ea20d266a15bfb ""
-  "/home/jorgen/src/master/ast5220/CMB/report/template.tex" 1685615932 56628 06ae70d9e1f02f1ba2973baedd36c06c ""
+  "/home/jorgen/src/master/ast5220/CMB/report/template.aux" 1685656346 18700 1fe8e1b9d502d10bef280f00db41eebf ""
+  "/home/jorgen/src/master/ast5220/CMB/report/template.tex" 1685656357 69316 07d26bce8b73128dd6bdfa524305ff35 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm" 1136768653 3584 adb004a0c8e7c46ee66cad73671f37b4 ""
@@ -209,14 +209,14 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1660813983 4770781 1ed1abab22da9c3e2cc82e4db562318b ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1685594736 8260196 64314f36cf9fe02184e1fd152b46af63 ""
   "aa.cls" 1633449284 63925 9ce735764be70454f59c9ada3bfbf8f6 ""
-  "template.aux" 1685615934 18365 df61806e3dd37f13e4ea20d266a15bfb "pdflatex"
-  "template.bbl" 1685615933 502 bca618b7d6dd6d34e24514f7a3357219 "bibtex template"
-  "template.out" 1685615934 1575 1f0b4d2bd0923302018a2819e675a1f7 "pdflatex"
-  "template.tex" 1685615932 56628 06ae70d9e1f02f1ba2973baedd36c06c ""
+  "template.aux" 1685656346 18700 1fe8e1b9d502d10bef280f00db41eebf "pdflatex"
+  "template.bbl" 1685656344 787 481dde0a0ba163d2f8e951dd0ebe85fa "bibtex template"
+  "template.out" 1685656346 1575 1f0b4d2bd0923302018a2819e675a1f7 "pdflatex"
+  "template.tex" 1685656357 69316 07d26bce8b73128dd6bdfa524305ff35 ""
   (generated)
-  "template.out"
   "template.log"
-  "/home/jorgen/src/master/ast5220/CMB/report/template.log"
-  "/home/jorgen/src/master/ast5220/CMB/report/template.pdf"
   "template.pdf"
+  "/home/jorgen/src/master/ast5220/CMB/report/template.log"
+  "template.out"
   "template.aux"
+  "/home/jorgen/src/master/ast5220/CMB/report/template.pdf"

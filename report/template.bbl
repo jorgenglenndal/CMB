@@ -1,8 +1,15 @@
-\begin{thebibliography}{4}
+\begin{thebibliography}{6}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Callin(2006)}]{Callin}
-Callin, P. 2006
+Callin, P. 2006, How to calculate the CMB spectrum
+
+\bibitem[{Diego~Blas(2011)}]{CLASS}
+Diego~Blas, Julien~Lesgourgues, T.~T. 2011, Journal of Cosmology and
+  Astroparticle Physics (JCAP)
+
+\bibitem[{J.~Adamek \& M.(2016)}]{gevolution}
+J.~Adamek, D.~Daverio, R.~D. \& M., K. 2016, Nature Phys. 12, 346
 
 \bibitem[{Scott~Dodelson(2021)}]{Dodelson:MC}
 Scott~Dodelson, F.~S. 2021, Modern Cosmology, 2nd edn. (Academic Press)

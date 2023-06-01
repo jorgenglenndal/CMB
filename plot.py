@@ -570,46 +570,46 @@ def milestone3():
     density perturbations
     """
 
-    print(x_k[nearest_index(eta_x_k*7/30/Mpc,1)])
+    #print(x_k[nearest_index(eta_x_k*7/30/Mpc,1)])
 
 
-    plt.title("$\delta_\gamma$")
-    #plt.title("$\Theta_0$")
-    plt.plot(x_k,4*theta0_k0,label="k = 0.001/Mpc")     
-    plt.plot(x_k,4*theta0_k1,label="k = 0.01/Mpc")
-    plt.plot(x_k,4*theta0_k2,label="k = 0.1/Mpc")
-    plt.plot(x_k10,4*theta0_k10,label="k = 10/Mpc",alpha = 0.6)
-    plt.xlabel('x')
-    plt.xlim(-18,0)
-    #plt.ylim(-0.7,1)
-    plt.legend()
-    #plt.savefig("figures/milestone3/delta_gamma.pdf")
-    plt.show()
+#    plt.title("$\delta_\gamma$")
+#    #plt.title("$\Theta_0$")
+#    plt.plot(x_k,4*theta0_k0,label="k = 0.001/Mpc")     
+#    plt.plot(x_k,4*theta0_k1,label="k = 0.01/Mpc")
+#    plt.plot(x_k,4*theta0_k2,label="k = 0.1/Mpc")
+#    plt.plot(x_k10,4*theta0_k10,label="k = 10/Mpc",alpha = 0.6)
+#    plt.xlabel('x')
+#    plt.xlim(-18,0)
+#    #plt.ylim(-0.7,1)
+#    plt.legend()
+#    #plt.savefig("figures/milestone3/delta_gamma.pdf")
+#    plt.show()
 
     #epic plot
-    plt.title("$\delta_\mathrm{CDM},\delta_b$")
-    plt.plot(x_k,delta_cdm_k0,'b',label= "k = 0.001/Mpc",alpha=0.6)
-    #plt.plot(np.ones(10)*x_k[nearest_index(eta_x_k*0.001/Mpc,1)],np.linspace(-1e100,1e100,10),"--")     
- 
-    plt.plot(x_k,(delta_b_k0),'--',color='b')
-    plt.plot(x_k,delta_cdm_k1,color= 'r',label= "k = 0.01/Mpc",alpha = 0.6)
-    plt.plot(x_k,(delta_b_k1),'--',color ='r')
-    plt.plot(x_k,delta_cdm_k2,color = green_,label= "k = 0.1/Mpc",alpha = 0.6)
-    plt.plot(x_k,(delta_b_k2),'--',color= green_)
-    plt.plot(x_k10,delta_cdm_k10,color = 'k',label= "k = 10/Mpc",alpha = 0.6)
-    plt.plot(x_k10,(delta_b_k10),'--',color= 'k',alpha=0.6)
-    plt.xlim(-18,0)
-    plt.xlabel('x')
-    plt.ylim(-3,10)
-#   
-    #plt.plot(x_k,4*theta0_k0,color='b'                ,linestyle='dotted')     
-    #plt.plot(x_k,4*theta0_k1,color='r'                ,linestyle='dotted')
-    #plt.plot(x_k,4*theta0_k2,color= green_            ,linestyle='dotted')
-    #plt.plot(x_k10,4*theta0_k10,color='k' ,linestyle='dotted')
-#    
-    plt.legend()
-    #plt.savefig("figures/milestone3/delta_cdm_delta_b_zoom.pdf")
-    plt.show()
+#    plt.title("$\delta_\mathrm{CDM},\delta_b$")
+#    plt.plot(x_k,delta_cdm_k0,'b',label= "k = 0.001/Mpc",alpha=0.6)
+#    #plt.plot(np.ones(10)*x_k[nearest_index(eta_x_k*0.001/Mpc,1)],np.linspace(-1e100,1e100,10),"--")     
+# 
+#    plt.plot(x_k,(delta_b_k0),'--',color='b')
+#    plt.plot(x_k,delta_cdm_k1,color= 'r',label= "k = 0.01/Mpc",alpha = 0.6)
+#    plt.plot(x_k,(delta_b_k1),'--',color ='r')
+#    plt.plot(x_k,delta_cdm_k2,color = green_,label= "k = 0.1/Mpc",alpha = 0.6)
+#    plt.plot(x_k,(delta_b_k2),'--',color= green_)
+#    plt.plot(x_k10,delta_cdm_k10,color = 'k',label= "k = 10/Mpc",alpha = 0.6)
+#    plt.plot(x_k10,(delta_b_k10),'--',color= 'k',alpha=0.6)
+#    plt.xlim(-18,0)
+#    plt.xlabel('x')
+#    plt.ylim(-3,10)
+##   
+#    #plt.plot(x_k,4*theta0_k0,color='b'                ,linestyle='dotted')     
+#    #plt.plot(x_k,4*theta0_k1,color='r'                ,linestyle='dotted')
+#    #plt.plot(x_k,4*theta0_k2,color= green_            ,linestyle='dotted')
+#    #plt.plot(x_k10,4*theta0_k10,color='k' ,linestyle='dotted')
+##    
+#    plt.legend()
+#    #plt.savefig("figures/milestone3/delta_cdm_delta_b_zoom.pdf")
+#    plt.show()
 
     #epic plot 2
     #plt.title("$\delta_\mathrm{CDM},\delta_b,\delta_\gamma$,    k = 10/Mpc")
@@ -620,7 +620,11 @@ def milestone3():
     #plt.plot(x_k,delta_cdm_k2,color = green_,label= "k = 0.1/Mpc",alpha = 0.6)
     #plt.plot(x_k,(delta_b_k2),'--',color= green_)
 
-    #plt.plot(x_k10,delta_cdm_k10,color = 'k',label= "CDM",alpha = 0.6)
+
+    
+    plt.plot(x_k10,delta_cdm_k10,color = 'k',label= "CDM",alpha = 0.6)
+    plt.plot(np.ones(10)*x_k10[nearest_index(eta_x_k10*10/Mpc,1)],np.linspace(-1e100,1e100,10),"--")     
+
     plt.plot(x_k10,(delta_b_k10),color= 'k',alpha=0.6,linestyle="--",label="Baryons")   
     plt.plot(np.ones(10)*x_decoupling,np.linspace(-10,10,10),color='y',label='Time of Recombination')
 
