@@ -612,7 +612,9 @@ in figure \ref{fig:test5}. All plots seem to agree with the plots shown in \cite
 \subsubsection{Results}
 %theory section maybe???
 % write about the slope of delta_cdm and compare to analytical result...all plots in general
-For our results we have againn used the fiducial cosmology parameters of \cite{winther:2023} where neutrinos are included in the background, but they are not perturbed. We therefore expect our results to differ from the test results.\\
+For our results we have again used the fiducial cosmology parameters of \cite{winther:2023}, but we removed the neutrinos from the background.
+Since we do not perturb the neutrinos, we believe including them in the background would be inconsistent. We also noted that the results we got with neutrinos included
+did not agree with CMB observations.\\
 \\
 In figure \ref{fig:delta_cdm_delta_b_zoom}, which is a zoomed in version of figure \ref{fig:delta_cdm_delta_b}, we see more clearly what is going on. Gravity travels with the same speed as light. This means that the conformal time, $\eta$,
 gives us the maximum reach of gravity at any given time. Therefore, if the scale, $k$, of interest is larger than the conformal time, we should not see any correlation,
@@ -647,9 +649,9 @@ Since the photon perturbations do not grow in time, the potential will be washed
 This is clearly observed in the plot, as the scales that enter in the radiation era starts to decrease as they cross the horizon. For the scales that enter in 
 the matter era, the evolution is quite different. Inside the matter era, the dominant quantity to affect the potential is the matter perturbations. We know that the matter
 perturbations grow in the matter era, and it can be shown analytically that the potential will be constant, but it takes some time before the universe becomes
-matter dominated after radiation-matter equality. We note that the $k = 0.001/Mpc$ scale is the only scale that
-increases with time, and this happens before it enters the horizon. In our test plots we saw that this scale decreases as the other scales, but here we have included neutrinos in the background.
-However, we did not perturb the neutrinos, and this may cause some inconsistencies which lead to results that are hard to interpret. The fact that the potential changes before horizon crossing is also unexpected, and should be explored in future studies.
+matter dominated after radiation-matter equality. We note that the $k = 0.001/Mpc$ scale is the only scale where $\Phi$
+decreases before it enters the horizon. 
+The fact that the potential changes before horizon crossing is unexpected, and should be explored in future studies.
 At very late times, the potential decreases again due to dark energy,
 which washes out the potential through more rapid expansion.\\
 \\
@@ -722,17 +724,147 @@ is very small and flat at this time, so we should not expect to see correlations
 
 
 \section{Milestone IV}
-Some introduction about what it is all about.
+%for milestone 3 we turn of neutrinos, as they may lead to inconsistencies
+%Some introduction about what it is all about.
 
 \subsection{Theory}
-The theory behind this milestone.
+%The theory behind this milestone.
+The CMB power spectrum, $C_\ell$, is defined as 
+\begin{equation}
+   C_\ell \equiv \langle |a_{\ell m}|^2 \rangle = \langle a_{\ell m}a_{\ell m}^* \rangle,
+\end{equation}
+where $a_{lm}$ are the coefficients of the spherical harmonics used to transform the CMB temperature field. In principle, it is possible to get the $C_\ell$s by evaluating $\Theta_\ell(k,x=0)$
+and Fourier transform the coefficients back to real space, \cite{winther:2023}. However, as we are interested in $\ell$ values from $\sim 10^0$ to $\sim 10^3$, this approach would 
+be very slow since we would have to solve thousands of coupled differential equations in the previous milestone. Instead, we can use the line of sight integral given below to calculate $\Theta_\ell(x=0,k)$ for arbitrary $\ell$.
+\begin{equation}
+   \Theta_\ell(k, x=0) = \int_{-\infty}^{0} \tilde{S}(k,x) j_\ell[k(\eta_0-\eta)] dx,
+\end{equation}
+where the source function is defined as 
 
+\begin{equation}
+   \begin{aligned}
+   \tilde{S}(k,x) &= \tilde{g}\left[ \Theta_0 + \Psi + \frac{1}{4}\Pi\right] + e^{-\tau} \left[\Psi^\prime-\Phi^\prime\right] \\
+   &-\frac{1}{ck}\frac{d}{dx}(\mathcal{H}\tilde{g}v_b) + \frac{3}{4c^2k^2} \frac{d}{dx}
+   \left[\mathcal{H}\frac{d}{dx} (\mathcal{H}\tilde{g}\Theta_2)\right]. 
+   \end{aligned}
+\end{equation}
+$j_\ell(y)$ is the spherical Bessel function.\\
+\\
+The CMB power spectrum can now be expressed as 
+   \begin{equation}
+      C_\ell = \frac{2}{\pi}\int k^2P_{\rm primordial}(k) \Theta_\ell^2(k)dk,
+   \end{equation}
+which can be written as 
+\begin{equation}\label{eq:m4_cell}
+   C_\ell = 4\pi \int_0^{\infty} A_s \left(\frac{k}{k_{\rm pivot}}\right)^{n_s-1} \Theta_\ell^2(k) \frac{dk}{k}
+\end{equation}
+by using a Harrison-Zel'dovich primordial power spectrum \cite{winther:2023}.\\
+\\
+The matter power spectrum is defined by
+\begin{equation}
+   P(k,x) = |\Delta_M(k,x)|^2P_{\rm primordial}(k),
+\end{equation}
+where $\Delta_M(k,x) \equiv \frac{c^2k^2\Phi(k,x)}{\frac{3}{2}\Omega_{M 0} a^{-1} H_0^2}$.
 \subsection{Implementation details}
+%bessel slpline did not work
+%used trapezoid for the integrals
 Something about the numerical work.
 
 \subsection{Results}
-Show and discuss the results.
 
+\subsubsection{Test results}
+In figures \ref{fig:m4_matter_test} and \ref{fig:m4_cell_test} we have plotted the plots shown in \cite{winther:2023} under "testing your code". We see that the CMB power
+spectrum has the same shape, but the values are too large. The same can be said about the matter power spectrum. This suggests that our results will in general be too large.
+There can be many reasons for this discrepancy, but we believe the error comes either from the calculation of the source function, or from an early $k$ cut-off for the $C_\ell$ integration as we will discuss later.
+
+\begin{figure}[H]
+   \includegraphics[scale=0.6]{../figures/milestone4/matter_test.pdf}
+   \caption{The matter power spectrum with test parameters given by \ref{tab:test_parameters}.}\label{fig:m4_matter_test}
+\end{figure}
+
+\begin{figure}[H]
+   \includegraphics[scale=0.6]{../figures/milestone4/cell_test.pdf}
+   \caption{The CMB power spectrum with test parameters given by \ref{tab:test_parameters}.}\label{fig:m4_cell_test}
+\end{figure}
+
+
+
+\subsubsection{Our results}
+In figures \ref{fig:m4_theta2},\ref{fig:m4_theta10},\ref{fig:m4_theta100} and \ref{fig:m4_theta1200} we see some of the photon multipoles $\Theta_\ell(k)$ at $x=0$. 
+We clearly see that these functions are oscillating as expected due to the periodic nature of the spherical Bessel functions. The $k$ range in the plot is the range used
+in the integral in equation \ref{eq:m4_cell}. We see that the cut-off in the $k$ range seems too early. However, since we only need ${\Theta_\ell}^2$ the problem is not
+as serious. This is seen in figures \ref{fig:m4_comparison1} and \ref{fig:m4_comparison2}. The cut-off exists only to reduce computation time.
+
+\begin{figure}[H]
+   \includegraphics[scale=0.6]{../figures/milestone4/theta_2.pdf}
+   \caption{The transfer function, $\Theta_2(k)$.}\label{fig:m4_theta2}
+\end{figure}
+
+\begin{figure}[H]
+   \includegraphics[scale=0.6]{../figures/milestone4/theta_10.pdf}
+   \caption{The transfer function, $\Theta_{10}(k)$.}\label{fig:m4_theta10}
+\end{figure}
+
+\begin{figure}[H]
+   \includegraphics[scale=0.6]{../figures/milestone4/theta_100.pdf}
+   \caption{The transfer function, $\Theta_{100}(k)$.}\label{fig:m4_theta100}
+\end{figure}
+
+\begin{figure}[H]
+   \includegraphics[scale=0.6]{../figures/milestone4/theta_1200.pdf}
+   \caption{The transfer function, $\Theta_{1200}(k)$.}\label{fig:m4_theta1200}
+\end{figure}
+
+\begin{figure}[H]
+   \includegraphics[scale=0.6]{../figures/milestone4/comparison1.pdf}
+   \caption{The transfer function, $\Theta_{10}$ and its square both normalized to one.}\label{fig:m4_comparison1}
+\end{figure}
+
+\begin{figure}[H]
+   \includegraphics[scale=0.6]{../figures/milestone4/comparison2.pdf}
+   \caption{The transfer function, $\Theta_{100}$ and its square both normalized to one.}\label{fig:m4_comparison2}
+\end{figure}
+
+
+
+\begin{figure}[H]
+   \includegraphics[scale=0.6]{../figures/milestone4/theta_2_squared.pdf}
+   \caption{The integrand of the $C_{2}$ integral.}\label{fig:m4_theta2_squared}
+\end{figure}
+
+\begin{figure}[H]
+   \includegraphics[scale=0.6]{../figures/milestone4/theta_10_squared.pdf}
+   \caption{The integrand of the $C_{10}$ integral.}\label{fig:m4_theta10_squared}
+\end{figure}
+
+\begin{figure}[H]
+   \includegraphics[scale=0.6]{../figures/milestone4/theta_100_squared.pdf}
+   \caption{The integrand of the $C_{100}$ integral.}\label{fig:m4_theta100_squared}
+\end{figure}
+
+\begin{figure}[H]
+   \includegraphics[scale=0.6]{../figures/milestone4/theta_1200_squared.pdf}
+   \caption{The integrand of the $C_{1200}$ integral.}\label{fig:m4_theta1200_squared}
+\end{figure}
+
+
+
+
+
+\begin{figure}[H]
+   \includegraphics[scale=0.6]{../figures/milestone4/matter_PS.pdf}
+   \caption{The matter power spectrum compared to the result of publicly available codes CLASS(Boltzmann) and gevolution(relativistic N-body). CLASS was run with Planck cosmology and gevolution was run for dark matter.}\label{fig:m4_matter_PS}
+\end{figure}
+
+\begin{figure}[H]
+   \includegraphics[scale=0.6]{../figures/milestone4/matter_PS_data.pdf}
+   \caption{The matter power spectrum with data.}\label{fig:m4_matter_PS_data}
+\end{figure}
+
+\begin{figure}[H]
+   \includegraphics[scale=0.6]{../figures/milestone4/cell.pdf}
+   \caption{The CMB power spectrum.}\label{fig:m4_cell}
+\end{figure}
 \section{Conclusions}
 
 Write a short summary and conclusion in the end. 

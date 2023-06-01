@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.8.18)  27 MAY 2023 15:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2023.6.1)  1 JUN 2023 12:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -218,9 +218,9 @@ File: babel.def 2020/02/14 3.40 Babel common definitions
 Package babel Info: \l@canadian = using hyphenrules for english
 (babel)             (\language0) on input line 102.
 Package babel Info: \l@australian = using hyphenrules for ukenglish
-(babel)             (\language12) on input line 105.
+(babel)             (\language24) on input line 105.
 Package babel Info: \l@newzealand = using hyphenrules for ukenglish
-(babel)             (\language12) on input line 108.
+(babel)             (\language24) on input line 108.
 )) (/usr/share/texlive/texmf-dist/tex/latex/graphics/rotating.sty
 Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
  (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
@@ -732,7 +732,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 146--151
 
  []
 
-<../figures/milestone1/demonstrate_that_code_works.pdf, id=132, 578.16pt x 1156.32pt>
+<../figures/milestone1/demonstrate_that_code_works.pdf, id=140, 578.16pt x 1156.32pt>
 File: ../figures/milestone1/demonstrate_that_code_works.pdf Graphic file (type pdf)
 <use ../figures/milestone1/demonstrate_that_code_works.pdf>
 Package pdftex.def Info: ../figures/milestone1/demonstrate_that_code_works.pdf  used on input line 170.
@@ -807,7 +807,7 @@ Package hyperref Warning: Suppressing link with empty target on input line 214.
                                                   \fi \fi 
 l.214 
        <../figures/milestone1/demonstrate_that_code_works.pdf>]
-<../figures/milestone1/Hp_x.pdf, id=215, 462.52798pt x 346.89601pt>
+<../figures/milestone1/Hp_x.pdf, id=223, 462.52798pt x 346.89601pt>
 File: ../figures/milestone1/Hp_x.pdf Graphic file (type pdf)
 <use ../figures/milestone1/Hp_x.pdf>
 Package pdftex.def Info: ../figures/milestone1/Hp_x.pdf  used on input line 221.
@@ -817,7 +817,7 @@ Overfull \hbox (21.44412pt too wide) in paragraph at lines 221--222
 [][]
  []
 
-<../figures/milestone1/t_x.pdf, id=216, 462.52798pt x 346.89601pt>
+<../figures/milestone1/t_x.pdf, id=224, 462.52798pt x 346.89601pt>
 File: ../figures/milestone1/t_x.pdf Graphic file (type pdf)
 <use ../figures/milestone1/t_x.pdf>
 Package pdftex.def Info: ../figures/milestone1/t_x.pdf  used on input line 226.
@@ -827,7 +827,7 @@ Overfull \hbox (21.44412pt too wide) in paragraph at lines 226--227
 [][]
  []
 
-<../figures/milestone1/eta_x.pdf, id=217, 462.52798pt x 346.89601pt>
+<../figures/milestone1/eta_x.pdf, id=225, 462.52798pt x 346.89601pt>
 File: ../figures/milestone1/eta_x.pdf Graphic file (type pdf)
 <use ../figures/milestone1/eta_x.pdf>
 Package pdftex.def Info: ../figures/milestone1/eta_x.pdf  used on input line 231.
@@ -840,7 +840,7 @@ Overfull \hbox (21.44412pt too wide) in paragraph at lines 231--232
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<../figures/milestone1/Omegas.pdf, id=218, 462.52798pt x 346.89601pt>
+<../figures/milestone1/Omegas.pdf, id=226, 462.52798pt x 346.89601pt>
 File: ../figures/milestone1/Omegas.pdf Graphic file (type pdf)
 <use ../figures/milestone1/Omegas.pdf>
 Package pdftex.def Info: ../figures/milestone1/Omegas.pdf  used on input line 236.
@@ -850,7 +850,7 @@ Overfull \hbox (21.44412pt too wide) in paragraph at lines 236--237
 [][]
  []
 
-<../figures/milestone1/dataplot.pdf, id=219, 462.52798pt x 346.89601pt>
+<../figures/milestone1/dataplot.pdf, id=227, 462.52798pt x 346.89601pt>
 File: ../figures/milestone1/dataplot.pdf Graphic file (type pdf)
 <use ../figures/milestone1/dataplot.pdf>
 Package pdftex.def Info: ../figures/milestone1/dataplot.pdf  used on input line 241.
@@ -888,7 +888,7 @@ l.244
                                                   \fi \fi 
 l.244 
        <../figures/milestone1/Hp_x.pdf> <../figures/milestone1/t_x.pdf> <../figures/milestone1/eta_x.pdf> <../figures/milestone1/Omegas.pdf>]
-<../figures/milestone1/constraints.pdf, id=360, 462.52798pt x 346.89601pt>
+<../figures/milestone1/constraints.pdf, id=368, 462.52798pt x 346.89601pt>
 File: ../figures/milestone1/constraints.pdf Graphic file (type pdf)
 <use ../figures/milestone1/constraints.pdf>
 Package pdftex.def Info: ../figures/milestone1/constraints.pdf  used on input line 246.
@@ -898,7 +898,7 @@ Overfull \hbox (21.44412pt too wide) in paragraph at lines 246--247
 [][]
  []
 
-<../figures/milestone1/prob_dist_H0.pdf, id=361, 462.52798pt x 346.89601pt>
+<../figures/milestone1/prob_dist_H0.pdf, id=369, 462.52798pt x 346.89601pt>
 File: ../figures/milestone1/prob_dist_H0.pdf Graphic file (type pdf)
 <use ../figures/milestone1/prob_dist_H0.pdf>
 Package pdftex.def Info: ../figures/milestone1/prob_dist_H0.pdf  used on input line 251.
@@ -968,17 +968,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 370--386
 Package hyperref Warning: Suppressing link with empty target on input line 386.
 
 [6]
-<../figures/milestone2/X_e.pdf, id=508, 462.52798pt x 346.89601pt>
+<../figures/milestone2/X_e.pdf, id=516, 462.52798pt x 346.89601pt>
 File: ../figures/milestone2/X_e.pdf Graphic file (type pdf)
 <use ../figures/milestone2/X_e.pdf>
 Package pdftex.def Info: ../figures/milestone2/X_e.pdf  used on input line 388.
 (pdftex.def)             Requested size: 231.26341pt x 173.44757pt.
-<../figures/milestone2/taus.pdf, id=509, 462.52798pt x 346.89601pt>
+<../figures/milestone2/taus.pdf, id=517, 462.52798pt x 346.89601pt>
 File: ../figures/milestone2/taus.pdf Graphic file (type pdf)
 <use ../figures/milestone2/taus.pdf>
 Package pdftex.def Info: ../figures/milestone2/taus.pdf  used on input line 393.
 (pdftex.def)             Requested size: 231.26341pt x 173.44757pt.
-<../figures/milestone2/g_tilde_plots.pdf, id=510, 462.52798pt x 346.89601pt>
+<../figures/milestone2/g_tilde_plots.pdf, id=518, 462.52798pt x 346.89601pt>
 File: ../figures/milestone2/g_tilde_plots.pdf Graphic file (type pdf)
 <use ../figures/milestone2/g_tilde_plots.pdf>
 Package pdftex.def Info: ../figures/milestone2/g_tilde_plots.pdf  used on input line 398.
@@ -1080,7 +1080,7 @@ LaTeX Font Info:    Font shape `T1/txr/b/n' in size <10> not available
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../figures/milestone3/test_delta_cdm_delta_b.pdf, id=629, 462.52798pt x 346.89601pt>
+<../figures/milestone3/test_delta_cdm_delta_b.pdf, id=637, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/test_delta_cdm_delta_b.pdf Graphic file (type pdf)
 <use ../figures/milestone3/test_delta_cdm_delta_b.pdf>
 Package pdftex.def Info: ../figures/milestone3/test_delta_cdm_delta_b.pdf  used on input line 581.
@@ -1093,7 +1093,7 @@ Overfull \hbox (21.44412pt too wide) in paragraph at lines 581--583
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../figures/milestone3/test_v_cdm_v_b.pdf, id=630, 462.52798pt x 346.89601pt>
+<../figures/milestone3/test_v_cdm_v_b.pdf, id=638, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/test_v_cdm_v_b.pdf Graphic file (type pdf)
 <use ../figures/milestone3/test_v_cdm_v_b.pdf>
 Package pdftex.def Info: ../figures/milestone3/test_v_cdm_v_b.pdf  used on input line 588.
@@ -1106,7 +1106,7 @@ Overfull \hbox (21.44412pt too wide) in paragraph at lines 588--590
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../figures/milestone3/test_theta_0.pdf, id=631, 462.52798pt x 346.89601pt>
+<../figures/milestone3/test_theta_0.pdf, id=639, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/test_theta_0.pdf Graphic file (type pdf)
 <use ../figures/milestone3/test_theta_0.pdf>
 Package pdftex.def Info: ../figures/milestone3/test_theta_0.pdf  used on input line 596.
@@ -1119,7 +1119,7 @@ Overfull \hbox (21.44412pt too wide) in paragraph at lines 596--597
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../figures/milestone3/test_theta_1.pdf, id=632, 462.52798pt x 346.89601pt>
+<../figures/milestone3/test_theta_1.pdf, id=640, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/test_theta_1.pdf Graphic file (type pdf)
 <use ../figures/milestone3/test_theta_1.pdf>
 Package pdftex.def Info: ../figures/milestone3/test_theta_1.pdf  used on input line 602.
@@ -1132,7 +1132,7 @@ Overfull \hbox (21.44412pt too wide) in paragraph at lines 602--603
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../figures/milestone3/test_phi.pdf, id=633, 462.52798pt x 346.89601pt>
+<../figures/milestone3/test_phi.pdf, id=641, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/test_phi.pdf Graphic file (type pdf)
 <use ../figures/milestone3/test_phi.pdf>
 Package pdftex.def Info: ../figures/milestone3/test_phi.pdf  used on input line 608.
@@ -1146,131 +1146,131 @@ Overfull \hbox (21.44412pt too wide) in paragraph at lines 608--609
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-LaTeX Warning: Reference `phi' on page 9 undefined on input line 644.
+LaTeX Warning: Reference `phi' on page 9 undefined on input line 646.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 615--663
+Underfull \hbox (badness 10000) in paragraph at lines 615--665
 
  []
 
 
-Underfull \hbox (badness 1033) in paragraph at lines 615--663
+Underfull \hbox (badness 1033) in paragraph at lines 615--665
 \T1/txr/m/n/10 In fig-ure [][]19[][], which is a zoomed in ver-sion of fig-ure [][]18[][],
  []
 
 
-Underfull \hbox (badness 1281) in paragraph at lines 615--663
+Underfull \hbox (badness 1281) in paragraph at lines 615--665
 \T1/txr/m/n/10 causally dis-con-nected. Us-ing that Fourier modes en-ter the
  []
 
 
-Underfull \hbox (badness 2080) in paragraph at lines 615--663
+Underfull \hbox (badness 2080) in paragraph at lines 615--665
 \T1/txr/m/n/10 struc-ture to form in gen-eral be-fore re-com-bi-na-tion, where
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 615--663
+Underfull \hbox (badness 10000) in paragraph at lines 615--665
 
  []
 
 
-Underfull \hbox (badness 1521) in paragraph at lines 615--663
+Underfull \hbox (badness 1521) in paragraph at lines 615--665
 \T1/txr/m/n/10 In fig-ure [][]22[][] we see that the os-cil-la-tions in the bary-onic
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 615--663
+Underfull \hbox (badness 10000) in paragraph at lines 615--665
 
  []
 
 
-Underfull \hbox (badness 1253) in paragraph at lines 615--663
+Underfull \hbox (badness 1253) in paragraph at lines 615--665
 \T1/txr/m/n/10 In fig-ure [][]17[][] we see how the tem-per-a-ture over-den-sity be-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 615--663
+Underfull \hbox (badness 10000) in paragraph at lines 615--665
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 615--663
+Underfull \hbox (badness 10000) in paragraph at lines 615--665
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 615--663
+Underfull \hbox (badness 10000) in paragraph at lines 615--665
 
  []
 
 
-Package hyperref Warning: Suppressing link with empty target on input line 663.
+Package hyperref Warning: Suppressing link with empty target on input line 665.
 
 [9pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.663 
+l.665 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.663 
+l.665 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.13}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.663 
+l.665 
        <../figures/milestone3/test_delta_cdm_delta_b.pdf> <../figures/milestone3/test_v_cdm_v_b.pdf>]
 
-Package hyperref Warning: Suppressing link with empty target on input line 663.
+Package hyperref Warning: Suppressing link with empty target on input line 665.
 
 [10pdfTeX warning (ext4): destination with the same identifier (name{figure.14}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.663 
+l.665 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.15}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.663 
+l.665 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.16}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.663 
+l.665 
        <../figures/milestone3/test_theta_0.pdf> <../figures/milestone3/test_theta_1.pdf> <../figures/milestone3/test_phi.pdf>]
-<../figures/milestone3/delta_gamma.pdf, id=805, 462.52798pt x 346.89601pt>
+<../figures/milestone3/delta_gamma.pdf, id=813, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/delta_gamma.pdf Graphic file (type pdf)
 <use ../figures/milestone3/delta_gamma.pdf>
-Package pdftex.def Info: ../figures/milestone3/delta_gamma.pdf  used on input line 669.
+Package pdftex.def Info: ../figures/milestone3/delta_gamma.pdf  used on input line 671.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
 
-Overfull \hbox (21.44412pt too wide) in paragraph at lines 669--670
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 671--672
 [][]
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<../figures/milestone3/delta_cdm_delta_b.pdf, id=806, 462.52798pt x 346.89601pt>
+<../figures/milestone3/delta_cdm_delta_b.pdf, id=814, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/delta_cdm_delta_b.pdf Graphic file (type pdf)
 <use ../figures/milestone3/delta_cdm_delta_b.pdf>
-Package pdftex.def Info: ../figures/milestone3/delta_cdm_delta_b.pdf  used on input line 675.
+Package pdftex.def Info: ../figures/milestone3/delta_cdm_delta_b.pdf  used on input line 677.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
 
-Overfull \hbox (21.44412pt too wide) in paragraph at lines 675--676
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 677--678
 [][]
  []
 
-<../figures/milestone3/delta_cdm_delta_b_zoom.pdf, id=807, 462.52798pt x 346.89601pt>
+<../figures/milestone3/delta_cdm_delta_b_zoom.pdf, id=815, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/delta_cdm_delta_b_zoom.pdf Graphic file (type pdf)
 <use ../figures/milestone3/delta_cdm_delta_b_zoom.pdf>
-Package pdftex.def Info: ../figures/milestone3/delta_cdm_delta_b_zoom.pdf  used on input line 681.
+Package pdftex.def Info: ../figures/milestone3/delta_cdm_delta_b_zoom.pdf  used on input line 683.
 (pdftex.def)             Requested size: 300.63962pt x 225.47972pt.
 
-Overfull \hbox (44.56482pt too wide) in paragraph at lines 681--682
+Overfull \hbox (44.56482pt too wide) in paragraph at lines 683--684
 [][]
  []
 
@@ -1279,59 +1279,59 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-Package hyperref Warning: Suppressing link with empty target on input line 684.
+Package hyperref Warning: Suppressing link with empty target on input line 686.
 
 [11pdfTeX warning (ext4): destination with the same identifier (name{figure.17}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.684 
+l.686 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.18}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.684 
+l.686 
        <../figures/milestone3/delta_gamma.pdf> <../figures/milestone3/delta_cdm_delta_b.pdf>]
-<../figures/milestone3/delta_cdm_delta_b_delta_gamma.pdf, id=876, 462.52798pt x 346.89601pt>
+<../figures/milestone3/delta_cdm_delta_b_delta_gamma.pdf, id=884, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/delta_cdm_delta_b_delta_gamma.pdf Graphic file (type pdf)
 <use ../figures/milestone3/delta_cdm_delta_b_delta_gamma.pdf>
-Package pdftex.def Info: ../figures/milestone3/delta_cdm_delta_b_delta_gamma.pdf  used on input line 687.
+Package pdftex.def Info: ../figures/milestone3/delta_cdm_delta_b_delta_gamma.pdf  used on input line 689.
 (pdftex.def)             Requested size: 300.63962pt x 225.47972pt.
 
-Overfull \hbox (44.56482pt too wide) in paragraph at lines 687--688
+Overfull \hbox (44.56482pt too wide) in paragraph at lines 689--690
 [][]
  []
 
-<../figures/milestone3/v_gamma.pdf, id=878, 462.52798pt x 346.89601pt>
+<../figures/milestone3/v_gamma.pdf, id=886, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/v_gamma.pdf Graphic file (type pdf)
 <use ../figures/milestone3/v_gamma.pdf>
-Package pdftex.def Info: ../figures/milestone3/v_gamma.pdf  used on input line 693.
+Package pdftex.def Info: ../figures/milestone3/v_gamma.pdf  used on input line 695.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
 
-Overfull \hbox (21.44412pt too wide) in paragraph at lines 693--694
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 695--696
 [][]
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<../figures/milestone3/v_cdm_v_b.pdf, id=879, 462.52798pt x 346.89601pt>
+<../figures/milestone3/v_cdm_v_b.pdf, id=887, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/v_cdm_v_b.pdf Graphic file (type pdf)
 <use ../figures/milestone3/v_cdm_v_b.pdf>
-Package pdftex.def Info: ../figures/milestone3/v_cdm_v_b.pdf  used on input line 699.
+Package pdftex.def Info: ../figures/milestone3/v_cdm_v_b.pdf  used on input line 701.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
 
-Overfull \hbox (21.44412pt too wide) in paragraph at lines 699--701
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 701--703
 [][]
  []
 
-<../figures/milestone3/theta_2.pdf, id=880, 462.52798pt x 346.89601pt>
+<../figures/milestone3/theta_2.pdf, id=888, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/theta_2.pdf Graphic file (type pdf)
 <use ../figures/milestone3/theta_2.pdf>
-Package pdftex.def Info: ../figures/milestone3/theta_2.pdf  used on input line 706.
+Package pdftex.def Info: ../figures/milestone3/theta_2.pdf  used on input line 708.
 (pdftex.def)             Requested size: 300.63962pt x 225.47972pt.
 
-Overfull \hbox (44.56482pt too wide) in paragraph at lines 706--707
+Overfull \hbox (44.56482pt too wide) in paragraph at lines 708--709
 [][]
  []
 
@@ -1340,97 +1340,377 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-Package hyperref Warning: Suppressing link with empty target on input line 709.
+Package hyperref Warning: Suppressing link with empty target on input line 711.
 
 [12pdfTeX warning (ext4): destination with the same identifier (name{figure.19}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.709 
+l.711 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.20}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.709 
+l.711 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.21}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.709 
+l.711 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.22}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.709 
+l.711 
        <../figures/milestone3/delta_cdm_delta_b_zoom.pdf> <../figures/milestone3/delta_cdm_delta_b_delta_gamma.pdf> <../figures/milestone3/v_gamma.pdf> <../figures/milestone3/v_cdm_v_b.pdf>]
-<../figures/milestone3/phi.pdf, id=1022, 462.52798pt x 346.89601pt>
+<../figures/milestone3/phi.pdf, id=1015, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/phi.pdf Graphic file (type pdf)
 <use ../figures/milestone3/phi.pdf>
-Package pdftex.def Info: ../figures/milestone3/phi.pdf  used on input line 712.
+Package pdftex.def Info: ../figures/milestone3/phi.pdf  used on input line 714.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
 
-Overfull \hbox (21.44412pt too wide) in paragraph at lines 712--713
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 714--715
 [][]
  []
 
-<../figures/milestone3/phi_psi.pdf, id=1023, 462.52798pt x 346.89601pt>
+<../figures/milestone3/phi_psi.pdf, id=1016, 462.52798pt x 346.89601pt>
 File: ../figures/milestone3/phi_psi.pdf Graphic file (type pdf)
 <use ../figures/milestone3/phi_psi.pdf>
-Package pdftex.def Info: ../figures/milestone3/phi_psi.pdf  used on input line 718.
+Package pdftex.def Info: ../figures/milestone3/phi_psi.pdf  used on input line 720.
 (pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
 
-Overfull \hbox (21.44412pt too wide) in paragraph at lines 718--719
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 720--721
 [][]
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- (/home/jorgen/src/master/ast5220/CMB/report/template.bbl)
 
-Package hyperref Warning: Suppressing link with empty target on input line 762.
+Underfull \hbox (badness 10000) in paragraph at lines 750--754
+
+ []
+
+
+Underfull \hbox (badness 1062) in paragraph at lines 760--764
+\T1/txr/m/n/10 by us-ing a Harrison-Zel'dovich pri-mor-dial power spec-trum
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 760--764
+
+ []
+
+
+Package hyperref Warning: Suppressing link with empty target on input line 768.
 
 [13pdfTeX warning (ext4): destination with the same identifier (name{figure.23}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.762 \end{document}
-                    pdfTeX warning (ext4): destination with the same identifier (name{figure.24}) has been already used, duplicate ignored
+l.768 \subsection
+                 {Implementation details}pdfTeX warning (ext4): destination with the same identifier (name{figure.24}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.762 \end{document}
-                    pdfTeX warning (ext4): destination with the same identifier (name{figure.25}) has been already used, duplicate ignored
+l.768 \subsection
+                 {Implementation details}pdfTeX warning (ext4): destination with the same identifier (name{figure.25}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.762 \end{document}
-                     <../figures/milestone3/theta_2.pdf> <../figures/milestone3/phi.pdf> <../figures/milestone3/phi_psi.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 762.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 762.
+l.768 \subsection
+                 {Implementation details} <../figures/milestone3/theta_2.pdf> <../figures/milestone3/phi.pdf> <../figures/milestone3/phi_psi.pdf>]
+<../figures/milestone4/matter_test.pdf, id=1119, 462.52798pt x 346.89601pt>
+File: ../figures/milestone4/matter_test.pdf Graphic file (type pdf)
+<use ../figures/milestone4/matter_test.pdf>
+Package pdftex.def Info: ../figures/milestone4/matter_test.pdf  used on input line 781.
+(pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
+
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 781--782
+[][]
+ []
+
+<../figures/milestone4/cell_test.pdf, id=1121, 462.52798pt x 346.89601pt>
+File: ../figures/milestone4/cell_test.pdf Graphic file (type pdf)
+<use ../figures/milestone4/cell_test.pdf>
+Package pdftex.def Info: ../figures/milestone4/cell_test.pdf  used on input line 786.
+(pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
+
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 786--787
+[][]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+<../figures/milestone4/theta_2.pdf, id=1130, 462.52798pt x 346.89601pt>
+File: ../figures/milestone4/theta_2.pdf Graphic file (type pdf)
+<use ../figures/milestone4/theta_2.pdf>
+Package pdftex.def Info: ../figures/milestone4/theta_2.pdf  used on input line 799.
+(pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
+
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 799--800
+[][]
+ []
+
+<../figures/milestone4/theta_10.pdf, id=1131, 462.52798pt x 346.89601pt>
+File: ../figures/milestone4/theta_10.pdf Graphic file (type pdf)
+<use ../figures/milestone4/theta_10.pdf>
+Package pdftex.def Info: ../figures/milestone4/theta_10.pdf  used on input line 804.
+(pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
+
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 804--805
+[][]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package hyperref Warning: Suppressing link with empty target on input line 807.
+
+[14pdfTeX warning (ext4): destination with the same identifier (name{figure.26}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.807 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.27}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.807 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.28}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.807 
+       <../figures/milestone4/matter_test.pdf> <../figures/milestone4/cell_test.pdf> <../figures/milestone4/theta_2.pdf>]
+<../figures/milestone4/theta_100.pdf, id=1223, 462.52798pt x 346.89601pt>
+File: ../figures/milestone4/theta_100.pdf Graphic file (type pdf)
+<use ../figures/milestone4/theta_100.pdf>
+Package pdftex.def Info: ../figures/milestone4/theta_100.pdf  used on input line 809.
+(pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
+
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 809--810
+[][]
+ []
+
+<../figures/milestone4/theta_1200.pdf, id=1224, 462.52798pt x 346.89601pt>
+File: ../figures/milestone4/theta_1200.pdf Graphic file (type pdf)
+<use ../figures/milestone4/theta_1200.pdf>
+Package pdftex.def Info: ../figures/milestone4/theta_1200.pdf  used on input line 814.
+(pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
+
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 814--815
+[][]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+<../figures/milestone4/comparison1.pdf, id=1225, 462.52798pt x 346.89601pt>
+File: ../figures/milestone4/comparison1.pdf Graphic file (type pdf)
+<use ../figures/milestone4/comparison1.pdf>
+Package pdftex.def Info: ../figures/milestone4/comparison1.pdf  used on input line 819.
+(pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
+
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 819--820
+[][]
+ []
+
+<../figures/milestone4/comparison2.pdf, id=1226, 462.52798pt x 346.89601pt>
+File: ../figures/milestone4/comparison2.pdf Graphic file (type pdf)
+<use ../figures/milestone4/comparison2.pdf>
+Package pdftex.def Info: ../figures/milestone4/comparison2.pdf  used on input line 824.
+(pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
+
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 824--825
+[][]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package hyperref Warning: Suppressing link with empty target on input line 827.
+
+[15pdfTeX warning (ext4): destination with the same identifier (name{figure.29}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.827 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.30}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.827 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.31}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.827 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.32}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.827 
+       <../figures/milestone4/theta_10.pdf> <../figures/milestone4/theta_100.pdf> <../figures/milestone4/theta_1200.pdf> <../figures/milestone4/comparison1.pdf>]
+<../figures/milestone4/theta_2_squared.pdf, id=1319, 462.52798pt x 346.89601pt>
+File: ../figures/milestone4/theta_2_squared.pdf Graphic file (type pdf)
+<use ../figures/milestone4/theta_2_squared.pdf>
+Package pdftex.def Info: ../figures/milestone4/theta_2_squared.pdf  used on input line 831.
+(pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
+
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 831--832
+[][]
+ []
+
+<../figures/milestone4/theta_10_squared.pdf, id=1320, 462.52798pt x 346.89601pt>
+File: ../figures/milestone4/theta_10_squared.pdf Graphic file (type pdf)
+<use ../figures/milestone4/theta_10_squared.pdf>
+Package pdftex.def Info: ../figures/milestone4/theta_10_squared.pdf  used on input line 836.
+(pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
+
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 836--837
+[][]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+<../figures/milestone4/theta_100_squared.pdf, id=1321, 462.52798pt x 346.89601pt>
+File: ../figures/milestone4/theta_100_squared.pdf Graphic file (type pdf)
+<use ../figures/milestone4/theta_100_squared.pdf>
+Package pdftex.def Info: ../figures/milestone4/theta_100_squared.pdf  used on input line 841.
+(pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
+
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 841--842
+[][]
+ []
+
+<../figures/milestone4/theta_1200_squared.pdf, id=1322, 462.52798pt x 346.89601pt>
+File: ../figures/milestone4/theta_1200_squared.pdf Graphic file (type pdf)
+<use ../figures/milestone4/theta_1200_squared.pdf>
+Package pdftex.def Info: ../figures/milestone4/theta_1200_squared.pdf  used on input line 846.
+(pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
+
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 846--847
+[][]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package hyperref Warning: Suppressing link with empty target on input line 849.
+
+[16pdfTeX warning (ext4): destination with the same identifier (name{figure.33}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.849 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.34}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.849 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.35}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.849 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.36}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.849 
+       <../figures/milestone4/comparison2.pdf> <../figures/milestone4/theta_2_squared.pdf> <../figures/milestone4/theta_10_squared.pdf> <../figures/milestone4/theta_100_squared.pdf>]
+<../figures/milestone4/matter_PS.pdf, id=1428, 462.52798pt x 346.89601pt>
+File: ../figures/milestone4/matter_PS.pdf Graphic file (type pdf)
+<use ../figures/milestone4/matter_PS.pdf>
+Package pdftex.def Info: ../figures/milestone4/matter_PS.pdf  used on input line 855.
+(pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
+
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 855--856
+[][]
+ []
+
+<../figures/milestone4/matter_PS_data.pdf, id=1429, 462.52798pt x 346.89601pt>
+File: ../figures/milestone4/matter_PS_data.pdf Graphic file (type pdf)
+<use ../figures/milestone4/matter_PS_data.pdf>
+Package pdftex.def Info: ../figures/milestone4/matter_PS_data.pdf  used on input line 860.
+(pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
+
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 860--861
+[][]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+<../figures/milestone4/cell.pdf, id=1430, 462.52798pt x 346.89601pt>
+File: ../figures/milestone4/cell.pdf Graphic file (type pdf)
+<use ../figures/milestone4/cell.pdf>
+Package pdftex.def Info: ../figures/milestone4/cell.pdf  used on input line 865.
+(pdftex.def)             Requested size: 277.51892pt x 208.1392pt.
+
+Overfull \hbox (21.44412pt too wide) in paragraph at lines 865--866
+[][]
+ []
+
+(/home/jorgen/src/master/ast5220/CMB/report/template.bbl)
+
+Package hyperref Warning: Suppressing link with empty target on input line 894.
+
+[17pdfTeX warning (ext4): destination with the same identifier (name{figure.37}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.894 \end{document}
+                    pdfTeX warning (ext4): destination with the same identifier (name{figure.38}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.894 \end{document}
+                    pdfTeX warning (ext4): destination with the same identifier (name{figure.39}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.894 \end{document}
+                    pdfTeX warning (ext4): destination with the same identifier (name{figure.40}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.894 \end{document}
+                     <../figures/milestone4/theta_1200_squared.pdf> <../figures/milestone4/matter_PS.pdf> <../figures/milestone4/matter_PS_data.pdf> <../figures/milestone4/cell.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 894.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 894.
  (/home/jorgen/src/master/ast5220/CMB/report/template.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 762.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 762.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 894.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 894.
 Package rerunfilecheck Info: File `template.out' has not changed.
-(rerunfilecheck)             Checksum: 76ABA9C7B81E19DC9CEC8600225338FE;1432.
+(rerunfilecheck)             Checksum: 1F0B4D2BD0923302018A2819E675A1F7;1575.
 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 10866 strings out of 481239
- 156072 string characters out of 5920377
- 455099 words of memory out of 5000000
- 25738 multiletter control sequences out of 15000+600000
+ 11001 strings out of 481239
+ 160385 string characters out of 5920378
+ 456357 words of memory out of 5000000
+ 25831 multiletter control sequences out of 15000+600000
  622517 words of font info for 171 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 46i,21n,49p,382b,399s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 46i,21n,49p,399b,399s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtcxr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyb.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /home/jorgen/src/master/ast5220/CMB/report/template.pdf (13 pages, 696731 bytes).
+Output written on /home/jorgen/src/master/ast5220/CMB/report/template.pdf (17 pages, 884527 bytes).
 PDF statistics:
- 1190 PDF objects out of 1200 (max. 8388607)
- 531 compressed objects within 6 object streams
- 86 named destinations out of 1000 (max. 500000)
- 318 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1714 PDF objects out of 1728 (max. 8388607)
+ 725 compressed objects within 8 object streams
+ 113 named destinations out of 1000 (max. 500000)
+ 409 words of extra memory for PDF output out of 10000 (max. 10000000)
 

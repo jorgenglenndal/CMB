@@ -42,6 +42,8 @@ all: $(TARGETS)
 
 # OBJECT FILES
 OBJS = Main.o Utils.o BackgroundCosmology.o RecombinationHistory.o Perturbations.o PowerSpectrum.o Spline.o ODESolver.o 
+#OBJS = Main.o Utils.o BackgroundCosmology.o RecombinationHistory.o Perturbations.o Spline.o ODESolver.o
+
 
 # DEPENDENCIES
 Main.o                  : BackgroundCosmology.h RecombinationHistory.h Perturbations.h PowerSpectrum.h

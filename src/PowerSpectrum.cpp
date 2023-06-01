@@ -228,13 +228,22 @@ Vector2D PowerSpectrum::line_of_sight_integration_single(
       for (int i = 0;i< 1e10;i++){
         bessel_0 = Utils::j_ell(ell, (k*(eta_0-cosmo->eta_of_x(x_array_source[i]))));
         ////bessel_0 = j_ell_splines[l](k*(eta_0-cosmo->eta_of_x(x_array_source[i])));
-        dx = 2.*M_PI*cosmo->Hp_of_x(x_array_source[i])/(10.*10.*10.*ck);
+        dx = 2.*M_PI*cosmo->Hp_of_x(x_array_source[i])/(10.*10.*6.*ck); //may need better resolution...
         if (ell <= 10){
-            dx = 2.*M_PI*cosmo->Hp_of_x(x_array_source[i])/(10.*10.*10.*10.*ck); //*10.*10.
+            dx = 2.*M_PI*cosmo->Hp_of_x(x_array_source[i])/(10.*10.*10.*6.*ck); //*10.*10.
         }
         if (ell > 100){
-            dx = 2.*M_PI*cosmo->Hp_of_x(x_array_source[i])/(10.*10.*ck); //*10.*10.
+            dx = 2.*M_PI*cosmo->Hp_of_x(x_array_source[i])/(10.*6.*ck); //*10.*10.
         }
+        if (ell > 300){
+            dx = 2.*M_PI*cosmo->Hp_of_x(x_array_source[i])/(10.*2.*ck); //*10.*10.
+        }
+        if (ell > 700){
+            dx = 2.*M_PI*cosmo->Hp_of_x(x_array_source[i])/(8.*ck); //*10.*10.
+        }
+        //if (ell > 1900){
+        //    dx = 2.*M_PI*cosmo->Hp_of_x(x_array_source[i])/(2.*ck); //*10.*10.
+        //}
                        
         if (x_array_source[i]+dx >= 0.){
           x_array_source.push_back(0.);
@@ -715,15 +724,17 @@ void PowerSpectrum::output_45(const std::string filename) const{
   std::for_each(k_array.begin(), k_array.end(), print_data);
 }
 
-void PowerSpectrum::output_test45(const std::string filename) const{
+void PowerSpectrum::output_stuff(const std::string filename) const{
   //const double k_min_ = k_min;
   //const double k_max_ = k_max;
   //const int    n_pts =  10000;
   //double k = 340.*cosmo->get_H0()/Constants.c;
   const double Mpc = Constants.Mpc;
+  //const double norm = cosmo->eta_of_x(0.);
   //const double c_H0 = Constants.c/cosmo->get_H0();
   const double c_H0 = Constants.c/cosmo->get_H0();
-  const double norm = 1e6*cosmo->get_H0()/Constants.c;
+  const double H0 = cosmo->get_H0();
+  const double norm = 1./(Constants.c*1e-6*pow(cosmo->get_H0(),-1.));
   arma::vec k_array_arma = arma::logspace(log10(k_min),log10(k_max),n_k);
   
   //Vector k_array;
@@ -741,14 +752,34 @@ void PowerSpectrum::output_test45(const std::string filename) const{
   //}
    //= k_array*Mpc/cosmo->get_h();
   //double eta_0 = cosmo->eta_of_x(0.);
-  int i=0;
+  //int i=0;
   std::cout << "output" << std::endl;
   std::ofstream fp(filename.c_str());
   auto print_data = [&] (const double k) {
     
-    fp <<    k*c_H0                                     << " ";
-    fp << pow(thetaT_ell_of_k[0][i],2)/k*norm            << " ";
-    fp << pow(thetaT_ell_of_k_spline[0](k),2)/k*norm            << " ";
+    fp <<    k*c_H0                                    << " ";
+    //fp << pow(thetaT_ell_of_k[0][i],2)/k*norm            << " ";
+    fp << thetaT_ell_of_k_spline[0](k)                 << " ";  
+    fp << pow(thetaT_ell_of_k_spline[0](k),2)/k*norm   << " ";
+
+    //fp << thetaT_ell_of_k_spline[1](k)                 << " ";  
+    //fp << pow(thetaT_ell_of_k_spline[1](k),2)/k*norm   << " ";
+
+////    fp << thetaT_ell_of_k_spline[15](k)                 << " ";  
+////    fp << pow(thetaT_ell_of_k_spline[15](k),2)/k*norm   << " ";
+////
+////    fp << thetaT_ell_of_k_spline[30](k)                 << " ";  
+////    fp << pow(thetaT_ell_of_k_spline[30](k),2)/k*norm   << " ";
+    //fp << pow(thetaT_ell_of_k[0][i],2)/k*norm            << " ";
+
+    //fp << thetaT_ell_of_k_spline[5](k)            << " ";
+    //fp << pow(thetaT_ell_of_k_spline[5](k),2)/k            << " ";
+
+    //fp << thetaT_ell_of_k_spline[12](k)            << " ";
+    //fp << pow(thetaT_ell_of_k_spline[12](k),2)/k            << " ";
+
+    //fp << thetaT_ell_of_k_spline[20](k)            << " ";
+    //fp << pow(thetaT_ell_of_k_spline[20](k),2)/k            << " ";
     //fp << pow(thetaT_ell_of_k[2][i],2)/k*norm            << " ";
     //fp << pow(thetaT_ell_of_k[3][i],2)/k*norm            << " ";
     //fp << pow(thetaT_ell_of_k[4][i],2)/k*norm            << " ";
@@ -757,9 +788,10 @@ void PowerSpectrum::output_test45(const std::string filename) const{
     //fp << thetaT_ell_of_k_spline[2](k)            << " ";
     //fp << thetaT_ell_of_k[2] << " ";
     fp <<"\n";
-    i += 1;
+    //i += 1;
   };
   std::for_each(all_k_arrays[5].begin(), all_k_arrays[5].end(), print_data);
+  //std::for_each(k_array_arma.begin(), k_array_arma.end(), print_data);
 }
 
 

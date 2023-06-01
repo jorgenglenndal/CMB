@@ -35,38 +35,38 @@ class PowerSpectrum {
 
     Vector2D all_k_arrays;
 
-    const int n_k_zone_0      = 100;
+    const int n_k_zone_0      = 250;
     const double k_min_zone_0 = k_min;
-    const double k_max_zone_0 = 0.01/Constants.Mpc;
+    const double k_max_zone_0 = 0.007/Constants.Mpc;
 
-    const int n_k_zone_1      = 200;
+    const int n_k_zone_1      = 400;
     //const double k_min_zone_1 = k_min+0.01/Constants.Mpc;
     //const double k_max_zone_1 = 0.02/Constants.Mpc;
     const double k_min_zone_1 = 0.00046/Constants.Mpc;
-    const double k_max_zone_1 = 0.024/Constants.Mpc;
+    const double k_max_zone_1 = 0.0186/Constants.Mpc;
 
-    const int n_k_zone_2      = 200;
+    const int n_k_zone_2      = 500;
     //const double k_min_zone_1 = k_min+0.01/Constants.Mpc;
     //const double k_max_zone_1 = 0.02/Constants.Mpc;
-    const double k_min_zone_2 = 0.0023/Constants.Mpc;
-    const double k_max_zone_2 = 0.047/Constants.Mpc;
+    const double k_min_zone_2 = 0.0018/Constants.Mpc;
+    const double k_max_zone_2 = 0.023/Constants.Mpc;//0.047/Constants.Mpc;
 
-    const int n_k_zone_3      = 400;
+    const int n_k_zone_3      = 500;
     //const double k_min_zone_1 = k_min+0.01/Constants.Mpc;
     //const double k_max_zone_1 = 0.02/Constants.Mpc;
     const double k_min_zone_3 = 0.007/Constants.Mpc;
-    const double k_max_zone_3 = 0.07/Constants.Mpc;
+    const double k_max_zone_3 = 0.058/Constants.Mpc;
 
-    const int n_k_zone_4      = 400;
+    const int n_k_zone_4      = 800*1.89;
     //const double k_min_zone_1 = k_min+0.01/Constants.Mpc;
     //const double k_max_zone_1 = 0.02/Constants.Mpc;
-    const double k_min_zone_4 = 0.023/Constants.Mpc;
-    const double k_max_zone_4 = 0.1/Constants.Mpc;
+    const double k_min_zone_4 = 0.02/Constants.Mpc;
+    const double k_max_zone_4 = 0.11/Constants.Mpc;
 
-    const int n_k_zone_5      = 400;
+    const int n_k_zone_5      = 1500;
     //const double k_min_zone_1 = k_min+0.01/Constants.Mpc;
     //const double k_max_zone_1 = 0.02/Constants.Mpc;
-    const double k_min_zone_5 = 0.058/Constants.Mpc;
+    const double k_min_zone_5 = 0.05/Constants.Mpc;
     const double k_max_zone_5 = 0.23/Constants.Mpc;
 
     //const int n_x = 1000;
@@ -74,6 +74,8 @@ class PowerSpectrum {
     
     // The ells's we will compute Theta_ell and Cell for
     Vector ells{
+        //1200};
+        //2,11,31,101,301,701,
         2,    3,    4,    5,    6,    7,    8,    
         10,   12,   15,   
         20,   25,   30,   40,   50,   60,   70,   80,
@@ -170,7 +172,7 @@ class PowerSpectrum {
     void output_matter(std::string filename) const;
     void output_Source(std::string filename) const;
     void output_45(std::string filename) const;
-    void output_test45(std::string filename) const;
+    void output_stuff(std::string filename) const;
 };
 
 #endif

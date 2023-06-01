@@ -30,7 +30,7 @@ BackgroundCosmology::BackgroundCosmology(
   //std::cout << (OmegaR + OmegaNu)/(OmegaCDM+OmegaB) << std::endl;
   //std::cout << pow((OmegaCDM+OmegaB)/(OmegaLambda),1./3.) << std::endl;
   //std::cout << log(pow((OmegaCDM+OmegaB)/(OmegaLambda),1./3.)) << std::endl;
-
+  
   
                    // Neutrino density today (follows from TCMB and Neff)
 
@@ -343,6 +343,7 @@ void BackgroundCosmology::info() const{
   std::cout << "TCMB:               "<< TCMB                                             << "\n";
   std::cout << "t(x=0) [Gyr]:       "<< t_of_x(0.)/(60.*60.*24.*365.*1e9)                << "\n";
   std::cout << "eta(x=0)/c [Gyr]:   "<< eta_of_x(0.)/(Constants.c*60.*60.*24.*365.*1e9)  << "\n";
+  std::cout << "Hp(eq)   "<< Hp_of_x(-8.13)/Constants.c *Constants.Mpc/0.67  << "\n";
 
   std::cout << std::endl;
 } 
